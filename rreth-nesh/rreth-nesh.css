@@ -1,0 +1,173 @@
+@import "variables.css";
+/* 
+  --main-color: #002244;
+  --second-bg: #c0bfd2;
+  --third-bg: #132c50;
+  --white-bg: #fff;
+  --dark-text: #002244;
+  --light-text: #c0bfd2;
+   --white-text: white;
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Playfair Display", sans-serif; */
+  font-family: "Open Sans", sans-serif;
+  /* background-image: url(); */
+}
+
+#main {
+  background-color: var(--second-bg);
+}
+
+.s1,
+.s2,
+.s3,
+.s4,
+.s5,
+.photo3 {
+  border: 0px solid black;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.s1 .inner-section,
+.s2 .inner-section,
+.s3 .inner-section,
+.s4 .photo3,
+.s4 .photo4 {
+  width: 50%;
+}
+/* fotoja e pare */
+.photo1 {
+  border: 0px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  height: 320px;
+  width: 500px;
+}
+.photo1 img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px black;
+}
+.photo {
+  border: 0px solid black;
+  height: 350px;
+  width: 400px;
+}
+.photo3 img {
+  height: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px black;
+}
+/* fotoja e dyte */
+.photo2 {
+  border: 0px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+  width: 550px;
+}
+.photo2 img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px black;
+}
+/* fotoja e trete */
+.photo3 {
+  border: 0px solid black;
+  height: 350px;
+  width: 400px;
+}
+.photo3 img {
+  height: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px black;
+}
+/* fotoja e katert */
+.photo4 {
+  border: 0px solid black;
+  /* margin-left: auto;
+  margin-right: auto; */
+  height: 350px;
+  width: 400px;
+}
+.photo4 img {
+  height: 100%;
+  width: 80%;
+  margin-left: 55px;
+  margin-right: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px black;
+}
+/* fotoja e peste */
+.photo5 {
+  height: 450px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0px solid black;
+}
+.photo5 img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px black;
+}
+.text {
+  border-width: 2px solid #002244;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.photo1:hover,
+.photo2:hover,
+.photo3:hover,
+.photo4:hover,
+.photo5:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+h3 {
+  color: var(--dark-text);
+  border: 2px double var(--dark-text);
+  border-radius: 10px;
+  margin: 6px;
+}
+
+.inner-section {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#nested-list {
+  text-align: left;
+  background-color: var(--main-color);
+  color: var(--white-text);
+  border-radius: 10px;
+}
+
+.text {
+  background-color: var(--main-color);
+  color: var(--white-text);
+  text-align: left;
+}
+.s2 .s3 .text {
+  height: 170px;
+}
+#datetime {
+  height: 24px;
+  color: var(--dark-text);
+}
