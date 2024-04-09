@@ -43,7 +43,7 @@
           <label for="user-pass" class="pass-label"></label>
         </div>
         <!-- Kyquni -->
-        <a href="ballina.html" class="submit-info" id="submit-info">Kyquni</a>
+        <a href="ballina.php" class="submit-info" id="submit-info">Kyquni</a>
         <!-- Kushtet dhe Sherbimet -->
         </div>
         <label class="tnc" for="submit-info"> Duke klikuar butonin ju pajtoheni <a href=""><i><u>me Kushtet dhe Shërbimet tona.</u></i></a></label>
