@@ -27,31 +27,9 @@
   />
   </head>
   <body>
-    <div id="header" style="padding-left: 1.18%;">
-      <div style="display: flex;">
-        <img class="logo" src="../images/logo1.png" />
-        <h3 style="margin: 12px 0px 0px 30px; color: whitesmoke;  
-        /* text-shadow: 1px 1px 30px;  */
-        font-family: title-font, sans-serif;
-        font-weight: bold;
-        font-size: 23px;
-">UP Student Toolkit</h3>
-      </div>
-      <nav class="nav-bar">
-        <a href="../ballina.html">Ballina</a>
-        <a href="../kalkulatore/kalkulatore.html">Vegla</a>
-        <a href="../argetim/argetim.html">Argëtim</a>
-        <a href="../literatura/literatura.html">Literatura</a>
-        <select onchange="navigate()" style="width: 145px;" id="selektimi">
-          <option value="" disabled selected>Info</option>
-          <option value="#featured-image">Objekti</option>
-          <option value="#start-personeli">Personeli</option>
-          <option value="#start-orari">Orari</option>
-          <option value="#lokacioni-headeri">Lokacioni</option>
-        </select>
-        <a href="../rreth-nesh/rreth-nesh.html">Rreth nesh</a>
-      </nav>
-    </div>
+    <?php
+      include("../header.php")
+    ?>
 
 <main id="main">
 

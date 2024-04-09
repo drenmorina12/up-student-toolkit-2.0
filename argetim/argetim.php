@@ -27,30 +27,9 @@
     />
   </head>
   <body>
-    <div id="header">
-      <div style="display: flex">
-        <img class="logo" src="../images/logo1.png" />
-        <h3
-          style="
-            margin: 12px 0px 0px 30px;
-            color: whitesmoke;
-            /* text-shadow: 1px 1px 30px; */
-            font-size: 23px;
-            font-family: title-font, sans-serif;
-          "
-        >
-          UP Student Toolkit
-        </h3>
-      </div>
-      <nav class="nav-bar">
-        <a href="../ballina.html">Ballina</a>
-        <a href="../kalkulatore/kalkulatore.html">Vegla</a>
-        <a href="#">Argëtim</a>
-        <a href="../literatura/literatura.html">Literatura</a>
-        <a href="../info/info.html">Info</a>
-        <a href="../rreth-nesh/rreth-nesh.html">Rreth nesh</a>
-      </nav>
-    </div>
+    <?php
+      include("../header.php")
+    ?>
     <main id="main">
       <!-- Sidebar -->
       <div class="sidebar">
