@@ -90,42 +90,9 @@
       </div>
     </main>
 
-    <footer id="footer">
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          gap: 90px;
-          margin-bottom: 20px;
-        "
-      >
-        <div>
-          <p>Powered by:</p>
-          <p>Edon F. Gashi, Dren Morina</p>
-          <p>Blerta Lutolli, Endrit Kastrati and Artin Dulahi</p>
-        </div>
-        <div>
-          <p>Github Accounts :</p>
-          <a href="https://github.com/EndritKastrati" target="_blank">
-            <img src="./images/github-icon.png" alt="GitHub" />
-          </a>
-          <a href="https://github.com/drenmorina12" target="_blank">
-            <img src="./images/github-icon.png" alt="GitHub" />
-          </a>
-          <a href="https://github.com/Blerta-Lutolli" target="_blank">
-            <img src="./images/github-icon.png" alt="GitHub" />
-          </a>
-          <a href="https://github.com/EdonFGashi" target="_blank">
-            <img src="./images/github-icon.png" alt="GitHub" />
-          </a>
-          <a href="https://github.com/ArtinDulahi" target="_blank">
-            <img src="./images/github-icon.png" alt="GitHub" />
-          </a>
-        </div>
-      </div>
-      <p>&copy; 2024 UP Student Toolkit. All Rights Reserved.</p>
-    </footer>
+  <?php
+    include("footer.php")
+  ?>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
