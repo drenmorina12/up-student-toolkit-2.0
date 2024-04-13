@@ -136,7 +136,7 @@
                   
                 </div>
                 <div class="kolona-2" style="margin-left: 10%;">
-                  <a href='detyrat.txt' target='_blank' id="file" style="padding-left: 4%; text-decoration: none; padding-top: 5px;">Open File</a>
+                  <a href='detyrat.txt' target='_blank' id="file" style="padding-left: 4%; text-decoration: none; padding-top: 5px;">Historia</a>
                 </div>
 
               </div>
@@ -223,7 +223,6 @@
           private $y2;
           private $xl;
           private $yl;
-          protected $mesazhi;
 
             function __construct($x1, $x2, $y1, $y2, $xl, $yl){
               $this->x1 = $x1;
