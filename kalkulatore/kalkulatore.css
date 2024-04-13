@@ -308,7 +308,12 @@ select {
 
 #pastro {
   margin-right: 20%;
-  margin-top: 24.5px;
+  margin-top: 14.5px;
+  margin-bottom: 10px;
+}
+#pastro1 {
+  margin-right: 20%;
+  margin-top: 1px;
 }
 
 .text3 {
@@ -323,7 +328,7 @@ select {
   color: var(--dark-text);
 }
 
-.butoniZgjidh {
+.butoniZgjidh, #file{
   /* background-color: gray; */
   background-color: var(--second-bg);
   /* color: antiquewhite; */
@@ -331,17 +336,19 @@ select {
   width: 150px;
   height: 35px;
   margin-left: 40%;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 15px;
   border-radius: 18px;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   float: right;
+  text-align: center;
 }
 
 #rreshtiZ {
-  margin-left: 31%;
+  margin-left: 12%;
+  margin-top: 3.5%;
 }
 
 input[type="button"]:hover {

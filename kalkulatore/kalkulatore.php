@@ -86,6 +86,7 @@
         </ul>
       </div>
       <div class="main-contentveglat">
+        <form method="post">
         <!-- Kalkulatori -->
         <div id="permbajtjaKalkulatori">
           <div class="pershkrimi2">
@@ -130,9 +131,14 @@
                     class="butoniZgjidh"
                     type="button"
                     value="Zgjidh"
-                    onclick="zgjedhja()"
+                    onclick="zgjedhja(event)"
                   />
+                  
                 </div>
+                <div class="kolona-2" style="margin-left: 10%;">
+                  <a href='detyrat.txt' target='_blank' id="file" style="padding-left: 4%; text-decoration: none; padding-top: 5px;">Open File</a>
+                </div>
+
               </div>
             </div>
             <div class="zgjidhjet" style="margin-left: 1%">
@@ -152,13 +158,141 @@
                     type="button"
                     value="Pastro"
                     id="pastro"
-                    onclick="pastrimi()"
+                    onclick="pastrimi(event)"
                   />
+                  <input
+                    class="butoniZgjidh"
+                    type="submit"
+                    value="Ruaj ne file"
+                    id="pastro1"
+                    name="butoniRuaj"
+                  />
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
+    </form>
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST['butoniRuaj'])){
+      if(!empty($_POST['x1']) && !empty($_POST['x2']) && !empty($_POST['y1'])
+       && !empty($_POST['y2']) && !empty($_POST['r1']) && !empty($_POST['r2'])){
+        if(ctype_digit($_POST['x1']) && ctype_digit($_POST['x2']) && ctype_digit($_POST['y1'])
+          && ctype_digit($_POST['y2']) && ctype_digit($_POST['r1']) && ctype_digit($_POST['r2'])){
+
+            $x1 = $_POST['x1'];
+            $x2 = $_POST['x2'];
+            $y1 = $_POST['y1'];
+            $y2 = $_POST['y2'];
+            $xl = $_POST['r1'];
+            $yl = $_POST['r2'];
+
+            $currentDate = date('d-m-Y');
+            $currentTime = date('H:i:s');
+            $objekti1 = new llogaritja($x1, $x2, $y1, $y2, $xl, $yl);
+            
+            if($objekti1 -> determinanta() == 0){
+              // echo "Ana e majtë e sistemit është e njëjtë, sistemi nuk ka zgjidhje !";
+            } else {
+                // echo "X = ".$objekti1->zgjidhjaX();
+                // echo "Y = ".$objekti1->zgjidhjaY();
+                $objekti2 = new ruajNeFile($x1, $x2, $y1, $y2, $xl, $yl);
+                $objekti2->setKoha($currentDate, $currentTime);
+                $objekti2->ruaj();
+            }
+        } else {
+          // echo "Vendosni të dhëna valide !";
+        }
+      } else {
+        // echo "Mos leni rubrika të zbrazëta !";
+      }
+    } else {
+      // echo "Shtypni butonin !";
+    }
+  }
+
+         class llogaritja{
+          public $x;
+          public $y;
+          // public $d;
+          private $x1;
+          private $x2;
+          private $y1;
+          private $y2;
+          private $xl;
+          private $yl;
+          protected $mesazhi;
+
+            function __construct($x1, $x2, $y1, $y2, $xl, $yl){
+              $this->x1 = $x1;
+              $this->x2 = $x2;
+              $this->y1 = $y1;
+              $this->y2 = $y2;
+              $this->xl = $xl;
+              $this->yl = $yl;
+            }
+
+            protected function getx1(){return $this->x1;}
+            protected function getx2(){return $this->x2;}
+            protected function gety1(){return $this->y1;}
+            protected function gety2(){return $this->y2;}
+            protected function getxl(){return $this->xl;}
+            protected function getyl(){return $this->yl;}
+
+            public function zgjidhjaX(){
+              $x1 = floatval($this->x1);
+              $y1 = floatval($this->y1);
+              $x2 = floatval($this->x2);
+              $y2 = floatval($this->y2);
+              $xl = floatval($this->xl);
+              $yl = floatval($this->yl);
+              return $x =
+              ($xl * $y2 - $yl * $y1) /
+              ($x1 * $y2 - $x2 * $y1);
+            }
+            public function zgjidhjaY(){
+              $x1 = floatval($this->x1);
+              $y1 = floatval($this->y1);
+              $x2 = floatval($this->x2);
+              $y2 = floatval($this->y2);
+              $xl = floatval($this->xl);
+              $yl = floatval($this->yl);
+              return $y =
+              ($x1 * $yl - $x2 * $xl) /
+              ($x1 * $y2 - $x2 * $y1);
+            }
+            public function determinanta(){
+              $x1 = floatval($this->x1);
+              $y1 = floatval($this->y1);
+              $x2 = floatval($this->x2);
+              $y2 = floatval($this->y2);
+              return $d = (($x1) * ($y2)) - (($x2 )* ($y1));
+            }
+            public function zgjedhja(){
+                echo "Ana e majtë e sistemit është e njëjtë, sistemi nuk ka zgjidhje !";
+              }
+            }
+
+         class ruajNeFile extends llogaritja{
+          protected $mesazhiKohes;
+          function setKoha($data, $ora){
+            $this->mesazhiKohes = "Data: " .$data ." ora: " .$ora;
+          }
+
+          function ruaj(){
+            $teDhenat = "x1: " .parent::getx1() ."    y1: " .parent::gety1() ."    x2: " .parent::getx2() ."    y2: " .parent::gety2() ."    xl: " .parent::getxl() ."    yl: " .parent::getyl();
+            $zgjidhjet = "    x = " .parent::zgjidhjaX() ."    y: " .parent::zgjidhjaY();
+
+            $teksti = "Te dhenat:   " .$teDhenat .".         Zgjidhjet:  " .$zgjidhjet ." .       Koha: " .$this->mesazhiKohes ."\n";
+
+            $file = fopen("detyrat.txt", "a") or die("Gabim gjate leximit te te dhenave !");
+            fwrite($file, $teksti);
+            // echo "Te dhenat u ruajten me sukses !";
+          }
+         }
+    ?>
 
         <!-- Konvertori -->
         <div id="permbajtjaKonvertori">

@@ -1,4 +1,5 @@
 function zgjedhja() {
+    event.preventDefault();
   var x1 = document.getElementById("x1");
   var x2 = document.getElementById("x2");
   var y1 = document.getElementById("y1");
@@ -70,6 +71,7 @@ function zgjedhja() {
 }
 
 function pastrimi() {
+    event.preventDefault();
   let x11 = document.getElementById("x1");
   x11.value = "";
   document.getElementById("x2").value = "";
