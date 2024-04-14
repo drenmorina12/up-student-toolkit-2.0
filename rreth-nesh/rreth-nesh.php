@@ -22,7 +22,37 @@
       include("../header.php")
     ?>
     
-  
+    <div class="wrapper">
+      <i id="left" class="fa-solid fa-angle-left"></i>
+      <ul class="carousel">
+        <li class="card">
+          <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
+          <h2>Dren Morina</h2>
+          <span>DEV</span>
+        </li>
+        <li class="card">
+          <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
+          <h2>Dituri Kodra</h2>
+          <span>DEV</span>
+        </li>
+        <li class="card">
+          <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
+          <h2>Edon Gashi</h2>
+          <span>DEV</span>
+        </li>
+        <li class="card">
+          <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
+          <h2>Blerta Lutolli</h2>
+          <span>DEV</span>
+        </li>
+        <li class="card">
+          <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
+          <h2>Endrit Kastrati</h2>
+          <span>DEV</span>
+        </li>
+      </ul>
+      <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
 
 
     <?php
