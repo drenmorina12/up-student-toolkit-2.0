@@ -25,6 +25,16 @@ html {
   font-family: "Open Sans", sans-serif;
 }
 
+/* .sun {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.nav-bar {
+  margin-left: 400px;
+  text-align: right;
+} */
+
 body {
   display: flex;
   flex-direction: column;

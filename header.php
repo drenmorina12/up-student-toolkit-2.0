@@ -7,7 +7,7 @@
     <img class="logo" src="<?php echo ROOT; ?>/images/logo1.png" />
     <h3
       style="
-        margin: 12px 0px 0px 30px;
+        margin: 12px 0px 0px 5px;
         color: whitesmoke;
         /* text-shadow: 1px 1px 30px; */
         font-size: 23px;
@@ -26,4 +26,16 @@
     <a href="<?php echo ROOT; ?>info/info.php">Info</a>
     <a href="<?php echo ROOT; ?>rreth-nesh/rreth-nesh.php">Rreth nesh</a>
   </nav>
+  <img class="sun" src="<?php echo ROOT; ?>/images/sun.png"/>
+<style>
+  .sun{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .nav-bar{
+    margin-left: 400px;
+    text-align: right;
+  }
+</style>
 </div>
