@@ -28,27 +28,27 @@
         <li class="card">
           <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
           <h2>Dren Morina</h2>
-          <span>DEV</span>
+          <span>DEV<a href="https://github.com/drenmorina12">Github</a></span>
         </li>
         <li class="card">
           <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
           <h2>Dituri Kodra</h2>
-          <span>DEV</span>
+          <span>DEV<a href="https://github.com/diturikodra">Github</a></span>
         </li>
         <li class="card">
           <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
           <h2>Edon Gashi</h2>
-          <span>DEV</span>
+          <span>DEV<a href="https://github.com/EdonFGashi">Github</a></span>
         </li>
         <li class="card">
           <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
           <h2>Blerta Lutolli</h2>
-          <span>DEV</span>
+          <span>DEV<a href="https://github.com/Blerta-Lutolli">Github</a></span>
         </li>
         <li class="card">
           <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
           <h2>Endrit Kastrati</h2>
-          <span>DEV</span>
+          <span>DEV<a href="https://github.com/EndritKastrati">Github</a></span>
         </li>
       </ul>
       <i id="right" class="fa-solid fa-angle-right"></i>
