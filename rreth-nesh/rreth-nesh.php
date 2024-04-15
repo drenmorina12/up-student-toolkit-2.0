@@ -7,6 +7,7 @@
     <title>Up Student Toolkit</title>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="rreth-nesh.css" />
+    <link rel="stylesheet" href="messageUs.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,6 +54,57 @@
       </ul>
       <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
+
+    <section>
+            <div class="container">
+                <div class="contactInfo"> 
+                    <div>
+                        <h2>INFO</h2> <br><br>
+                        <ul class="info">
+                            <li>
+                                <span><img src="../images/logo1.png"></span>
+                                <span>FIEK - Prishtine, KS  10000</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span><img src="../images/mail.png"></span>
+                                <span><a href = "mailto: endritkastrati8@gmail.com">uptoolkit@gmail.com</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                <form method="POST" action="rreth-nesh.php">
+                </div>
+                    <div class="contactForm">
+                        <h2>Na Kontaktoni!</h2>
+                        <div class="formBox">
+                        <div class="inputBox w50">
+                            <input type="text" name="" required>
+                            <span>Emri</span>
+                        </div>
+                        <div class="inputBox w50">
+                            <input type="text" required>
+                            <span>Mbiemri</span>
+                        </div>
+                        <div class="inputBox w50">
+                            <input type="email" required>
+                            <span>Email</span>
+                        </div>
+                        <div class="inputBox w50">
+                            <input type="text" required>
+                            <span>Tel</span>
+                        </div>
+                        <div class="inputBox w100">
+                            <textarea required></textarea>
+                            <span>Mesazhi...</span>
+                        </div>
+                        <div class="inputBox w100">
+                            <input type="submit" value="Send">
+                        </div>
+                    </div>
+                </div>
+                </form> 
+        </section>
+
 
 
     <?php
