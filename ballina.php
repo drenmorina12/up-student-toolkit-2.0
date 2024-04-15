@@ -18,7 +18,8 @@
   </head>
   <body>
     <?php
-      include("header.php")
+      include("theme_handler.php");
+      include("header.php");
     ?>
     <main id="main" style="margin-bottom: -110px">
       <div is="video" class="row">

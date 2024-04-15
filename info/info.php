@@ -515,6 +515,7 @@
 
     <!-- FOOTER : -->
     <?php
+      include("../theme_handler.php");
       include("../footer.php");
     ?>
     <script src="../app.js"></script>
