@@ -72,7 +72,7 @@
                             </li>
                         </ul>
                     </div>
-          
+                <form method="POST" action="rreth-nesh.php">
                 </div>
                     <div class="contactForm">
                         <h2>Na Kontaktoni!</h2>
@@ -101,8 +101,10 @@
                             <input type="submit" value="Send">
                         </div>
                     </div>
-                </div> 
+                </div>
+                </form> 
         </section>
+
 
 
     <?php
