@@ -26,9 +26,9 @@
     <a href="<?php echo ROOT; ?>info/info.php">Info</a>
     <a href="<?php echo ROOT; ?>rreth-nesh/rreth-nesh.php">Rreth nesh</a>
   </nav>
-  <img class="sun" src="<?php echo ROOT; ?>/images/sun.png"/>
+  <img class="theme-toggle" src="<?php echo ROOT; ?>/images/sun.png"/>
 <style>
-  .sun{
+  .theme-toggle{
     width: 30px;
     height: 30px;
     cursor: pointer;
