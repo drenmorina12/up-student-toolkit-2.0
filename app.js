@@ -1,11 +1,12 @@
-document.documentElement.className = "dark";
+document.documentElement.className = "light";
 const root = document.documentElement;
 const toggle = document.querySelector(".theme-toggle");
 
-document.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   // root.className == "dark"
   //   ? (toggle.src = "/up-student-toolkit-2.0/images/sun.png")
   //   : (toggle.src = "/up-student-toolkit-2.0/images/moon.png");
+
   if (root.className == "dark") {
     toggle.src = "/up-student-toolkit-2.0/images/sun.png";
   } else {
