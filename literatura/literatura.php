@@ -157,7 +157,7 @@
     <?php
       include("../footer.php");
     ?>
-
+    <script src="../app.js"></script>
     <script src="literatura.js"></script>
   </body>
 </html>

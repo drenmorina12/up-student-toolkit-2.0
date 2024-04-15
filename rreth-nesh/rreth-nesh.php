@@ -58,7 +58,7 @@
     <?php
       include("../footer.php");
     ?>
-    
+    <script src="../app.js"></script>
     <script src="rreth-nesh.js" defer></script>
   </body>
 </html>

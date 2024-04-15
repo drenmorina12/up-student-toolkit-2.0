@@ -517,7 +517,7 @@
     <?php
       include("../footer.php");
     ?>
-
+    <script src="../app.js"></script>
     <script src="info.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
