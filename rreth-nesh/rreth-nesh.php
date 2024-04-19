@@ -72,25 +72,26 @@
                             </li>
                         </ul>
                     </div>
+                    
                 <form method="POST" action="rreth-nesh.php">
                 </div>
                     <div class="contactForm">
                         <h2>Na Kontaktoni!</h2>
                         <div class="formBox">
                         <div class="inputBox w50">
-                            <input type="text" name="" required>
+                            <input type="text" name="name" required>
                             <span>Emri</span>
                         </div>
                         <div class="inputBox w50">
-                            <input type="text" required>
+                            <input type="text" name="surname" required>
                             <span>Mbiemri</span>
                         </div>
                         <div class="inputBox w50">
-                            <input type="email" required>
+                            <input type="email" name="email" required>
                             <span>Email</span>
                         </div>
                         <div class="inputBox w50">
-                            <input type="text" required>
+                            <input type="text" name="tel" required>
                             <span>Tel</span>
                         </div>
                         <div class="inputBox w100">
@@ -101,11 +102,46 @@
                             <input type="submit" value="Send">
                         </div>
                     </div>
+                <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $name = $_POST['name'];
+                        $surname = $_POST['surname'];
+                        $email = $_POST['email'];
+                        $tel = $_POST['tel'];
+                        $message = $_POST['message'];
+
+                        $name_regex = "/^[a-zA-Z\s]+$/";
+                        $email_regex = "/^\S+@\S+\.\S+$/";
+                        $tel_regex = "/^\d{9}$/";
+
+                        $errors = array();
+
+                        if (!preg_match($name_regex, $name)) {
+                            $errors['name'] = "Emri duhet të përmbajë vetëm shkronja dhe hapësira";
+                        }
+
+                        if (!preg_match($name_regex, $surname)) {
+                            $errors['surname'] = "Mbiemri duhet të përmbajë vetëm shkronja dhe hapësira";
+                        }
+
+                        if (!preg_match($email_regex, $email)) {
+                            $errors['email'] = "Email-i nuk është në formatin e duhur";
+                        }
+
+                        if (!preg_match($tel_regex, $tel)) {
+                            $errors['tel'] = "Ju lutem jepni 9 numra tek telefoni";
+                        }
+
+                        if (count($errors) > 0) {
+                            print_r($errors);
+                        } else {
+                            echo "Ju faleminderit, mesazhi u dergua me sukses :)";
+                        }
+                    }
+                ?>
                 </div>
                 </form> 
         </section>
-
-
 
     <?php
       include("../theme_handler.php");
