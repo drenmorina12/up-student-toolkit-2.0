@@ -33,7 +33,6 @@
   </head>
   <body>
     <?php
-      include("../theme_handler.php");
       include("../header.php")
     ?>
     <main

@@ -18,7 +18,6 @@
   </head>
   <body>
     <?php
-      include("theme_handler.php");
       include("header.php");
     ?>
     <main id="main" style="margin-bottom: -110px">
