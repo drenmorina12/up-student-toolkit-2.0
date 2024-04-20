@@ -24,7 +24,7 @@
     <a href="<?php echo ROOT; ?>argetim/argetim.php">Argëtim</a>
     <a href="<?php echo ROOT; ?>literatura/literatura.php">Literatura</a>
     <a href="<?php echo ROOT; ?>info/info.php">Info</a>
-    <a href="<?php echo ROOT; ?>rre-nesh/rreth-nesh.php">Rreth nesh</a>
+    <a href="<?php echo ROOT; ?>rreth-nesh/rreth-nesh.php">Rreth nesh</a>
   </nav>
   <img class="theme-toggle" src="<?php echo ROOT; ?>/images/sun.png"/>
 <style>
