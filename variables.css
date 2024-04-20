@@ -1,23 +1,23 @@
 :root.light {
-  --main-color: #000000;
-  --second-bg: #f4eae0;
+  --primary-color: white;
+  --secondary-color: black;
   /* --third-bg: rgba(0, 0, 0, 0.8); */
-  --third-bg: rgb(35, 34, 34);
+  /* --third-bg: rgb(35, 34, 34);
   --white-bg: #fff;
   --dark-text: #000000;
   --light-text: #f4eae0;
-  --white-text: #fff;
+  --white-text: #fff; */
 }
 
 :root.dark {
-  --main-color: #000000;
-  --second-bg: #000000;
+  --primary-color: black;
+  --secondary-color: white;
   /* --third-bg: rgba(0, 0, 0, 0.8); */
-  --third-bg: rgb(35, 34, 34);
+  /* --third-bg: rgb(35, 34, 34);
   --white-bg: #fff;
   --dark-text: #f4eae0;
   --light-text: #;
-  --white-text: #fff;
+  --white-text: #fff; */
 }
 
 /* :root {

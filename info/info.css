@@ -18,7 +18,7 @@
 }
 
 #main {
-  background-color: var(--second-bg);
+  background-color: var(--primary-color);
 }
 
 header {
@@ -57,11 +57,11 @@ header {
 }
 
 .small-Card img:active {
-  border: 1px solid #17696a;
+  border: 1px solid black;
 }
 
 .sm-card {
-  border: 2px solid #002244;
+  border: 2px solid var(--secondary-color);
 }
 
 .fiek-info {
@@ -71,6 +71,7 @@ header {
   font-size: 32px;
   font-weight: 600;
   line-height: 130%;
+  color: var(--secondary-color);
 }
 
 .fiek-info h5 {
@@ -82,14 +83,14 @@ header {
 }
 
 .fiek-info p {
-  color: #424551;
+  color: var(--secondary-color);
   margin: 15px 0;
 }
 
 .fiek-capacity p {
   text-decoration: underline;
   font-size: 22px;
-  color: black;
+  color: var(--secondary-color);
 }
 
 .fiek-capacity-option {
@@ -129,12 +130,12 @@ header {
 .vija-horizontale {
   border: none;
   height: 3px;
-  background-color: #424551;
+  background-color: var(--secondary-color);
   width: 100%;
 }
 
 .adresaFIEK {
-  color: #787a80;
+  color: var(--secondary-color);
 }
 
 /* PERSONELI AKADEMIK CSS : */
@@ -179,7 +180,7 @@ header {
 }
 .personeli-photos img {
   border-radius: 5px;
-  box-shadow: 0px 0px 9px #002244;
+  box-shadow: 0px 0px 9px var(--secondary-color);
 }
 
 .stafi {
@@ -188,6 +189,11 @@ header {
 }
 #start-orari {
   padding-left: 50px;
+  color: var(--secondary-color);
+}
+
+h1 {
+  color: var(--secondary-color);
 }
 
 .orari-headeri {
@@ -205,7 +211,7 @@ header {
 }
 
 .vitet-akademike {
-  color: #212529;
+  color: var(--secondary-color);
   font-weight: 800;
 }
 
