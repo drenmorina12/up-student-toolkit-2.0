@@ -1,5 +1,5 @@
 <?php
   $color = $_POST['color'];
 
-  setcookie('colorPreference', $color, time() + 1000, "/");
+  setcookie('colorPreference', $color, time() + (86400 * 30), "/");
 ?>
