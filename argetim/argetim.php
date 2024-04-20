@@ -186,7 +186,6 @@
     </main>
 
     <?php
-      include("../theme_handler.php");
       include("../footer.php");
     ?>
 

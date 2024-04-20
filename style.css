@@ -56,7 +56,7 @@ body {
 #header {
   display: flex;
   /* background-color: var(--main-color)); */
-  background-color: var(--main-color);
+  background-color: var(--primary-color);
   padding: 30px;
   justify-content: space-between;
   text-align: center;
@@ -82,16 +82,16 @@ body {
 
 #header nav a {
   text-decoration: none;
-  color: var(--white-text);
+  color: var(--secondary-color);
   white-space: nowrap;
   padding: 10px 20px;
   width: auto;
 }
 
 #header nav select {
-  background-color: var(--main-color);
+  background-color: var(--secondary-color);
   border: none;
-  color: var(--second-bg);
+  color: var(--primary-color);
   white-space: nowrap;
   padding: 10px 20px;
 }
@@ -100,14 +100,14 @@ select {
 }
 
 #header nav a:hover {
-  color: var(--dark-text);
-  background-color: var(--second-bg);
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
   border-radius: 8%;
 }
 
 #header nav select:hover {
-  color: var(--dark-text);
-  background-color: var(--white-bg);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
   border-radius: 8%;
 }
 
@@ -126,27 +126,27 @@ select {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: var(--white-text);
+  color: var(--primary-color);
 }
 
 .about {
   margin: 0px;
-  background-color: var(--main-color);
+  background-color: var(--primary-color);
   position: relative;
   bottom: 100px;
   width: 100%;
   height: 740px;
 }
 .why {
-  color: var(--white-text);
+  color: var(--secondary-color);
   font-size: 51px;
   text-align: center;
   position: relative;
   top: 15px;
-  text-shadow: 3px 3px black;
+  text-shadow: 3px 3px var(--primary-color);
 }
 .about-text {
-  color: var(--white-text);
+  color: var(--secondary-color);
   font-size: 21px;
   width: 25%;
   position: relative;
@@ -171,7 +171,7 @@ select {
 }
 
 .three-icons {
-  background-color: var(--white-bg);
+  background-color: var(--primary-color);
   width: 100%;
   margin: 0px;
   height: 370px;
@@ -189,14 +189,15 @@ select {
 .icon {
   width: 85px;
   height: 85px;
+  box-shadow: 2px 2px 2px var(--secondary-color);
 }
 .big-text {
-  color: black;
+  color: var(--secondary-color);
   font-weight: 600;
   font-size: 25px;
 }
 .small-text {
-  color: black;
+  color: var(--secondary-color);
   font-size: 18px;
   width: 350px;
   position: relative;
@@ -215,9 +216,9 @@ select {
   left: 0;
   min-width: 200px;
   height: 100vh;
-  background-color: var(--third-bg);
+  background-color: var(--primary-color);
 
-  color: var(--white-text);
+  color: var(--secondary-color);
   text-decoration: none;
 }
 
@@ -231,6 +232,7 @@ select {
   padding-left: 0px;
 }
 
+/* ngjyrat */
 .sidebar header {
   font-size: 22px;
   color: var(--white-text);
@@ -241,6 +243,7 @@ select {
   user-select: none;
 }
 
+/* ngjyrat */
 .sidebar ul a {
   text-decoration: none;
   display: block;
@@ -290,8 +293,8 @@ div.content {
 /* Footer Section */
 
 #footer {
-  background-color: var(--main-color);
-  color: var(--white-text);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   text-align: center;
   padding: 20px;
   bottom: 0;

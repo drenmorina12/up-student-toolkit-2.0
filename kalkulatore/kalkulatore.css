@@ -58,9 +58,9 @@ p {
 }
 
 .pershkrimi2 {
-  background-color: var(--third-bg);
-  color: var(--white-text);
-  box-shadow: 2px 2px 15px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  box-shadow: 0px 0px 9px var(--secondary-color);
   border-radius: 10px;
   width: 1050px;
   padding-top: 20px;
@@ -84,8 +84,8 @@ p {
 
 .butoniKonverto {
   /* background-color: gray; */
-  background-color: var(--second-bg);
-  color: var(--main-color);
+  background-color: white;
+  color: black;
   /* color: antiquewhite; */
   width: 150px;
   height: 35px;
@@ -328,7 +328,8 @@ select {
   color: var(--dark-text);
 }
 
-.butoniZgjidh, #file{
+.butoniZgjidh,
+#file {
   /* background-color: gray; */
   background-color: var(--second-bg);
   /* color: antiquewhite; */

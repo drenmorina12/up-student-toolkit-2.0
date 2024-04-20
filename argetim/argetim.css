@@ -11,7 +11,7 @@
 #main {
   display: flex;
   justify-content: center;
-  background-color: var(--second-bg);
+  background-color: var(--primary-color);
 }
 
 * {
@@ -30,7 +30,7 @@
 #kuizi,
 #tic-tac-toe,
 #memory-game {
-  border: 10px double black;
+  border: 10px double var(--secondary-color);
   flex: 1;
   padding: 20px;
   flex-basis: 100vh;
@@ -62,17 +62,18 @@
 
 .asosacioni-button,
 #memory-game-button {
-  background-color: var(--main-color);
-  color: var(--white-text);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
   padding: 10px 30px;
   margin: 30px;
   min-width: 150px;
   border-radius: 10px;
 }
 .reset-button {
-  background-color: var(--second-bg);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   columns: var(--main-color);
-  border: 1px solid var(--main-color);
   padding: 10px 30px;
   margin: 30px;
   min-width: 150px;
@@ -80,8 +81,8 @@
 }
 
 #asosacioni .active {
-  background-color: var(--main-color);
-  color: var(--white-text);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 10px 30px;
   margin: 30px;
   min-width: 150px;
@@ -112,11 +113,11 @@
 }
 
 #asosacioni .cell {
-  border: 1px solid white;
+  border: 1px solid var(--secondary-color);
   width: 300px;
   height: 70px;
-  background-color: var(--main-color);
-  color: var(--white-text);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,7 +159,6 @@
 
 .start-screen,
 .score-container {
-
   position: relative;
   top: 0;
   width: 100%;
@@ -178,7 +178,9 @@ button {
   font-size: 1.3em;
   padding: 0.5em 1.8em;
   border-radius: 0.2em;
-  background-color: var(--second-bg);
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
 }
 #restart {
   margin-top: 0.9em;
@@ -186,7 +188,8 @@ button {
 #display-container,
 #button-container,
 .score-container {
-  background-color: var(--main-color);
+  background-color: var(--primary-color);
+  box-shadow: 0px 0px 9px var(--secondary-color);
   padding: 3.1em 1.8em;
   width: 80%;
   width: 37.5em;
@@ -223,7 +226,7 @@ button {
 .question {
   margin-bottom: 1.25em;
   font-weight: 600;
-  color: var(--white-text);
+  color: var(--secondary-color);
 }
 .option-div {
   font-size: 0.9em;
@@ -265,7 +268,7 @@ button {
 }
 #user-score {
   font-size: 1.5em;
-  color: var(--white-text);
+  color: var(--secondary-color);
 }
 /* Kuizi end*/
 
@@ -339,7 +342,7 @@ button {
 .cells {
   width: var(--cell-size);
   height: var(--cell-size);
-  border: 1px solid black;
+  border: 1px solid var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -378,7 +381,7 @@ button {
 .cells.x::after,
 .x-logo::after,
 .x-logo::before {
-  background-color: black;
+  background-color: var(--secondary-color);
 }
 
 .board.x .cells:not(.x):not(.circle):hover::before,
@@ -416,7 +419,7 @@ button {
 .cells.circle::after,
 .circle-logo::after,
 .circle-logo::before {
-  background-color: var(--main-color);
+  background-color: var(--secondary-color);
 }
 
 .board.circle .cells:not(.x):not(.circle):hover::before,
@@ -447,7 +450,7 @@ button {
 .board.circle .cells:not(.x):not(.circle):hover::after {
   width: calc(var(--mark-size) * 0.7);
   height: calc(var(--mark-size) * 0.7);
-  background-color: var(--second-bg);
+  background-color: var(--primary-color);
 }
 
 .winning-message {
@@ -457,25 +460,26 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--primary-color);
   justify-content: center;
   align-items: center;
-  color: var(--white-text);
+  color: var(--secondary-color);
   font-size: 5rem;
 }
 
 .winning-message button {
   font-size: 3rem;
-  background-color: var(--white-bg);
-  border: 1px solid black;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
   padding: 0.25em 0.5em;
   cursor: pointer;
 }
 
 .winning-message button:hover {
-  background-color: black;
-  border: 1px solid white;
-  color: var(--white-text);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .winning-message.show {
@@ -493,11 +497,11 @@ button {
 
 .heading-text {
   margin: 40px;
-  background-color: var(--main-color);
+  background-color: var(--primary-color);
   min-width: 500px;
   padding: 20px 30px;
-  color: var(--white-text);
-  border: 3px solid var(--main-color);
+  color: var(--secondary-color);
+  border: 3px solid var(--secondary-color);
   text-align: center;
   border-radius: 10px;
 }
@@ -531,17 +535,21 @@ button {
   left: 450px;
   bottom: 400px;
   padding: 15px;
-  background-color: var(--main-color);
+  background-color: var(--secondary-color);
   border-radius: 5px;
-  color: var(--white-text);
+  color: var(--primary-color);
 }
 
 .card-bg {
-  background-color: var(--main-color);
+  background-color: var(--primary-color);
 }
 
 #memory-game-button:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+h3 {
+  color: var(--secondary-color);
 }
 /* Memory game end */

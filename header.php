@@ -8,7 +8,7 @@
     <h3
       style="
         margin: 12px 0px 0px 5px;
-        color: whitesmoke;
+        color: var(--secondary-color);
         /* text-shadow: 1px 1px 30px; */
         font-size: 23px;
         font-family: title-font, sans-serif;

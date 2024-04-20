@@ -18,7 +18,6 @@
   </head>
   <body>
     <?php
-      include("theme_handler.php");
       include("header.php");
     ?>
     <main id="main" style="margin-bottom: -110px">
@@ -59,9 +58,9 @@
         </p>
       </div>
 
-      <div class="three-icons" data-aos="fade-up" data-aos-duration="1000">
+      <div class="three-icons">
         <div class="small-box">
-          <img class="icon" src="images/laptop-icon.png" alt="Laptop Icon" />
+          <img class="icon" src="images/laptop-iconn.png" alt="Laptop Icon" />
           <p class="big-text">Qasje e<br />lehtë</p>
           <p class="small-text">
             UP Student Toolkit është faqe jashtëzakonisht e lehtë për qasje dhe
@@ -71,7 +70,7 @@
         <div class="small-box">
           <img
             class="icon"
-            src="images/joystick-icon.png"
+            src="images/joystick-iconn.png"
             alt="Joystick Icon"
           />
           <p class="big-text">Argëtim dhe<br />mësim</p>
@@ -81,10 +80,10 @@
           </p>
         </div>
         <div class="small-box">
-          <img class="icon" src="images/pen-icon.png" alt="Pen Icon" />
+          <img class="icon" src="images/pen-iconn.png" alt="Pen Icon" />
           <p class="big-text">Ndihmë<br />Akademike</p>
           <p class="small-text">
-            Si më me rëndësi faqja dukëshëm do përmisojë dhe ndihmojë në
+            Si më me rëndësi faqja dukshëm do përmisojë dhe ndihmojë në
             aspektin akademik të gjithë studentët.
           </p>
         </div>
