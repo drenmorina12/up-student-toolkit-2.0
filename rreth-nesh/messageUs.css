@@ -164,6 +164,7 @@ section {
   border: none;
   outline: none;
   border-bottom: 1px solid var(--secondary-color);
+  border-radius: 10px;
 }
 
 .container .contactForm .formBox .inputBox textarea {
