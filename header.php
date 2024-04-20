@@ -37,5 +37,8 @@
     margin-left: 400px;
     text-align: right;
   }
+  #header{
+    border-bottom: 2px solid grey;
+  }
 </style>
 </div>
