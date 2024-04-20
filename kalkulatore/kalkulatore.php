@@ -38,9 +38,7 @@
     <main
       id="main"
       style="
-        background-color: rgba(0, 0, 0, 0.5);
-        background-image: url(pexels-nothing-ahead-3729557.jpg),
-          url(../images/fotomultiple.jpg);
+        background-image: url(math.png);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: 100% 100%;

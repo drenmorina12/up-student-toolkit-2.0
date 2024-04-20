@@ -168,7 +168,7 @@
       <div id="orarii">
       <div class="orari-headeri"><h1>Orari - FIEK</h1></div><br>
       <!-- TABELA VITI 1 : -->
-      <div style="display: flex; align-items: center;">
+      <div style="display: flex; align-items: center; color: var(--secondary-color)">
         <span style="display: inline-block; width: 10px; height: 10px; background-color: red; border-radius: 50%;"></span>
         <span style="margin-left: 5px;">e hënë &nbsp</span>
         <span style="display: inline-block; width: 10px; height: 10px; background-color: yellow; border-radius: 50%;"></span>
@@ -185,9 +185,9 @@
       <div class="container mt-5">
   <p class="vitet-akademike">VITI AKADEMIK : I</p>
   <div>
-    <label for="searchInput" style="font-family: 'Times New Roman', Times, serif;">Kërko:</label>
+    <label for="searchInput" style="font-family: 'Times New Roman', Times, serif; color: var(--secondary-color);">Kërko:</label>
     <input type="text" id="searchInput" class="search-bar" placeholder=" Kërko" autocomplete="on">
-    <label for="selectColumn" style="font-family: 'Times New Roman', Times, serif;">Kërko kolonën:</label>
+    <label for="selectColumn" style="font-family: 'Times New Roman', Times, serif; color: var(--secondary-color);">Kërko kolonën:</label>
     <select id="selectColumn">
         <option value="0">#</option>
         <option value="1">Lëndët</option>
