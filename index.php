@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +24,7 @@
     </section>
     <section class="form-section">
       <!-- Forma -->
-      <form class="main-form">
+      <form action="index.php" method="post" class="main-form">
         <!-- Emri-->
         <div class="input-field">
 
@@ -43,7 +47,8 @@
           <label for="user-pass" class="pass-label"></label>
         </div>
         <!-- Kyquni -->
-        <a href="ballina.php" class="submit-info" id="submit-info">Kyquni</a>
+        <!-- <a href="ballina.php" class="submit-info" id="submit-info">Kyquni</a> -->
+        <button type="submit" class="submit-info" id="submit-info" name="kyquni">Kyquni</button>
         <!-- Kushtet dhe Sherbimet -->
         </div>
         <label class="tnc" for="submit-info"> Duke klikuar butonin ju pajtoheni <a href=""><i><u>me Kushtet dhe Shërbimet tona.</u></i></a></label>
@@ -55,3 +60,7 @@
 
 </body>
 </html>
+
+<?php
+  
+?>
