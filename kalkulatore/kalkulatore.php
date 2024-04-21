@@ -43,7 +43,7 @@
     <main
       id="main"
       style="
-        background-image: url(math.png);
+        background-image: url(math.jpg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: 100% 100%;
@@ -138,7 +138,7 @@
                   />
                   
                 </div>
-                <div class="kolona-2" style="margin-left: 10%;">
+                <div class="kolona-2" class="butoniZgjidh" style="margin-left: 10%;">
                   <a href='detyrat.txt' target='_blank' id="file" style="padding-left: 4%; text-decoration: none; padding-top: 5px;">Historia</a>
                 </div>
 
