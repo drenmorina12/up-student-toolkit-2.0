@@ -82,8 +82,8 @@
     <div class="dropdown-content">
       <p>Full Name: <?php echo $_SESSION["first-name"] ?> <?php echo $_SESSION["last-name"] ?> </p>
       <p>Email: <?php echo $_SESSION["email"] ?></p>
-      <form action="logout.php">
-        <button type="sumbit" id="log-out">Log Out</button>
+      <form action="logout.php" method="POST">
+        <button type="sumbit" id="log-out" name="log-out">Log Out</button>
       </form>
     </div>
   </div>
