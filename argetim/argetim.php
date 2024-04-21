@@ -32,7 +32,8 @@
   </head>
   <body>
     <?php
-      include("../header.php")
+      include("../header.php");
+      include("../counter.php");
     ?>
     <main id="main">
       <!-- Sidebar -->

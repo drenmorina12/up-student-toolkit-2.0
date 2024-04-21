@@ -24,7 +24,8 @@
 
   <body>
     <?php
-      include("../header.php")
+      include("../header.php");
+      include("../counter.php");
     ?>
     
     <div class="wrapper">

@@ -38,7 +38,8 @@
       <!-- <div class="row"> -->
       <div >
       <?php
-        include("../header.php")
+        include("../header.php");
+        include("../counter.php");
       ?>
 
       </div>

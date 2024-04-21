@@ -70,7 +70,3 @@
   }
 </style>
 </div>
-
-<script>
-  
-</script>
