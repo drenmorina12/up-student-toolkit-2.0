@@ -1,8 +1,0 @@
-{
-    "info": 5,
-    "ballina": 10,
-    "kalkulatore": 52,
-    "argetim": 6,
-    "literatura": 4,
-    "rreth-nesh": 3
-}

@@ -1,6 +1,0 @@
-{
-    "argetim": 2,
-    "ballina": 3,
-    "kalkulatore": 1,
-    "literatura": 2
-}
