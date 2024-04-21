@@ -103,30 +103,6 @@
       AOS.init();
     </script>
 
-    <script>
-      var selfAddingTextElement = document.getElementById("selfAddingText");
-
-      // Initial text content
-
-      var originalText = "MIRËSEVINI";
-      // Function to add a letter to the text
-      function addLetter() {
-        var currentText = selfAddingTextElement.textContent;
-
-        var nextLetter = originalText[currentText.length];
-        currentText += nextLetter;
-
-        selfAddingTextElement.textContent = currentText;
-
-        // Stop the animation when all letters are added
-        if (currentText.length === originalText.length) {
-          clearInterval(intervalId);
-        }
-      }
-
-      var intervalId = setInterval(addLetter, 200);
-    </script>
-
     <script src="app.js"></script>
   </body>
 </html>
