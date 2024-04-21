@@ -50,6 +50,15 @@
     display: block;
   }
 
+  .login {
+    text-decoration: none;
+    color: var(--secondary-color);
+  }
+
+  .login:hover {
+    color: var(--primary-color);
+  }
+
 </style>
 
 <div id="header">
@@ -76,16 +85,28 @@
     <a href="<?php echo ROOT; ?>info/info.php">Info</a>
     <a href="<?php echo ROOT; ?>rreth-nesh/rreth-nesh.php">Rreth nesh</a>
   </nav>
-  <div id="username" class="dropdown">
-    <?php echo $_SESSION["first-name"]; ?>
 
-    <div class="dropdown-content">
-      <p>Full Name: <?php echo $_SESSION["first-name"] ?> <?php echo $_SESSION["last-name"] ?> </p>
-      <p>Email: <?php echo $_SESSION["email"] ?></p>
-      <form action="logout.php" method="POST">
-        <button type="sumbit" id="log-out" name="log-out">Log Out</button>
-      </form>
-    </div>
+  <div id="username" class="dropdown">
+    <?php
+      if (isset($_SESSION["first-name"]) && isset($_SESSION["last-name"]) && isset($_SESSION["email"])){
+
+        echo $_SESSION["first-name"];
+        ?>
+        <div class="dropdown-content">
+          <p>Full Name: <?php echo $_SESSION["first-name"] ?> <?php echo $_SESSION["last-name"] ?> </p>
+          <p>Email: <?php echo $_SESSION["email"] ?> </p>
+          <form action="logout.php" method="POST">
+            <button type="sumbit" id="log-out" name="log-out">Log Out</button>
+          </form>
+        </div>
+
+        <?php
+    } else {
+        ?>
+        <a href="/up-student-toolkit-2.0/index.php" class="login">Login</a>
+        <?php
+    }
+    ?>
   </div>
   <img class="theme-toggle" src="<?php echo ROOT; ?>/images/sun.png"/>
 <style>
