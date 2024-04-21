@@ -10,6 +10,7 @@
   }
 
   if (isset($_POST["clear-cookies"])) {
+    var_dump($_COOKIE);
     // Iterate over each cookie and set its expiration time to a past date
     foreach ($_COOKIE as $cookie_name => $cookie_value) {
       setcookie($cookie_name, '', time() - 3600, '/');

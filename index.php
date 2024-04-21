@@ -80,16 +80,13 @@ function validateEmail($email) {
 }
 
 if (isset($_POST["kyquni"])) {
-    // Validate and sanitize input
     $first_name = sanitizeInput($_POST["first-name"]);
     $last_name = sanitizeInput($_POST["last-name"]);
     $email = sanitizeInput($_POST["email"]);
     $password = $_POST["password"]; 
 
-    // Perform validation
     if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password)) {
         if (validateEmail($email)) {
-            // Save sanitized input to session
             $_SESSION["first-name"] = $first_name;
             $_SESSION["last-name"] = $last_name;
             $_SESSION["email"] = $email;
@@ -99,7 +96,6 @@ if (isset($_POST["kyquni"])) {
             header("Location: ballina.php");
             exit;
         } else {
-            // Invalid email format
             echo "Invalid email format.";
         }
     } else {
@@ -107,17 +103,4 @@ if (isset($_POST["kyquni"])) {
         echo "All fields are required.";
     }
 }
-?>
-
-<?php
-  // if (isset($_POST["kyquni"])) {
-    
-  //   if (!empty($_POST["first-name"]) && !empty($_POST["last-name"]) && !empty($_POST["password"])) {
-  //     $_SESSION["first-name"] = $_POST["first-name"];
-  //     $_SESSION["last-name"] = $_POST["last-name"];
-  //     $_SESSION["email"] = $_POST["email"];
-
-  //     header("Location: ballina.php");
-  //   }
-  // }
 ?>
