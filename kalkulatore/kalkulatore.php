@@ -648,7 +648,7 @@
           </div>
           <div class="wrapping-div" id="wrapping-div">
             <div class="restrictions">
-              <h2>Kushtëzimet:</h2>
+              <h2 style="color:white;">Kushtëzimet:</h2>
               <ul style="list-style-type: circle">
                 <li>
                   <mark style="background-color: rgba(0, 0, 0, 0); color: white"
@@ -698,7 +698,7 @@
             sort($operacionet123); //sortimi ascending
             rsort($operacionet456); //sortimi descending
             ?>
-              <h2>Operacionet e mbështetura:</h2>
+              <h2 style="color:white;">Operacionet e mbështetura:</h2>
               <ul style="list-style-type: none; color: white;">
                 <li><?php
                 foreach($operacionet123 as $operacioni){
