@@ -113,6 +113,7 @@ select {
 
 #username {
   border: 1px solid var(--secondary-color);
+  background-color: var(--primary-color);
   padding: 5px 15px;
   border-radius: 5px;
   color: var(--secondary-color);
@@ -120,7 +121,9 @@ select {
 
 #username:hover {
   cursor: pointer;
-  /* opacity: 0.8; */
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 /* Body Section */

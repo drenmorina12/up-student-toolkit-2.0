@@ -16,8 +16,8 @@
     color: var(--secondary-color);
     min-width: 200px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    z-index: 1;
-    top: calc(100% + 5px);
+    z-index: -1111;
+    top: calc(100%);
     left: 50%;
     transform: translateX(-50%);
     padding: 10px;
