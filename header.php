@@ -2,6 +2,7 @@
   define("ROOT", "/up-student-toolkit-2.0/");
 ?>
 
+
 <div id="header">
   <div style="display: flex">
     <img class="logo" src="<?php echo ROOT; ?>/images/logo1.png" />
@@ -26,6 +27,17 @@
     <a href="<?php echo ROOT; ?>info/info.php">Info</a>
     <a href="<?php echo ROOT; ?>rreth-nesh/rreth-nesh.php">Rreth nesh</a>
   </nav>
+  <div id="username" class="dropdown">
+    <?php echo $_SESSION["first-name"]; ?>
+
+    <div class="dropdown-content">
+      <p>Full Name: <?php echo $_SESSION["first-name"] ?> <?php echo $_SESSION["last-name"] ?> </p>
+      <p>Email: <?php echo $_SESSION["email"] ?></p>
+      <form action="logout.php">
+        <button type="sumbit" id="log-out">Log Out</button>
+      </form>
+    </div>
+  </div>
   <img class="theme-toggle" src="<?php echo ROOT; ?>/images/sun.png"/>
 <style>
   .theme-toggle{
@@ -39,3 +51,7 @@
   }
 </style>
 </div>
+
+<script>
+  
+</script>

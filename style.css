@@ -111,6 +111,18 @@ select {
   border-radius: 8%;
 }
 
+#username {
+  border: 1px solid var(--secondary-color);
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: var(--secondary-color);
+}
+
+#username:hover {
+  cursor: pointer;
+  /* opacity: 0.8; */
+}
+
 /* Body Section */
 
 #main {
