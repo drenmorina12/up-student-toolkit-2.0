@@ -1,1 +1,8 @@
-a:5:{s:7:"ballina";i:2;s:11:"kalkulatore";i:1;s:7:"argetim";i:1;s:10:"literatura";i:1;s:4:"info";i:1;}
+{
+    "argetim": 2,
+    "ballina": 3,
+    "kalkulatore": 1,
+    "literatura": 2,
+    "info": 7,
+    "rreth-nesh": 4
+}

@@ -8,7 +8,7 @@ if(!isset($_SESSION["visit_counts"])){
     $file_path = $cookie_value;
     $file_contents = file_get_contents($file_path);
 
-    $_SESSION["visit_counts"] = unserialize($file_contents);
+    $_SESSION["visit_counts"] = json_decode($file_contents, true);
   } else {
     $file_path = 'visit_data.txt';
     setcookie('visited-data', $file_path, time() + (86400 * 30), "/");
@@ -16,10 +16,6 @@ if(!isset($_SESSION["visit_counts"])){
     $_SESSION['visit_counts'] = array();
   }
 }
-
-// if (!isset($_SESSION['visit_counts'])) {
-//   $_SESSION['visit_counts'] = array();
-// }
 
   $current_page = basename($_SERVER['PHP_SELF'], '.php');
   $parts = explode('/', $current_page);
@@ -37,14 +33,14 @@ if(!isset($_SESSION["visit_counts"])){
 
 
   if (isset($_SESSION['visit_counts'])) {
-    $visit_data_str = serialize($_SESSION['visit_counts']);
+    $visit_data_json = json_encode($_SESSION['visit_counts'], JSON_PRETTY_PRINT);
 
     $file_path = 'visit_data.txt';
 
     $file_handle = fopen($file_path, 'w');
 
     if ($file_handle) {
-        fwrite($file_handle, $visit_data_str);
+        fwrite($file_handle, $visit_data_json);
 
         fclose($file_handle);
     } else {
