@@ -27,11 +27,6 @@ if(!isset($_SESSION["visit_counts"])){
       $_SESSION['visit_counts'][$last_word] = 1;
   }
 
-  echo "<br><br><br><br> TESTT <br><br><br>";
-
-  print_r($_SESSION["visit_counts"]);
-
-
   if (isset($_SESSION['visit_counts'])) {
     $visit_data_json = json_encode($_SESSION['visit_counts'], JSON_PRETTY_PRINT);
 
