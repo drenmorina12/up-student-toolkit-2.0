@@ -79,9 +79,23 @@
             alt="Joystick Icon"
           />
           <p class="big-text">Argëtim dhe<br />mësim</p>
-          <p class="small-text">
-            Përveç pjesës së mësimit mundësohet edhe argëtimi me lojëra dhe
-            teste të ndryshme.
+          <?php
+          //string funksionet; variablat, deklarimi; if kushtezimi 
+          $teksti= "                                  Përveç pjesës së mësimit mundësohet edhe argëtimi me lojëra dhe teste të shumta.";
+          $pozitaTeste = strpos($teksti,"teste"); //kerkimi i nje stringu: 72
+          $stringNeVarg = explode(" ", $teksti);
+          $gjej = ["shumta"];
+          $zevendeso = ["ndryshme"];
+          $stringNeVarg2 = str_replace($gjej, $zevendeso, $stringNeVarg);
+          $vargNeString = implode(" ", $stringNeVarg2);
+          ?>
+          <p class="<?php 
+              if($pozitaTeste<strlen($teksti)){
+                echo 'small-text'; 
+                }else {
+                  echo 'big-text';
+                }?>">
+            <?php echo trim($vargNeString)?>
           </p>
         </div>
         <div class="small-box">

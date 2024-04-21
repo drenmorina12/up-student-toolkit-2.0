@@ -63,7 +63,35 @@
                 <div class="infoFIEK">
                     <p><b><abbr title="Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike"><i>FIEK</i></abbr></b></p> <p><b>Amfiteatri / Salla</b></p> <p><b>Kati</b></p>
                 </div>
-                <hr>
+
+                <?php
+                //vargjet multidimesionale; foreach kushtezimi
+                $salla = [
+                  411 => [
+                    "kapaciteti" => "300 ulëse",
+                    "kati" => "4-të"
+                  ],
+                  408 => [
+                    "kapaciteti" => "250 ulëse",
+                    "kati" => "4-të"
+                  ],
+                  621 => [
+                    "kapaciteti" => "40 ulëse",
+                    "kati" => "6-të"
+                  ]
+                  ]; 
+
+                  ksort($salla); // key sort 
+                  foreach ($salla as $nrSalles => $detajet) {
+                    echo '<hr>';
+                    echo '<div class="infoFIEK">';
+                    echo '<p><b>' . $nrSalles . '</b></p>';
+                    echo '<p>' . $detajet['kapaciteti'] . '</p>';
+                    echo '<p>' . $detajet['kati'] . '</p>';
+                    echo '</div>';
+                }              
+                ?>
+                <!--<hr>
                 <div class="infoFIEK">
                     <p><b>411</b></p> 
                     <p>300 ulëse</p> 
@@ -80,7 +108,7 @@
                     <p><b>621/601</b></p> 
                     <p>40-60 ulëse</p> 
                     <p>6-të</p>
-                </div>
+                </div>-->
             </div><br><br><br>
             <address class="adresaFIEK">Adresa:Bregu i Diellit, 10000 Prishtinë, Republika e Kosovës
                 <a href="mailto:fiek@uni-pr.edu"><br>Email-Fiek</a>
@@ -213,85 +241,100 @@
         <th scope="col">Orari | Klasa</th>
       </tr>
     </thead>
+
+    <?php
+    //vargjet asociative
+    $profPerLande =[
+      "ShK" => "Blerim Rexha | Sabrije Osmanaj",
+      "BIE" => "Vjosa Shatri | Enver Hamiti | Mimoza Ibrani ",
+      "P" => "Kadri Sylejmani | Avni Rexhepi",
+      "K" => "Shqipe Lohaj | Qefsere Gjonbalaj | Valdete Hamiti",
+      "F" => "Valon Veliu",
+      "QD" => "Sabrije Osmanaj | Artan Mazrekaj"
+    ];
+
+       //vargjet numerike
+       $kredite =[5,6,7]
+    ?>
     <tbody>
       <tr>
         <th scope="row">1</th>
         <td>Shkathtësi komunikuese</td>
-        <td>Blerim Rexha | Sabrije Osmanaj</td>
+        <td><?php echo $profPerLande['ShK'];?></td>
         <td>/</td>
-        <td>5</td>
+        <td><?php echo $kredite[0]?></td>
         <td class="marte">16:30-18:00 | Amfiteatri 411</td>
       </tr>
       <tr>
         <th scope="row">2</th>
         <td>Bazat e Inxhinierisë Elektrike 1</td>
-        <td>Vjosa Shatri | Enver Hamiti | Mimoza Ibrani </td>
+        <td><?php echo $profPerLande['BIE'];?></td>
         <td>Jeta Dobruna</td>
-        <td>7</td>
+        <td><?php echo $kredite[2]?></td>
         <td class="hene">10:30-12:00 | Amfiteatri 411</td>
       </tr>
       <tr>
         <th scope="row">3</th>
         <td>Bazat e programimit</td>
-        <td>Kadri Sylejmani | Avni Rexhepi</td>
+        <td><?php echo $profPerLande['P'];?></td>
         <td>Labeat Arbneshi</td>
-        <td>5</td>
+        <td><?php echo $kredite[0]?></td>
         <td class="premte">09:30-11:00 | Amfiteatri 411</td>
       </tr>
       <tr>
         <th scope="row">4</th>
         <td>Algjebra Lineare dhe Kalkulus 1</td>
-        <td>Shqipe Lohaj | Qefsere Gjonbalaj | Valdete Hamiti</td>
+        <td><?php echo $profPerLande['K'];?></td>
         <td>Blerta Haziri</td>
-        <td>7</td>
+        <td><?php echo $kredite[2]?></td>
         <td class="marte">08:00-10:30 | Amfiteatri 408</td>
       </tr>
       <tr>
         <th scope="row">5</th>
         <td>Fizika 1</td>
-        <td>Valon Veliu</td>
+        <td><?php echo $profPerLande['F'];?></td>
         <td>Yllka Delija</td>
-        <td>6</td>
+        <td><?php echo $kredite[1]?></td>
         <td class="hene">16:30-18:00 | Amfiteatri 408</td>
       </tr>
       <tr>
         <th scope="row">6</th>
         <td>Algoritmet dhe Strukturat e te Dhenave</td>
-        <td>Kadri Sylejmani | Avni Rexhepi</td>
+        <td><?php echo $profPerLande['P'];?></td>
         <td>Ardian Ymeri</td>
-        <td>5</td>
+        <td><?php echo $kredite[0]?></td>
         <td class="premte">08:00-09:30 | Amfiteatri 411</td>
       </tr>
       <tr>
         <th scope="row">7</th>
         <td>Fizika 2</td>
-        <td>Valon Veliu</td>
+        <td><?php echo $profPerLande['F'];?></td>
         <td>Yllka Kabashi</td>
-        <td>6</td>
+        <td><?php echo $kredite[1]?></td>
         <td class="enjte">14:45-16:15 | Amfiteatri 408</td>
       </tr>
       <tr>
         <th scope="row">8</th>
         <td>Algjebra Lineare dhe Kalkulus 2</td>
-        <td>Shqipe Lohaj | Qefsere Gjonbalaj | Valdete Hamiti</td>
+        <td><?php echo $profPerLande['K'];?></td>
         <td>Astrit Syla</td>
-        <td>7</td>
+        <td><?php echo $kredite[2]?></td>
         <td class="merkure">09:40-11:15 | Amfiteatri 408</td>
       </tr>
       <tr>
         <th scope="row">9</th>
         <td>Qarqe Digjitale</td>
-        <td>Sabrije Osmanaj | Artan Mazrekaj</td>
+        <td><?php echo $profPerLande['QD'];?></td>
         <td>Kadrije Simnica</td>
-        <td>5</td>
+        <td><?php echo $kredite[0]?></td>
         <td class="premte">13:30-15:00 | Salla 621</td>
       </tr>
       <tr>
         <th scope="row">10</th>
         <td>Bazat e Inxhinierisë Elektrike 2</td>
-        <td>Vjosa Shatri | Enver Hamiti | Mimoza Ibrani</td>
+        <td><?php echo $profPerLande['BIE'];?></td>
         <td>Jeta Dobruna</td>
-        <td>7</td>
+        <td><?php echo $kredite[2]?></td>
         <td class="marte">10:30-12:45 | Amfiteatri 411</td>
       </tr>
     </tbody>
