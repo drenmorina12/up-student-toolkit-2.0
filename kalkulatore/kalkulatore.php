@@ -485,23 +485,52 @@
                 />
               </div>
             </div>
+            <?php
+            //varg asociativ
+            $tabela = [
+                "Gram" => "1000 gr",
+                "Miligram" => "1000000 mg",
+                "Kilogram" => "1 kg",
+                "Dekagram" => "100 dg"
+            ];
+            asort($tabela); //sortim sipas vleres
+            ?>
+
             <div class="tabela">
               <table id="tabela1Gj">
                 <thead>
+                <?php
+                    $njesite = [
+                        4 =>"Kilogram",
+                        3 =>"Dekagram",
+                        2 =>"Gram",
+                        1 =>"Miligram"
+                    ];
+
+                    krsort($njesite); 
+                ?>
                   <tr>
-                    <th>Kilogram</th>
+                  <?php foreach ($njesite as $vlera): ?>
+                <th><?php echo $vlera; ?></th>
+                <?php endforeach; ?>
+                   <!-- <th>Kilogram</th>
                     <th>Dekagram</th>
                     <th>Gram</th>
-                    <th>Miligram</th>
+                    <th>Miligram</th>-->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                <tr>
+                    <?php foreach ($tabela as $vlera): ?>
+                <td><?php echo $vlera; ?></td>
+                <?php endforeach; ?>
+                </tr>
+                  <!--<tr>
                     <td>1 kg</td>
                     <td>100 dg</td>
                     <td>1000 gr</td>
                     <td>1000000 mg</td>
-                  </tr>
+                  </tr>-->
                 </tbody>
               </table>
               <table id="tabela2Gj">
@@ -513,13 +542,26 @@
                     <th>Gram</th>
                   </tr>
                 </thead>
+                <?php
+            //varg asociativ
+            $tabela2 = [
+                "Gram" => "1000000 gr",
+                "Ton" => "1 t",
+                "Kilogram" => "1000 kg",
+                "Dekagram" => "100000 dg"
+            ];
+            arsort($tabela2); //reverse sortim sipas vleres
+            ?>
                 <tbody>
-                  <tr>
-                    <td>1 t</td>
-                    <td>1000 kg</td>
-                    <td>100000 dg</td>
-                    <td>1000000 gr</td>
-                  </tr>
+                <tr>
+                     <?php
+                     define("gjatesia", 3); // konstante
+                    $celesi = array_keys($tabela2);
+                    for ($i = gjatesia; $i >= 0; $i--) {
+                        echo '<td>' . $tabela2[$celesi[$i]] . '<br></td>';
+                    }
+                    ?>
+                </tr>
                 </tbody>
               </table>
             </div>
@@ -644,15 +686,32 @@
               </div>
             </div>
             <span class="restrictions">
+
+            <?php
+            $operacionet123 =["3. Shumëzimi","2. Zbritja","1. Mbledhja"];
+            $operacionet456 =["4. Pjesëtimi","6. Ndërrimi i shenjës","5. Përqindja"];
+            sort($operacionet123); //sortimi ascending
+            rsort($operacionet456); //sortimi descending
+            ?>
               <h2>Operacionet e mbështetura:</h2>
-              <ol>
+              <ul style="list-style-type: none; color: white;">
+                <li><?php
+                foreach($operacionet123 as $operacioni){
+                  echo $operacioni. "<br>";
+              }
+              for ($i = 2; $i >= 0; $i--) {
+                echo $operacionet456[$i]."<br>";
+            }
+                ?></li>
+              </ul>
+              <!--<ol>
                 <li>Mbledhja</li>
                 <li>Zbritja</li>
                 <li>Shumëzimi</li>
                 <li>Pjesëtimi</li>
                 <li>Përqindja</li>
                 <li>Ndërrimi i shenjës</li>
-              </ol>
+              </ol>-->
             </span>
             <div class="error-message"></div>
           </div>
