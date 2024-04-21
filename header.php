@@ -2,6 +2,55 @@
   define("ROOT", "/up-student-toolkit-2.0/");
 ?>
 
+<style>
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+  }
+
+  .dropdown-content:hover {
+    cursor: default;
+  }
+
+  .dropdown-content #log-out {
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    border-radius: 5px;
+  }
+
+  .dropdown-content #log-out:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  .dropdown-content p {
+    padding: 10px;
+    margin: 0px;
+  }
+
+  .dropdown:hover .dropdown-content,
+  .dropdown-content:hover {
+    display: block;
+  }
+
+</style>
 
 <div id="header">
   <div style="display: flex">
