@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,30 +24,31 @@
     </section>
     <section class="form-section">
       <!-- Forma -->
-      <form class="main-form">
+      <form action="index.php" method="post" class="main-form">
         <!-- Emri-->
         <div class="input-field">
 
-          <input class="first-name" id="first-name" type="text" placeholder="Emri">
+          <input class="first-name" id="first-name" name="first-name" type="text" placeholder="Emri">
           <label for="first-name" class="name-label"></label>
         </div>
         <!-- Mbiemri -->
         <div class="input-field">
-          <input class="last-name" type="text" placeholder="Mbiemri">
+          <input class="last-name" type="text" name="last-name" placeholder="Mbiemri">
           <label for="last-name" class="lastname-label"></label>
         </div>
         <!-- Email -->
         <div class="input-field">
-          <input class="user-email" type="email" placeholder="Email" value="@student.uni-pr.edu">
+          <input class="user-email" type="email" name="email" placeholder="Email" value="@student.uni-pr.edu">
           <label for="user-email" class="email-label"></label>
         </div>
         <!-- Passwordi -->
         <div class="input-field">
-          <input class="user-pass" type="password" placeholder="Passwordi" >
+          <input class="user-pass" type="password" name="password" placeholder="Passwordi" >
           <label for="user-pass" class="pass-label"></label>
         </div>
         <!-- Kyquni -->
-        <a href="ballina.php" class="submit-info" id="submit-info">Kyquni</a>
+        <!-- <a href="ballina.php" class="submit-info" id="submit-info">Kyquni</a> -->
+        <button type="submit" class="submit-info" id="submit-info" name="kyquni">Kyquni</button>
         <!-- Kushtet dhe Sherbimet -->
         </div>
         <label class="tnc" for="submit-info"> Duke klikuar butonin ju pajtoheni <a href=""><i><u>me Kushtet dhe Shërbimet tona.</u></i></a></label>
@@ -55,3 +60,16 @@
 
 </body>
 </html>
+
+<?php
+  if (isset($_POST["kyquni"])) {
+    
+    if (!empty($_POST["first-name"]) && !empty($_POST["last-name"]) && !empty($_POST["password"])) {
+      $_SESSION["first-name"] = $_POST["first-name"];
+      $_SESSION["last-name"] = $_POST["last-name"];
+      $_SESSION["email"] = $_POST["email"];
+
+      header("Location: ballina.php");
+    }
+  }
+?>

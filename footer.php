@@ -6,15 +6,18 @@
       justify-content: center;
       gap: 90px;
       margin-bottom: 20px;
+      padding-top: 20px;
+      border-top: 2px solid grey;
+
     "
   >
     <div>
-      <p>Powered by:</p>
+      <p><i>Powered by:</i></p>
       <p>Dren Morina, Endrit Kastrati</p>
       <p>Edon F. Gashi, Blerta Lutolli, Dituri Kodra  </p>
     </div>
     <div>
-      <p>Github Accounts :</p>
+      <p><i>Github Accounts:</i></p>
       <a href="https://github.com/EndritKastrati" target="_blank">
         <img src="<?php echo ROOT; ?>/images/github-icon.png" alt="GitHub" />
       </a>

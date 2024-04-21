@@ -21,7 +21,21 @@ body {
   box-sizing: border-box;
   overflow: hidden;
   min-height: 100vh;
-  background-image: linear-gradient(to left bottom, #f4eae0, #cac0b9, #a19794, #787170, #524d4d, #3f3b3b, #2d2b2b, #1c1b1b, #171616, #111111, #090909, #000000);
+  background-image: linear-gradient(
+    to left bottom,
+    #f4eae0,
+    #cac0b9,
+    #a19794,
+    #787170,
+    #524d4d,
+    #3f3b3b,
+    #2d2b2b,
+    #1c1b1b,
+    #171616,
+    #111111,
+    #090909,
+    #000000
+  );
 }
 body::-webkit-scrollbar {
   display: none;
@@ -130,7 +144,7 @@ input:focus-visible {
 }
 .tnc a {
   text-decoration: none;
-  color : var(--dark-text);
+  color: var(--dark-text);
   font-weight: 600;
 }
 
