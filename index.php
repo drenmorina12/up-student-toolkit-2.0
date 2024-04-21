@@ -56,20 +56,68 @@
     </section>
   </main>
 
+
+
+
   <script src="sign-up/sign-up.js"></script>
 
 </body>
 </html>
 
 <?php
-  if (isset($_POST["kyquni"])) {
-    
-    if (!empty($_POST["first-name"]) && !empty($_POST["last-name"]) && !empty($_POST["password"])) {
-      $_SESSION["first-name"] = $_POST["first-name"];
-      $_SESSION["last-name"] = $_POST["last-name"];
-      $_SESSION["email"] = $_POST["email"];
 
-      header("Location: ballina.php");
+// Function to sanitize input
+function sanitizeInput($data) {
+    $data = trim($data); 
+    $data = stripslashes($data); 
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+// Function to validate email format
+function validateEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+if (isset($_POST["kyquni"])) {
+    // Validate and sanitize input
+    $first_name = sanitizeInput($_POST["first-name"]);
+    $last_name = sanitizeInput($_POST["last-name"]);
+    $email = sanitizeInput($_POST["email"]);
+    $password = $_POST["password"]; 
+
+    // Perform validation
+    if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password)) {
+        if (validateEmail($email)) {
+            // Save sanitized input to session
+            $_SESSION["first-name"] = $first_name;
+            $_SESSION["last-name"] = $last_name;
+            $_SESSION["email"] = $email;
+
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            header("Location: ballina.php");
+            exit;
+        } else {
+            // Invalid email format
+            echo "Invalid email format.";
+        }
+    } else {
+        // Missing required fields
+        echo "All fields are required.";
     }
-  }
+}
+?>
+
+<?php
+  // if (isset($_POST["kyquni"])) {
+    
+  //   if (!empty($_POST["first-name"]) && !empty($_POST["last-name"]) && !empty($_POST["password"])) {
+  //     $_SESSION["first-name"] = $_POST["first-name"];
+  //     $_SESSION["last-name"] = $_POST["last-name"];
+  //     $_SESSION["email"] = $_POST["email"];
+
+  //     header("Location: ballina.php");
+  //   }
+  // }
 ?>
