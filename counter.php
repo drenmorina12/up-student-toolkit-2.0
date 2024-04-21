@@ -1,22 +1,21 @@
 <?php
 
-  session_start();
 
-  if (!isset($_COOKIE["visited-data"])) {
-    $_SESSION["visit_counts"] = array(
-      'ballina' => 0,
-      'veglat' => 0,
-      'argetimi' => 0,
-      'literatura' => 0,
-      'info' => 0,
-      'rreth-nesh' => 0
-    );
+if (!isset($_SESSION['visit_counts'])) {
+  $_SESSION['visit_counts'] = array();
+}
+
+  $current_page = basename($_SERVER['PHP_SELF'], '.php');
+  $parts = explode('/', $current_page);
+  $last_word = end($parts);
+
+  if (isset($_SESSION['visit_counts'][$last_word])) {
+    $_SESSION['visit_counts'][$last_word]++;
+  } else {
+      $_SESSION['visit_counts'][$last_word] = 1;
   }
 
-  function incrementVisitCount($page){
-    if (isset($_SESSION['visit_counts'][$page])) {
-      $_SESSION['visit_counts'][$page] ++;
-    }
-  }
+  echo "<br><br><br><br> TESTT <br><br><br>";
 
+  print_r($_SESSION["visit_counts"]);
 ?>
