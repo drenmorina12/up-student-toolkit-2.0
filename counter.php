@@ -1,9 +1,25 @@
 <?php
 
 
-if (!isset($_SESSION['visit_counts'])) {
-  $_SESSION['visit_counts'] = array();
+if(!isset($_SESSION["visit_counts"])){
+  if (isset($_COOKIE["visited-data"])) {
+    $cookie_value = $_COOKIE["visited-data"];
+
+    $file_path = $cookie_value;
+    $file_contents = file_get_contents($file_path);
+
+    $_SESSION["visit_counts"] = unserialize($file_contents);
+  } else {
+    $file_path = 'visit_data.txt';
+    setcookie('visited-data', $file_path, time() + (86400 * 30), "/");
+
+    $_SESSION['visit_counts'] = array();
+  }
 }
+
+// if (!isset($_SESSION['visit_counts'])) {
+//   $_SESSION['visit_counts'] = array();
+// }
 
   $current_page = basename($_SERVER['PHP_SELF'], '.php');
   $parts = explode('/', $current_page);
