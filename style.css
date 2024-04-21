@@ -195,6 +195,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  /* border-top: 2px solid grey; */
 }
 .small-box {
   width: 33%;
@@ -339,7 +340,7 @@ footer a img:hover {
   opacity: 0.6;
 }
 
-#selfAddingText {
+/* #selfAddingText {
   position: absolute;
   top: 10%;
   left: 50%;
@@ -349,7 +350,7 @@ footer a img:hover {
   font-weight: 800;
   text-align: center;
   text-shadow: 1.5px 1.5px black;
-}
+} */
 .row {
   position: relative;
 }
