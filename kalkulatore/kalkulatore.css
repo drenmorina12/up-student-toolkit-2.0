@@ -55,6 +55,8 @@ p {
   gap: 40px;
   margin-right: 30px;
   padding-top: 200px;
+  gap: 2px;
+  font-weight: bolder;
 }
 
 .pershkrimi2 {
@@ -80,6 +82,8 @@ p {
   display: inline-block;
   margin-left: 1%;
   margin-top: 1%;
+  gap: 2px;
+  font-weight: bolder;
 }
 
 .butoniKonverto {
@@ -561,6 +565,8 @@ input[type="button"]:active {
   height: 400px;
   width: 330px;
   border-radius: 10px;
+  gap: 2px;
+  font-weight: bolder;
 }
 
 .restrictions h2 {
@@ -580,10 +586,11 @@ input[type="button"]:active {
   width: 426px;
   border: 10px solid rgba(47, 47, 47, 1);
   align-self: center;
-  background-color: black;
+  background-color: grey;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  font-weight: bolder;
 }
 
 #calculator .display {

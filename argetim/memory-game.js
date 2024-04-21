@@ -51,7 +51,7 @@ function createBoard() {
   for (let i = 0; i < cardArray.length; i++) {
     const $card = $("<img>")
       .attr({
-        src: "../images/memory-game/blank-1.png",
+        src: "../images/memory-game/grey.jpg",
         // "class": "card-bg", // uncomment this line if needed
         "data-id": i,
       })
