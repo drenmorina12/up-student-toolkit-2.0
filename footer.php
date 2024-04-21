@@ -1,23 +1,26 @@
 <footer id="footer">
   <div
     style="
-      display: flex;
-      flex-direction: row;
+      
       justify-content: center;
       gap: 90px;
       margin-bottom: 20px;
       padding-top: 20px;
       border-top: 2px solid grey;
-
+      background-color: #151617;
+      color:white;
+      margin-right: 0px;
+      margin-left: 0px;
     "
-  >
+  ><div>
     <div>
       <p><i>Powered by:</i></p>
       <p>Dren Morina, Endrit Kastrati</p>
       <p>Edon F. Gashi, Blerta Lutolli, Dituri Kodra  </p>
-    </div>
+    </div><!--display: flex;
+      flex-direction: row;-->
     <div>
-      <p><i>Github Accounts:</i></p>
+      <!--<p><i>Github Accounts:</i></p>
       <a href="https://github.com/EndritKastrati" target="_blank">
         <img src="<?php echo ROOT; ?>/images/github-icon.png" alt="GitHub" />
       </a>
@@ -32,8 +35,8 @@
       </a>
       <a href="https://github.com/diturikodra" target="_blank">
         <img src="<?php echo ROOT; ?>/images/github-icon.png" alt="GitHub" />
-      </a>
+      </a>-->
     </div>
   </div>
-  <p>&copy; 2024 UP Student Toolkit. All Rights Reserved.</p>
+  <p style="background-color: #151617; color:#5c5d5e;"><br><br>&copy; 2024 UP Student Toolkit. All Rights Reserved.<br><br></p></div>
 </footer>
