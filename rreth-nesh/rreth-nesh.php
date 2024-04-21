@@ -20,6 +20,13 @@
     />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+      #footer {
+      /* gap: 90px;  */
+      /* margin-bottom: 20px; */
+      margin-top: -70px;
+      }
+    </style>
 </head>
 
   <body>
