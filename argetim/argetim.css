@@ -61,7 +61,8 @@
 }
 
 .asosacioni-button,
-#memory-game-button {
+#memory-game-button,
+.edito-asosacion {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
