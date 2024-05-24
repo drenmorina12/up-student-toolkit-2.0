@@ -4,7 +4,7 @@ const resetBtn = document.querySelector(".reset-button");
 const asosacioniHeaderText = document.querySelector(
   "#asosacioni .heading-text h3"
 );
-const editoBtn = document.querySelector(".edito-asosacion");
+const createBtn = document.querySelector(".create-asosacion");
 
 let currentAsosacion;
 let currentAsosacionText = '"Përgjithshëm"';
@@ -176,8 +176,10 @@ function createEditableTable() {
       input.type = "text";
       input.className = "input-cell";
       input.setAttribute("data-column", column);
+      input.placeholder = `${column}${i + 1}`;
       if (i == 4) {
         input.classList.add("final-column-input");
+        input.placeholder = `ZGJIDHJA ${column}`;
       }
       cell.appendChild(input);
       row.appendChild(cell);
@@ -191,8 +193,11 @@ function createEditableTable() {
 
   const cell = document.createElement("div");
   cell.className = "cell";
+  cell.setAttribute("id", "final-cell");
   const input = document.createElement("input");
   input.type = "text";
+  input.className = "input-cell";
+  input.placeholder = "ZGJIDHJA PËRFUNDIMTARE";
   input.setAttribute("id", "final-input");
   input.setAttribute("data-column", "A");
   input.classList.add("final-column-input");
@@ -230,7 +235,7 @@ resetBtn.addEventListener("click", () => {
   addCellEventListeners(currentAsosacion);
 });
 
-editoBtn.addEventListener("click", () => {
+createBtn.addEventListener("click", () => {
   resetAsosacioni();
   createEditableTable();
 });
