@@ -42,14 +42,14 @@ section {
   top: 40px;
   width: 350px;
   height: calc(100% - 80px);
-  background: #232222;
+  background: #222324;
   z-index: 1;
   padding: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 9px var(--secondary-color);
   border-radius: 22px;
 }
 
@@ -160,7 +160,7 @@ section {
   padding: 5px 0;
   font-size: 18px;
   font-weight: 300;
-  color: var(--secondary-color);
+  color: #222324;
   border: none;
   outline: none;
   border-bottom: 1px solid var(--secondary-color);

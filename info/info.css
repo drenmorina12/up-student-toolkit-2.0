@@ -243,6 +243,7 @@ h1 {
 #selectColumn {
   margin-bottom: 5px;
   height: 100%;
+  color: var(--secondary-color);
 }
 
 table tbody tr td.celula {

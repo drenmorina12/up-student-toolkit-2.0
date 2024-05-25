@@ -49,7 +49,7 @@
         <li class="card">
           <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
           <h2>Blerta Lutolli</h2>
-          <span>DEV<a href="https://github.com/Blerta-Lutolli">Github</a></span>
+          <span>DEV<a href="https://github.com/BlertaLutolli">Github</a></span>
         </li>
         <li class="card">
           <div class="img"><img src="../images/cpp.jpg" alt="img" draggable="false"></div>
