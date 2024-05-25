@@ -36,5 +36,5 @@
       </a>-->
     </div>
   </div>
-  <p style="background-color: #151617; color:#5c5d5e;"><br><br>&copy; 2024 UP Student Toolkit. All Rights Reserved.<br><br></p></div>
+  <p><br><br>&copy; 2024 UP Student Toolkit. All Rights Reserved.<br><br></p></div>
 </footer>
