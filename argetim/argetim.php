@@ -91,6 +91,7 @@
               </button>
 
               <button class="reset-button">Fshij</button>
+              <button class="create-asosacion">Create</button>
             </div>
             <div class="asosacioni-table-container">
               <div id="asosacioni-table"></div>

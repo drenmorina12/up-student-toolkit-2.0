@@ -53,9 +53,11 @@ if(!isset($_SESSION["visit_counts"])){
         // Date insert
         file_put_contents($file_path, $_SESSION["info_saved_datetime_function"], FILE_APPEND);
     } else {
+      // Shto try catch
         echo "Error: Unable to open file for writing.";
     }
 } else {
+  // Shto try catch
     echo "Error: visit_counts session array doesn't exist.";
 }
 ?>
