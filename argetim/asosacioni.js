@@ -4,6 +4,7 @@ const resetBtn = document.querySelector(".reset-button");
 const asosacioniHeaderText = document.querySelector(
   "#asosacioni .heading-text h3"
 );
+const createBtn = document.querySelector(".create-asosacion");
 
 let currentAsosacion;
 let currentAsosacionText = '"Përgjithshëm"';
@@ -161,6 +162,50 @@ function updateCellContent(e, wordList) {
     "background-color: white; color: #002244; border: 2px solid #002244";
 }
 
+// Dynamic part
+
+function createEditableTable() {
+  for (let i = 0; i < 5; i++) {
+    const row = document.createElement("div");
+    row.className = "row";
+
+    columns.forEach((column) => {
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "input-cell";
+      input.setAttribute("data-column", column);
+      input.placeholder = `${column}${i + 1}`;
+      if (i == 4) {
+        input.classList.add("final-column-input");
+        input.placeholder = `ZGJIDHJA ${column}`;
+      }
+      cell.appendChild(input);
+      row.appendChild(cell);
+    });
+
+    asosacioni.appendChild(row);
+  }
+
+  const row = document.createElement("div");
+  row.className = "row";
+
+  const cell = document.createElement("div");
+  cell.className = "cell";
+  cell.setAttribute("id", "final-cell");
+  const input = document.createElement("input");
+  input.type = "text";
+  input.className = "input-cell";
+  input.placeholder = "ZGJIDHJA PËRFUNDIMTARE";
+  input.setAttribute("id", "final-input");
+  input.setAttribute("data-column", "A");
+  input.classList.add("final-column-input");
+  cell.appendChild(input);
+  row.appendChild(cell);
+  asosacioni.appendChild(row);
+}
+
 function addCellEventListeners(subject) {
   const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
@@ -188,6 +233,11 @@ resetBtn.addEventListener("click", () => {
   resetAsosacioni();
   createTable();
   addCellEventListeners(currentAsosacion);
+});
+
+createBtn.addEventListener("click", () => {
+  resetAsosacioni();
+  createEditableTable();
 });
 
 asosacioniButtons.forEach((button) => {

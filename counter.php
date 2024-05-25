@@ -1,5 +1,8 @@
 <?php
 
+function getInfoSavedDateTime() {
+  return date('Y-m-d H:i:s');
+}
 
 if(!isset($_SESSION["visit_counts"])){
   if (isset($_COOKIE["visited-data"])) {
@@ -27,6 +30,14 @@ if(!isset($_SESSION["visit_counts"])){
       $_SESSION['visit_counts'][$last_word] = 1;
   }
 
+  $_SESSION['info_saved_datetime_function'] = '
+  <?php
+  function getInfoSavedDateTime() {
+      return "' . getInfoSavedDateTime() . '";
+  }
+  ?>';
+
+
   if (isset($_SESSION['visit_counts'])) {
     $visit_data_json = json_encode($_SESSION['visit_counts'], JSON_PRETTY_PRINT);
 
@@ -38,10 +49,15 @@ if(!isset($_SESSION["visit_counts"])){
         fwrite($file_handle, $visit_data_json);
 
         fclose($file_handle);
+        
+        // Date insert
+        file_put_contents($file_path, $_SESSION["info_saved_datetime_function"], FILE_APPEND);
     } else {
+      // Shto try catch
         echo "Error: Unable to open file for writing.";
     }
 } else {
+  // Shto try catch
     echo "Error: visit_counts session array doesn't exist.";
 }
 ?>
