@@ -1,5 +1,91 @@
 <?php
-  session_start();
+    session_start();
+    include("db.php");
+    
+  $sql = "
+  CREATE TABLE IF NOT EXISTS shfrytezuesit (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    emri VARCHAR(50) NOT NULL,
+    mbiemri VARCHAR(50) NOT NULL,
+    emaili VARCHAR(100) NOT NULL UNIQUE,
+    passwordi VARCHAR(255) NOT NULL,
+    koha_krijimit TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  )";
+
+  if (mysqli_query($conn, $sql)) {
+     // echo "Tabela u krijua me sukses";
+  } else {
+      echo "Error: " . mysqli_error($conn);
+  }
+
+  /*
+  $sql_shto = "INSERT INTO shfrytezuesit (emri, mbiemri, emaili, passwordi) 
+  VALUES ('niko', 'vertis', 'niko@gmail.com', 'pass123')";
+
+  if (mysqli_query($conn, $sql_shto)) {
+  //echo "u shtua";
+  } else {
+  echo "Error: " . mysqli_error($conn);
+  }
+  */
+/*
+  $sql_perditeso = "UPDATE shfrytezuesit SET emri = 'nikolo' WHERE id = 8";
+
+  if (mysqli_query($conn, $sql_perditeso)) {
+      echo "u perditesua";
+  } else {
+      echo "Error updating record: " . mysqli_error($conn);
+  }
+
+  */
+  /*
+  $sql_fshij = "DELETE FROM shfrytezuesit WHERE id = 8";
+
+if (mysqli_query($conn, $sql_fshij)) {
+    echo "u fshi";
+} else {
+    echo "Error deleting record: " . mysqli_error($conn);
+}
+*/
+
+/*
+  function insertUser($emri, $mbiemri, $emaili, $passwordi, $conn) {
+
+    $sql = "INSERT INTO shfrytezuesit (emri, mbiemri, emaili, passwordi) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $hashedPassword = password_hash($passwordi, PASSWORD_DEFAULT);
+    $stmt->bind_param("ssss", $emri, $mbiemri, $emaili, $hashedPassword);
+    $stmt->execute();
+    $stmt->close();
+
+}
+
+// Update function
+function updateUser($id, $emri, $mbiemri, $emaili, $passwordi, $conn) {
+
+    $sql = "UPDATE shfrytezuesit SET emri = ?, mbiemri = ?, emaili = ?, passwordi = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $hashedPassword = password_hash($passwordi, PASSWORD_DEFAULT);
+    $stmt->bind_param("ssssi", $emri, $mbiemri, $emaili, $hashedPassword, $id);
+    $stmt->execute();
+    $stmt->close();
+}
+
+// Delete function
+function deleteUser($conn, $id) {
+
+    $sql = "DELETE FROM shfrytezuesit WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+
+}
+    insertUser('John', 'Doe', 'john.doe@example.com', 'password123', $conn);
+   // updateUser(2, 'John', 'Doe', 'john.doe@example.com', 'newpassword123', $conn);
+    //deleteUser(2);
+*/
+ 
   // Function to sanitize input
 function sanitizeInput($data) {
   $data = trim($data); 
@@ -41,8 +127,10 @@ if (isset($_POST["kyquni"])) {
   } else {
       // Missing required fields
       echo "All fields are required.";
-  }
+  } 
 }
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +147,7 @@ if (isset($_POST["kyquni"])) {
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form action="index.php" autocomplete="off" class="sign-in-form" method="post">
+            <form action="./login_check.php" autocomplete="off" class="sign-in-form" method="POST">
               <div class="logo">
                 <img src="./images/logo1.png" alt="easyclass" />
                 <h4>UP Student Toolkit</h4>
@@ -79,6 +167,7 @@ if (isset($_POST["kyquni"])) {
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="emaili"
                   />
                   <label>Email</label>
                 </div>
@@ -90,11 +179,13 @@ if (isset($_POST["kyquni"])) {
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="passwordi"
+
                   />
-                  <label>Password</label>
+                  <label>Fjalëkalimi</label>
                 </div>
 
-                <input type="submit" value="Kyqu" class="sign-btn"/>
+                <input type="submit" name="kyçu" value="Kyçu" class="sign-btn" />
 
                 <p class="text">
                   Keni harruar fjalëkalimin? <br>
@@ -104,7 +195,7 @@ if (isset($_POST["kyquni"])) {
               </div>
             </form>
 
-            <form action="index.php" autocomplete="off" method="post" class="sign-up-form">
+            <form action="signup.php" method="POST" autocomplete="off" class="sign-up-form">
               <div class="logo">
                 <img src="./images/logo1.png" alt="easyclass" />
                 <h4>UP Student Toolkit</h4>
@@ -113,7 +204,7 @@ if (isset($_POST["kyquni"])) {
               <div class="heading">
                 <h2>Krijo Llogari</h2>
                 <h6>Keni llogari?</h6>
-                <a href="#" class="toggle">KYQUNI KËTU</a>
+                <a href="#" class="toggle">KYÇUNI KËTU</a>
               </div>
 
               <div class="actual-form">
@@ -124,7 +215,7 @@ if (isset($_POST["kyquni"])) {
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="first-name"
+                    name="emri"
                   />
                   <label>Emri</label>
                 </div>
@@ -136,7 +227,7 @@ if (isset($_POST["kyquni"])) {
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="last-name"
+                    name="mbiemri"
                   />
                   <label>Mbiemri</label>
                 </div>
@@ -147,7 +238,7 @@ if (isset($_POST["kyquni"])) {
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="email"
+                    name="emaili"
                   />
                   <label>Email</label>
                 </div>
@@ -159,9 +250,9 @@ if (isset($_POST["kyquni"])) {
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="password"
+                    name="passwordi"
                   />
-                  <label>Password</label>
+                  <label>Fjalëkalimi</label>
                 </div>
 
                 <div class="input-wrap">
@@ -171,12 +262,12 @@ if (isset($_POST["kyquni"])) {
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="confirm-password"
+                    name="konfirmo_passwordin"
                   />
-                  <label>Konfirmo passwordin</label>
+                  <label>Konfirmo fjalëkalimin</label>
                 </div>
 
-                <input type="submit" value="Krijo" class="sign-btn" name="kyquni"/>
+                <input type="submit" name="Krijo" value="Krijo" class="sign-btn" />
 
                 <p class="text">
                   Duke klikuar butonin ju pajtoheni me
