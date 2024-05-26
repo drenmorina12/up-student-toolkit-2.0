@@ -1,7 +1,7 @@
 <?php
 include("db.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Krijo'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sign-up'])) {
     $emri = $_POST['first-name'];
     $mbiemri =$_POST['last-name'];
     $emaili = $_POST['email'];

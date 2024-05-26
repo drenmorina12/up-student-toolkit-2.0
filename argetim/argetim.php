@@ -1,17 +1,6 @@
 <?php
   session_start();
-  include("../db.php");
 
-  $sql = " CREATE TABLE IF NOT EXISTS `up_studenttoolkit`.`tblasociacioni` (
-    `aId` INT AUTO_INCREMENT PRIMARY KEY , `userId` INT NOT NULL , `titulli` VARCHAR(50) NOT NULL , `A1` VARCHAR(50) NOT NULL , `A2` VARCHAR(50) NOT NULL , `A3` VARCHAR(50) NOT NULL , `Afinal` VARCHAR(50) NOT NULL , `B1` VARCHAR(50) NOT NULL , `B2` VARCHAR(50) NOT NULL , `B3` VARCHAR(50) NOT NULL , `B4` VARCHAR(50) NOT NULL , `Bfinal` VARCHAR(50) NOT NULL , `C1` VARCHAR(50) NOT NULL , `C2` VARCHAR(50) NOT NULL , `C3` VARCHAR(50) NOT NULL , `C4` VARCHAR(50) NOT NULL , `Cfinal` VARCHAR(50) NOT NULL , `D1` VARCHAR(50) NOT NULL , `D2` VARCHAR(50) NOT NULL , `D3` VARCHAR(50) NOT NULL , `D4` VARCHAR(50) NOT NULL , `Dfinal` VARCHAR(50) NOT NULL , `final` VARCHAR(50) NOT NULL, FOREIGN KEY (userId) REFERENCES tblUser(userId)) ENGINE = InnoDB;";
-
-  if (mysqli_query($conn, $sql)) {
-   //echo "Tabela u krijua me sukses";
-  } else {
-    echo "Error: " . mysqli_error($conn);
-  }
-
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
