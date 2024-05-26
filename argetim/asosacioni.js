@@ -117,6 +117,12 @@ const web = {
   D: ["www", "Interneti", "URL", "Domeni", webSolutions.D],
 };
 
+const subjects = {
+  matematika: matematika,
+  fizika: fizika,
+  pergjithshem: pergjithshem,
+  web: web,
+};
 //--------------------------------------------------
 
 function createTable() {
@@ -291,31 +297,14 @@ asosacioniButtons.forEach((button) => {
     createTable();
     const subject = button.getAttribute("data-name");
 
-    switch (subject) {
-      case "matematika":
-        currentAsosacionText = '"Matematika"';
-        addCellEventListeners(matematika);
-        currentAsosacion = matematika;
-
-        break;
-      case "fizika":
-        currentAsosacionText = '"Fizika"';
-        addCellEventListeners(fizika);
-        currentAsosacion = fizika;
-        break;
-      case "pergjithshem":
-        currentAsosacionText = '"Përgjithshëm"';
-        addCellEventListeners(pergjithshem);
-        currentAsosacion = pergjithshem;
-        break;
-      case "web":
-        currentAsosacionText = '"Web"';
-        addCellEventListeners(web);
-        currentAsosacion = web;
-        break;
-      default:
-        alert("Ky asosacion nuk ekziston! ");
-        break;
+    if (subjects.hasOwnProperty(subject)) {
+      currentAsosacionText = `"${
+        subject.charAt(0).toUpperCase() + subject.slice(1)
+      }"`;
+      addCellEventListeners(subjects[subject]); // Get the corresponding object
+      currentAsosacion = subjects[subject]; // Assign the corresponding object
+    } else {
+      alert("Ky asosacion nuk ekziston! ");
     }
   });
 });
