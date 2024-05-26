@@ -145,10 +145,7 @@ section {
   margin-bottom: 35px;
 }
 
-.container .contactForm .formBox .inputBox.w50 {
-  width: 47%;
-}
-
+.container .contactForm .formBox .inputBox.w50,
 .container .contactForm .formBox .inputBox.w100 {
   width: 100%;
 }
@@ -168,7 +165,7 @@ section {
 }
 
 .container .contactForm .formBox .inputBox textarea {
-  height: 120px;
+  height: 150px;
 }
 
 .container .contactForm .formBox .inputBox span {

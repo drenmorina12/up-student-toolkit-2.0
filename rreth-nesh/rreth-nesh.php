@@ -20,13 +20,6 @@
     />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <style>
-      #footer {
-      /* gap: 90px;  */
-      /* margin-bottom: 20px; */
-      margin-top: -70px;
-      }
-    </style>
 </head>
 
   <body>
@@ -85,33 +78,25 @@
                         </ul>
                     </div>
                     
-                <form method="POST" action="rreth-nesh.php">
+                <form method="POST" action="sendemail.php">
                 </div>
                     <div class="contactForm">
                         <h2>Na Kontaktoni!</h2>
                         <div class="formBox">
                         <div class="inputBox w50">
-                            <input type="text" name="name" required>
-                            <span>Emri</span>
-                        </div>
-                        <div class="inputBox w50">
-                            <input type="text" name="surname" required>
-                            <span>Mbiemri</span>
-                        </div>
-                        <div class="inputBox w50">
-                            <input type="email" name="email" required>
+                            <input type="text" name="email" required>
                             <span>Email</span>
                         </div>
                         <div class="inputBox w50">
-                            <input type="text" name="tel" required>
-                            <span>Tel</span>
+                            <input type="text" name="subject" required>
+                            <span>Subject</span>
                         </div>
                         <div class="inputBox w100">
-                            <textarea required></textarea>
-                            <span>Mesazhi...</span>
+                            <textarea name="message" required></textarea>
+                            <span>Message</span>
                         </div>
                         <div class="inputBox w100">
-                            <input type="submit" value="Send">
+                            <input type="submit" name="send" value="Send">
                         </div>
                     </div>
                 <?php

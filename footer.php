@@ -25,7 +25,7 @@
       <a href="https://github.com/drenmorina12" target="_blank">
         <img src="<?php echo ROOT; ?>/images/github-icon.png" alt="GitHub" />
       </a>
-      <a href="https://github.com/Blerta-Lutolli" target="_blank">
+      <a href="https://github.com/BlertaLutolli" target="_blank">
         <img src="<?php echo ROOT; ?>/images/github-icon.png" alt="GitHub" />
       </a>
       <a href="https://github.com/EdonFGashi" target="_blank">
