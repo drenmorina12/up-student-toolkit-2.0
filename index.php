@@ -11,7 +11,7 @@
   ) ENGINE = InnoDB;";
 
   if (mysqli_query($conn, $sql_tblUser)) {
-      echo "Tabela u krijua me sukses";
+     // echo "Tabela u krijua me sukses";
   } else {
       echo "Error: " . mysqli_error($conn);
   }
@@ -24,6 +24,20 @@
   } else {
     echo "Error: " . mysqli_error($conn);
   }
+
+  $sql_tblAdmin = "CREATE TABLE IF NOT EXISTS up_studenttoolkit.tblAdmin (
+    adminId INT AUTO_INCREMENT PRIMARY KEY,
+    emri VARCHAR(50) NOT NULL,
+    mbiemri VARCHAR(50) NOT NULL,
+    emaili VARCHAR(50) NOT NULL UNIQUE,
+    passwordHash VARCHAR(300) NOT NULL
+  ) ENGINE = InnoDB;";
+
+if (mysqli_query($conn, $sql_tblAdmin)) {
+  //echo "Tabela u krijua me sukses";
+ } else {
+   echo "Error: " . mysqli_error($conn);
+ }
 
 
   /*
