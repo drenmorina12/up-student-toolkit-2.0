@@ -2,11 +2,11 @@
 include("db.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Krijo'])) {
-    $emri = $_POST['emri'];
-    $mbiemri =$_POST['mbiemri'];
-    $emaili = $_POST['emaili'];
-    $passwordi =$_POST['passwordi'];
-    $confirm_passwordi =$_POST['konfirmo_passwordin'];
+    $emri = $_POST['first-name'];
+    $mbiemri =$_POST['last-name'];
+    $emaili = $_POST['email'];
+    $passwordi =$_POST['password'];
+    $confirm_password =$_POST['confirm-password'];
 
     /*
     if ($passwordi !== $konfirmo_passwordin) {
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Krijo'])) {
 
 
     $insert_sql = "
-    INSERT INTO shfrytezuesit (emri, mbiemri, emaili, passwordi) 
+    INSERT INTO tblUser (emri, mbiemri, emaili, passwordHash) 
     VALUES ('$emri', '$mbiemri', '$emaili', '$hashed_password')
     ";
 

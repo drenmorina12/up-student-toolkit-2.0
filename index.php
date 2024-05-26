@@ -2,24 +2,24 @@
     session_start();
     include("db.php");
     
-  $sql = "
-  CREATE TABLE IF NOT EXISTS shfrytezuesit (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+  $sql = "  CREATE TABLE IF NOT EXISTS tblUser (
+    userId INT AUTO_INCREMENT PRIMARY KEY,
     emri VARCHAR(50) NOT NULL,
     mbiemri VARCHAR(50) NOT NULL,
-    emaili VARCHAR(100) NOT NULL UNIQUE,
-    passwordi VARCHAR(255) NOT NULL,
-    koha_krijimit TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  )";
+    emaili VARCHAR(50) NOT NULL UNIQUE,
+    passwordHash VARCHAR(300) NOT NULL
+  ) ENGINE = InnoDB;";
 
   if (mysqli_query($conn, $sql)) {
-     // echo "Tabela u krijua me sukses";
+      echo "Tabela u krijua me sukses";
   } else {
       echo "Error: " . mysqli_error($conn);
   }
 
+
+
   /*
-  $sql_shto = "INSERT INTO shfrytezuesit (emri, mbiemri, emaili, passwordi) 
+  $sql_shto = "INSERT INTO tblUser (emri, mbiemri, emaili, passwordHash) 
   VALUES ('niko', 'vertis', 'niko@gmail.com', 'pass123')";
 
   if (mysqli_query($conn, $sql_shto)) {
@@ -29,7 +29,7 @@
   }
   */
 /*
-  $sql_perditeso = "UPDATE shfrytezuesit SET emri = 'nikolo' WHERE id = 8";
+  $sql_perditeso = "UPDATE tblUser SET emri = 'nikolo' WHERE id = 8";
 
   if (mysqli_query($conn, $sql_perditeso)) {
       echo "u perditesua";
@@ -39,7 +39,7 @@
 
   */
   /*
-  $sql_fshij = "DELETE FROM shfrytezuesit WHERE id = 8";
+  $sql_fshij = "DELETE FROM tblUser WHERE id = 8";
 
 if (mysqli_query($conn, $sql_fshij)) {
     echo "u fshi";
@@ -51,7 +51,7 @@ if (mysqli_query($conn, $sql_fshij)) {
 /*
   function insertUser($emri, $mbiemri, $emaili, $passwordi, $conn) {
 
-    $sql = "INSERT INTO shfrytezuesit (emri, mbiemri, emaili, passwordi) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO tblUser (emri, mbiemri, emaili, passwordHash) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $hashedPassword = password_hash($passwordi, PASSWORD_DEFAULT);
     $stmt->bind_param("ssss", $emri, $mbiemri, $emaili, $hashedPassword);
@@ -63,7 +63,7 @@ if (mysqli_query($conn, $sql_fshij)) {
 // Update function
 function updateUser($id, $emri, $mbiemri, $emaili, $passwordi, $conn) {
 
-    $sql = "UPDATE shfrytezuesit SET emri = ?, mbiemri = ?, emaili = ?, passwordi = ? WHERE id = ?";
+    $sql = "UPDATE tblUser SET emri = ?, mbiemri = ?, emaili = ?, passwordHash = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $hashedPassword = password_hash($passwordi, PASSWORD_DEFAULT);
     $stmt->bind_param("ssssi", $emri, $mbiemri, $emaili, $hashedPassword, $id);
@@ -74,7 +74,7 @@ function updateUser($id, $emri, $mbiemri, $emaili, $passwordi, $conn) {
 // Delete function
 function deleteUser($conn, $id) {
 
-    $sql = "DELETE FROM shfrytezuesit WHERE id = ?";
+    $sql = "DELETE FROM tblUser WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -167,7 +167,7 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="emaili"
+                    name="email"
                   />
                   <label>Email</label>
                 </div>
@@ -179,13 +179,13 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="passwordi"
+                    name="password"
 
                   />
                   <label>Fjalëkalimi</label>
                 </div>
 
-                <input type="submit" name="kyçu" value="Kyçu" class="sign-btn" />
+                <input type="submit" name="log-in" value="Kyçu" class="sign-btn" />
 
                 <p class="text">
                   Keni harruar fjalëkalimin? <br>
@@ -215,7 +215,7 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="emri"
+                    name="first-name"
                   />
                   <label>Emri</label>
                 </div>
@@ -227,7 +227,7 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="mbiemri"
+                    name="last-name"
                   />
                   <label>Mbiemri</label>
                 </div>
@@ -238,7 +238,7 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="emaili"
+                    name="email"
                   />
                   <label>Email</label>
                 </div>
@@ -250,7 +250,7 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="passwordi"
+                    name="password"
                   />
                   <label>Fjalëkalimi</label>
                 </div>
@@ -262,12 +262,12 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
-                    name="konfirmo_passwordin"
+                    name="confirm-password"
                   />
                   <label>Konfirmo fjalëkalimin</label>
                 </div>
 
-                <input type="submit" name="Krijo" value="Krijo" class="sign-btn" />
+                <input type="submit" name="sign-up" value="Krijo" class="sign-btn" />
 
                 <p class="text">
                   Duke klikuar butonin ju pajtoheni me
