@@ -1,6 +1,6 @@
 :root.light {
   --primary-color: #f2f1ef;
-  --secondary-color: #1c1d1f;
+  --secondary-color: #222324;
   /* --third-bg: rgba(0, 0, 0, 0.8); */
   /* --third-bg: rgb(35, 34, 34);
   --white-bg: #fff;
@@ -10,7 +10,7 @@
 }
 
 :root.dark {
-  --primary-color: #1c1d1f;
+  --primary-color: #222324;
   --secondary-color: #f2f1ef;
   /* --third-bg: rgba(0, 0, 0, 0.8); */
   /* --third-bg: rgb(35, 34, 34);
