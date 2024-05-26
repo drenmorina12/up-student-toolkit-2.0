@@ -85,8 +85,54 @@ function deleteUser($conn, $id) {
    // updateUser(2, 'John', 'Doe', 'john.doe@example.com', 'newpassword123', $conn);
     //deleteUser(2);
 */
-  mysqli_close($conn);
+ 
+  // Function to sanitize input
+function sanitizeInput($data) {
+  $data = trim($data); 
+  $data = stripslashes($data); 
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+// Function to validate email format
+function validateEmail($email) {
+  return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+if (isset($_POST["kyquni"])) {
+  $first_name = sanitizeInput($_POST["first-name"]);
+  $last_name = sanitizeInput($_POST["last-name"]);
+  $email = sanitizeInput($_POST["email"]);
+  $password = $_POST["password"]; 
+  $confirm_password = $_POST["confirm-password"]; 
+
+  if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password) && !empty($confirm_password)){
+      if (validateEmail($email)) {
+        if (strlen($password) > 8 && $password == $confirm_password){
+          $_SESSION["first-name"] = $first_name;
+          $_SESSION["last-name"] = $last_name;
+          $_SESSION["email"] = $email;
+
+          $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+          header("Location: ballina.php");
+          exit;
+        } else {
+          echo "Invalid passwords.";
+        }
+          
+      } else {
+          echo "Invalid email format.";
+      }
+  } else {
+      // Missing required fields
+      echo "All fields are required.";
+  } 
+}
+
+mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -211,7 +257,7 @@ function deleteUser($conn, $id) {
 
                 <div class="input-wrap">
                   <input
-                    type="text"
+                    type="password"
                     minlength="4"
                     class="input-field"
                     autocomplete="off"
@@ -262,45 +308,7 @@ function deleteUser($conn, $id) {
     <script src="sign-up/sign-up.js"></script>
   </body>
 </html>
-
-
 <?php
 
-// Function to sanitize input
-// function sanitizeInput($data) {
-//     $data = trim($data); 
-//     $data = stripslashes($data); 
-//     $data = htmlspecialchars($data);
-//     return $data;
-// }
 
-// // Function to validate email format
-// function validateEmail($email) {
-//     return filter_var($email, FILTER_VALIDATE_EMAIL);
-// }
-
-// if (isset($_POST["kyquni"])) {
-//     $first_name = sanitizeInput($_POST["first-name"]);
-//     $last_name = sanitizeInput($_POST["last-name"]);
-//     $email = sanitizeInput($_POST["email"]);
-//     $password = $_POST["password"]; 
-
-    // if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password)) {
-    //     if (validateEmail($email)) {
-    //         $_SESSION["first-name"] = $first_name;
-    //         $_SESSION["last-name"] = $last_name;
-    //         $_SESSION["email"] = $email;
-
-    //         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    //         header("Location: ballina.php");
-    //         exit;
-    //     } else {
-    //         echo "Invalid email format.";
-    //     }
-//     } else {
-//         // Missing required fields
-//         echo "All fields are required.";
-//     }
-// }
-// ?>
+?>
