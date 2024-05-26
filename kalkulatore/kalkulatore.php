@@ -287,11 +287,19 @@
             $teDhenat = "x1: " .parent::getx1() ."    y1: " .parent::gety1() ."    x2: " .parent::getx2() ."    y2: " .parent::gety2() ."    xl: " .parent::getxl() ."    yl: " .parent::getyl();
             $zgjidhjet = "    x = " .parent::zgjidhjaX() ."    y: " .parent::zgjidhjaY();
 
-            $teksti = "Te dhenat:   " .$teDhenat .".         Zgjidhjet:  " .$zgjidhjet ." .       Koha: " .$this->mesazhiKohes ."\n";
+            
 
-            $file = fopen("detyrat.txt", "a") or die("Gabim gjate leximit te te dhenave !");
-            fwrite($file, $teksti);
-            // echo "Te dhenat u ruajten me sukses !";
+
+            function errorHandler($errno, $errstr, $errfile, $errline) {
+              throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+          }
+          set_error_handler("errorHandler");
+      
+
+            // include 'detyrat.txt'; // Require file.php
+
+            unset($teDhenat, $zgjidhjet);
+           
           }
          }
     ?>
