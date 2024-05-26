@@ -172,6 +172,12 @@ function updateCellContent(e, wordList) {
 // Dynamic part
 
 function createEditableTable() {
+  const titulli = document.createElement("input");
+  titulli.type = "text";
+  titulli.className = "input-cell";
+  titulli.setAttribute("id", "title");
+  titulli.placeholder = "Titulli";
+  asosacioni.append(titulli);
   for (let i = 0; i < 5; i++) {
     const row = document.createElement("div");
     row.className = "row";
@@ -267,6 +273,8 @@ function handleSave() {
     "#zgjidhja-perfundimtare"
   ).value;
 
+  let title = document.querySelector("#title").value;
+
   let tempAsosacion = {
     A: [a1, a2, a3, a4, zgjidhjaA, zgjidhjaPerfundimtare],
     B: [b1, b2, b3, b4, zgjidhjaB],
@@ -275,6 +283,33 @@ function handleSave() {
   };
 
   console.table(tempAsosacion);
+  console.table(subjects);
+  subjects[title] = tempAsosacion;
+  console.table(subjects);
+
+  let newBtn = document.createElement("button");
+  newBtn.className = "asosacioni-button";
+  newBtn.setAttribute("data-name", title);
+  newBtn.textContent = title;
+
+  newBtn.addEventListener("click", () => {
+    setActiveButton(newBtn);
+    resetAsosacioni();
+    createTable();
+    const subject = newBtn.getAttribute("data-name");
+
+    if (subjects.hasOwnProperty(subject)) {
+      currentAsosacionText = `"${
+        subject.charAt(0).toUpperCase() + subject.slice(1)
+      }"`;
+      addCellEventListeners(subjects[subject]); // Get the corresponding object
+      currentAsosacion = subjects[subject]; // Assign the corresponding object
+    } else {
+      alert("Ky asosacion nuk ekziston! ");
+    }
+  });
+
+  document.querySelector(".asosacioni-buttons").append(newBtn);
 }
 
 resetBtn.addEventListener("click", () => {
