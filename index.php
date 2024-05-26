@@ -15,7 +15,7 @@
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form action="index.html" autocomplete="off" class="sign-in-form">
+            <form action="index.php" autocomplete="off" class="sign-in-form" method="post">
               <div class="logo">
                 <img src="./images/logo1.png" alt="easyclass" />
                 <h4>UP Student Toolkit</h4>
@@ -50,7 +50,7 @@
                   <label>Password</label>
                 </div>
 
-                <input type="submit" value="Kyqu" class="sign-btn" />
+                <input type="submit" value="Kyqu" class="sign-btn"/>
 
                 <p class="text">
                   Keni harruar fjalëkalimin? <br>
@@ -60,7 +60,7 @@
               </div>
             </form>
 
-            <form action="index.html" autocomplete="off" class="sign-up-form">
+            <form action="index.php" autocomplete="off" method="post" class="sign-up-form">
               <div class="logo">
                 <img src="./images/logo1.png" alt="easyclass" />
                 <h4>UP Student Toolkit</h4>
@@ -80,6 +80,7 @@
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="first-name"
                   />
                   <label>Emri</label>
                 </div>
@@ -91,6 +92,7 @@
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="last-name"
                   />
                   <label>Mbiemri</label>
                 </div>
@@ -101,6 +103,7 @@
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="email"
                   />
                   <label>Email</label>
                 </div>
@@ -112,6 +115,7 @@
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="password"
                   />
                   <label>Password</label>
                 </div>
@@ -123,11 +127,12 @@
                     class="input-field"
                     autocomplete="off"
                     required
+                    name="confirm-password"
                   />
                   <label>Konfirmo passwordin</label>
                 </div>
 
-                <input type="submit" value="Krijo" class="sign-btn" />
+                <input type="submit" value="Krijo" class="sign-btn" name="kyquni"/>
 
                 <p class="text">
                   Duke klikuar butonin ju pajtoheni me
@@ -173,40 +178,49 @@
 <?php
 
 // Function to sanitize input
-// function sanitizeInput($data) {
-//     $data = trim($data); 
-//     $data = stripslashes($data); 
-//     $data = htmlspecialchars($data);
-//     return $data;
-// }
+function sanitizeInput($data) {
+    $data = trim($data); 
+    $data = stripslashes($data); 
+    $data = htmlspecialchars($data);
+    return $data;
+}
 
-// // Function to validate email format
-// function validateEmail($email) {
-//     return filter_var($email, FILTER_VALIDATE_EMAIL);
-// }
+// Function to validate email format
+function validateEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
 
-// if (isset($_POST["kyquni"])) {
-//     $first_name = sanitizeInput($_POST["first-name"]);
-//     $last_name = sanitizeInput($_POST["last-name"]);
-//     $email = sanitizeInput($_POST["email"]);
-//     $password = $_POST["password"]; 
+if (isset($_POST["kyquni"])) {
+    header("Location: ballina.php");
+    exit;
+    $first_name = sanitizeInput($_POST["first-name"]);
+    $last_name = sanitizeInput($_POST["last-name"]);
+    $email = sanitizeInput($_POST["email"]);
+    $password = $_POST["password"]; 
+    $confirm_password = $_POST["confirm-password"];
+    echo "KYQUNI IS SET <br>"; 
 
-    // if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password)) {
-    //     if (validateEmail($email)) {
-    //         $_SESSION["first-name"] = $first_name;
-    //         $_SESSION["last-name"] = $last_name;
-    //         $_SESSION["email"] = $email;
+    if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password) && !empty($confirm_password)){
+        if (validateEmail($email)) {
+          if (strlen($password) > 8 && $password == $confirm_password){
+            $_SESSION["first-name"] = $first_name;
+            $_SESSION["last-name"] = $last_name;
+            $_SESSION["email"] = $email;
 
-    //         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    //         header("Location: ballina.php");
-    //         exit;
-    //     } else {
-    //         echo "Invalid email format.";
-    //     }
-//     } else {
-//         // Missing required fields
-//         echo "All fields are required.";
-//     }
-// }
-// ?>
+            header("Location: ballina.php");
+            exit;
+          } else {
+            echo "Invalid passwords.";
+          }
+            
+        } else {
+            echo "Invalid email format.";
+        }
+    } else {
+        // Missing required fields
+        echo "All fields are required.";
+    }
+}
+?>
