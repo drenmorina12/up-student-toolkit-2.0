@@ -29,7 +29,8 @@
 #asosacioni,
 #kuizi,
 #tic-tac-toe,
-#memory-game {
+#memory-game,
+#kuiziDinamik {
   border: 10px double var(--secondary-color);
   flex: 1;
   padding: 20px;
@@ -285,6 +286,48 @@ button {
   color: var(--secondary-color);
 }
 /* Kuizi end*/
+
+/* Kuizi Dinamik start */
+#kuiziDinamik {
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+  background-image: linear-gradient(var(--secondary-color), var(--secondary-color));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#leftSide {
+  width: 50%;
+  height: 100%;
+  margin-top: 25%;
+  margin-left: 15%;
+}
+#rightSide {
+  width: 50%;
+  height: 100%;
+  margin-top: 25%;
+  margin-left: 15%;
+}
+
+.kuiziDinamikButonat{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 30px 50px;
+  margin: 30px;
+  min-width: 150px;
+  border-radius: 10px;
+}
+.kuiziDinamikButonat:hover{
+  opacity: 0.7;
+}
+
+/* Kuizi Dinamik end */
 
 /* Tic-Tac-Toe start */
 :root {

@@ -142,6 +142,16 @@
           </audio>
         </div>
 
+        <!-- Kuizi Dinamik -->
+        <div id="kuiziDinamik">
+          <div id="leftSide">
+          <button class="kuiziDinamikButonat">KRIJO KUIZ</button>
+          </div>
+          <div id="rightSide">
+          <button class="kuiziDinamikButonat">LUAJ KUIZ</button>
+          </div>
+        </div>
+
         <!-- Tic Tac Toe -->
         <div id="tic-tac-toe">
           <div class="x-score-container">
