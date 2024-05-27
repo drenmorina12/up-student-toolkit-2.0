@@ -1,15 +1,17 @@
+START TRANSACTION;
+
 CREATE TABLE `opsionet` (
   `id` int(11) NOT NULL,
   `opsioni` text NOT NULL,
   `pyetja_id` int(11) NOT NULL,
   `sakte` tinyint(1) NOT NULL
-) 
+); 
 
 
 CREATE TABLE `pyetjet` (
   `id` int(11) NOT NULL,
   `pyetja` text NOT NULL
-)
+);
 
 
 -- SHTIMI I PRIMARY-KEY:
