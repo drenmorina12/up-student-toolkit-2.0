@@ -24,6 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script defer src="asosacioni.js"></script>
     <script defer src="tic-tac-toe.js"></script>
+    <script defer src="kuiziDinamik.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -51,6 +52,14 @@
           <li class="sidebar-active">
             <a href="javascript:void(0);" onclick="scrollToSection('kuizi')">
               <span>Kuizi</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('kuiziDinamik')"
+            >
+              <span>Kuizi Dinamik</span>
             </a>
           </li>
           <li>
@@ -140,6 +149,16 @@
             <source src="../audio/clapAudio.mp3" type="audio/mp3" />
             Your browser does not support the audio element.
           </audio>
+        </div>
+
+        <!-- Kuizi Dinamik -->
+        <div id="kuiziDinamik">
+          <div id="leftSide">
+          <button class="kuiziDinamikButonat" >KRIJO KUIZ</button>
+          </div>
+          <div id="rightSide">
+          <button class="kuiziDinamikButonat">LUAJ KUIZ</button>
+          </div>
         </div>
 
         <!-- Tic Tac Toe -->

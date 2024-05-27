@@ -1,9 +1,19 @@
 {
+<<<<<<< HEAD
+    "ballina": 50,
+    "rreth-nesh": 146,
+    "argetim": 3
+}
+  <?php
+  function getInfoSavedDateTime() {
+      return "2024-05-27 01:13:40";
+=======
     "ballina": 2,
     "argetim": 19
 }
   <?php
   function getInfoSavedDateTime() {
       return "2024-05-26 16:12:23";
+>>>>>>> 9ffb2d99d565b25941fe8aa0acec8220b4208cec
   }
   ?>
