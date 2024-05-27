@@ -280,6 +280,19 @@ function setAsosacioni(button) {
   }
 }
 
+function sendAsosacioni(asosacioni) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/up-student-toolkit-2.0/asosacioni.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log(xhr.responseText);
+    }
+  };
+
+  xhr.send(JSON.stringify({ asosacioni: asosacioni }));
+}
+
 function handleSave() {
   // Get values from create asosacioni table
   let a1 = document.querySelector("#A1").value;
@@ -319,6 +332,8 @@ function handleSave() {
     C: [c1, c2, c3, c4, zgjidhjaC],
     D: [d1, d2, d3, d4, zgjidhjaD],
   };
+
+  sendAsosacioni(tempAsosacion);
 
   // Add tebmp object to subjects object
   subjects[title] = tempAsosacion;
