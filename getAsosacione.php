@@ -5,12 +5,11 @@
 
   $query = "SELECT titulli, A1, A2, A3, A4, Afinal, B1, B2, B3, B4, Bfinal, C1, C2, C3, C4, Cfinal, D1, D2, D3, D4, Dfinal, final FROM tblasociacioni WHERE userId = ?";
   $stmt = $conn->prepare($query);
+  
 
   $stmt->bind_param("i", $userId);
-  if ($stmt->execute()) {
-    echo "Records retrieved succesfully";
-  } else {
-    echo "Error: " . $stmt->error;
+  if (!($stmt->execute())) {
+    echo "Error !";
   }
   $result = $stmt->get_result();
 
@@ -27,7 +26,7 @@
     $asosaciones[$row['titulli']] = $asosacion;
   }
 
-  // echo json_encode($asosaciones); 
+  echo json_encode($asosaciones); 
   
   $stmt->close();
   $conn->close();
