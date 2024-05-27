@@ -24,6 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script defer src="asosacioni.js"></script>
     <script defer src="tic-tac-toe.js"></script>
+    <script defer src="kuiziDinamik.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -153,7 +154,7 @@
         <!-- Kuizi Dinamik -->
         <div id="kuiziDinamik">
           <div id="leftSide">
-          <button class="kuiziDinamikButonat">KRIJO KUIZ</button>
+          <button class="kuiziDinamikButonat" >KRIJO KUIZ</button>
           </div>
           <div id="rightSide">
           <button class="kuiziDinamikButonat">LUAJ KUIZ</button>
