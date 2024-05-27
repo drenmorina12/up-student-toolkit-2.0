@@ -172,6 +172,12 @@ function updateCellContent(e, wordList) {
 // Dynamic part
 
 function createEditableTable() {
+  const titulli = document.createElement("input");
+  titulli.type = "text";
+  titulli.className = "input-cell";
+  titulli.setAttribute("id", "title");
+  titulli.placeholder = "Titulli";
+  asosacioni.append(titulli);
   for (let i = 0; i < 5; i++) {
     const row = document.createElement("div");
     row.className = "row";
@@ -238,7 +244,44 @@ function setActiveButton(button) {
   button.classList.add("active");
 }
 
+// function buttonAddEventListener(button) {
+//   button.addEventListener("click", () => {
+//     setActiveButton(button);
+//     resetAsosacioni();
+//     createTable();
+//     const subject = button.getAttribute("data-name");
+
+//     if (subjects.hasOwnProperty(subject)) {
+//       currentAsosacionText = `"${
+//         subject.charAt(0).toUpperCase() + subject.slice(1)
+//       }"`;
+//       addCellEventListeners(subjects[subject]); // Get the corresponding object
+//       currentAsosacion = subjects[subject]; // Assign the corresponding object
+//     } else {
+//       alert("Ky asosacion nuk ekziston! ");
+//     }
+//   });
+// }
+
+function setAsosacioni(button) {
+  setActiveButton(button);
+  resetAsosacioni();
+  createTable();
+  const subject = button.getAttribute("data-name");
+
+  if (subjects.hasOwnProperty(subject)) {
+    currentAsosacionText = `"${
+      subject.charAt(0).toUpperCase() + subject.slice(1)
+    }"`;
+    addCellEventListeners(subjects[subject]); // Get the corresponding object
+    currentAsosacion = subjects[subject]; // Assign the corresponding object
+  } else {
+    alert("Ky asosacion nuk ekziston! ");
+  }
+}
+
 function handleSave() {
+  // Get values from create asosacioni table
   let a1 = document.querySelector("#A1").value;
   let a2 = document.querySelector("#A2").value;
   let a3 = document.querySelector("#A3").value;
@@ -267,6 +310,9 @@ function handleSave() {
     "#zgjidhja-perfundimtare"
   ).value;
 
+  let title = document.querySelector("#title").value;
+
+  // Save all values on a temp object
   let tempAsosacion = {
     A: [a1, a2, a3, a4, zgjidhjaA, zgjidhjaPerfundimtare],
     B: [b1, b2, b3, b4, zgjidhjaB],
@@ -274,7 +320,20 @@ function handleSave() {
     D: [d1, d2, d3, d4, zgjidhjaD],
   };
 
-  console.table(tempAsosacion);
+  // Add tebmp object to subjects object
+  subjects[title] = tempAsosacion;
+
+  // Create new button
+  let newBtn = document.createElement("button");
+  newBtn.className = "asosacioni-button";
+  newBtn.setAttribute("data-name", title);
+  newBtn.textContent = title;
+  // Adds event listener to button
+
+  document.querySelector(".asosacioni-buttons").append(newBtn);
+
+  newBtn.addEventListener("click", () => setAsosacioni(newBtn));
+  setAsosacioni(newBtn);
 }
 
 resetBtn.addEventListener("click", () => {
@@ -291,22 +350,7 @@ createBtn.addEventListener("click", () => {
 saveBtn.addEventListener("click", handleSave);
 
 asosacioniButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    setActiveButton(button);
-    resetAsosacioni();
-    createTable();
-    const subject = button.getAttribute("data-name");
-
-    if (subjects.hasOwnProperty(subject)) {
-      currentAsosacionText = `"${
-        subject.charAt(0).toUpperCase() + subject.slice(1)
-      }"`;
-      addCellEventListeners(subjects[subject]); // Get the corresponding object
-      currentAsosacion = subjects[subject]; // Assign the corresponding object
-    } else {
-      alert("Ky asosacion nuk ekziston! ");
-    }
-  });
+  button.addEventListener("click", () => setAsosacioni(button));
 });
 
 createTable();

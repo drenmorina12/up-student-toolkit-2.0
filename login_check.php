@@ -2,11 +2,11 @@
 session_start();
 include "./db.php";
 
-if (isset($_POST['emaili']) && isset($_POST['passwordi'])) {
-    $email = $_POST['emaili'];
-    $user_password = $_POST['passwordi'];
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $user_password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT passwordi FROM shfrytezuesit WHERE emaili = ?");
+    $stmt = $conn->prepare("SELECT passwordHash FROM tblUser WHERE emaili = ?");
     $stmt->bind_param("s", $email);
 
     $stmt->execute();
