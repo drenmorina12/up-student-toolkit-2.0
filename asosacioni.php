@@ -1,13 +1,15 @@
 <?php
   
+  include('db.php');
+
   $data = file_get_contents('php://input');
   $decoded_data = json_decode($data, true);
 
   $asosacioni = $decoded_data['asosacioni'];
+
+  $userId = 1;
+  $title = "Dummy Title";
   
-  echo "Start here <br>";
-  // echo "Asosacioni eshte:   " . json_encode($asosacioni, JSON_PRETTY_PRINT);
-  echo "<br>";
   
   // Access individual elements
   $a1 = $asosacioni['A'][0];
@@ -34,6 +36,29 @@
   $d3 = $asosacioni['D'][2];
   $d4 = $asosacioni['D'][3];
   $zgjidhjaD = $asosacioni['D'][4];
+
+  $query = 
+
+  $stmt = $conn->prepare("INSERT INTO tblasociacioni (userId, titulli, A1, A2, A3, A4, Afinal, B1, B2, B3, B4, Bfinal, C1, C2, C3, C4, Cfinal, D1, D2, D3, D4, Dfinal, final) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param("issssssssssssssssssssss",
+    $userId,
+    $title,
+    $a1, $a2, $a3, $a4, $zgjidhjaA,
+    $b1, $b2, $b3, $b4, $zgjidhjaB,
+    $c1, $c2, $c3, $c4, $zgjidhjaC,
+    $d1, $d2, $d3, $d4, $zgjidhjaD,
+    $zgjidhjaPerfundimtare
+);
+
+if ($stmt->execute()) {
+  echo "New records created succesfully";
+} else {
+  echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$conn->close();
+
 
   // Print individual elements for debugging purposes
   // echo "A1: " . $a1 . "<br>";
