@@ -150,6 +150,17 @@ section {
   width: 100%;
 }
 
+.container .contactForm .formBox .inputBox.w50 input,
+.container .contactForm .formBox .inputBox.w100 textarea {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.container .contactForm .formBox .inputBox.w50 p {
+  color: white;
+  padding-left: 20px;
+}
+
 .container .contactForm .formBox .inputBox input,
 .container .contactForm .formBox .inputBox textarea {
   width: 100%;
@@ -165,7 +176,13 @@ section {
 }
 
 .container .contactForm .formBox .inputBox textarea {
-  height: 150px;
+  height: 100px;
+}
+
+.container .contactForm .formBox .button-send input {
+  width: 150px;
+  height: 35px;
+  border-radius: 10px;
 }
 
 .container .contactForm .formBox .inputBox span {
@@ -176,6 +193,7 @@ section {
   font-size: 18px;
   font-weight: 300;
   transition: 0.3s;
+  padding-left: 20px;
 }
 
 .container .contactForm .formBox .inputBox input:focus ~ span,
