@@ -152,6 +152,50 @@ input[type="text"].input-cell {
 input[type="text"].input-cell::placeholder {
   opacity: 0.7;
 }
+.special-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.special-button {
+  /* Ensure the button size is well-defined */
+  display: block;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  top: 100%; /* Position the dropdown right below the button */
+  /* left: 0; */
+  /* Add a small margin to overlap with the button to avoid any gap */
+  margin-top: -2px;
+  /* bottom: 200px; */
+  top: 70px;
+}
+
+.dropdown-content .asosacioni-button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content .asosacioni-button:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown content on hover */
+.special-button-container:hover .dropdown-content,
+.special-button-container .dropdown-content:hover,
+.dropdown-content:hover,
+.special-button:hover {
+  display: block;
+}
+
 /* Asosacioni end */
 
 /* Kuizi start*/

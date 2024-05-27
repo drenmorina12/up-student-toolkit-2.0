@@ -84,12 +84,19 @@
                 Përgjithshëm
               </button>
               <button class="asosacioni-button" data-name="web">Web</button>
-              <button class="asosacioni-button" data-name="fizika">
-                Fizikë
-              </button>
-              <button class="asosacioni-button" data-name="matematika">
-                Matematikë
-              </button>
+              <button class="asosacioni-button" data-name="fizika">Fizikë</button>
+
+              <div class="special-button-container">
+                <button
+                  class="asosacioni-button special-button"
+                  data-name="special"
+                >
+                  More
+                </button>
+                <div class="dropdown-content" style="display: none">
+                  <!-- Dynamically populated buttons will go here -->
+                </div>
+              </div>
 
               <button class="reset-button">Fshij</button>
               <button class="create-asosacion">Create</button>

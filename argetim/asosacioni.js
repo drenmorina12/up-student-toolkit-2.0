@@ -1,7 +1,24 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   console.log("Page loaded");
-//   fetchAsosaciones();
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  // const specialButtonContainer = document.querySelector(
+  //   ".special-button-container"
+  // );
+  // const dropdownContent = document.querySelector(".dropdown-content");
+
+  // specialButtonContainer.addEventListener("mouseenter", () => {
+  //   dropdownContent.style.display = "block";
+  // });
+
+  // specialButtonContainer.addEventListener("mouseleave", () => {
+  //   // Use a timeout to delay hiding the dropdown, allowing for smoother transitions
+  //   setTimeout(() => {
+  //     dropdownContent.style.display = "none";
+  //   }, 10000); // Adjust the delay as needed
+  // });
+
+  console.log("LOADED");
+  fetchAsosaciones();
+});
+
 const asosacioni = document.querySelector("#asosacioni-table");
 const asosacioniButtons = document.querySelectorAll(".asosacioni-button");
 const resetBtn = document.querySelector(".reset-button");
@@ -10,6 +27,7 @@ const asosacioniHeaderText = document.querySelector(
 );
 const createBtn = document.querySelector(".create-asosacion");
 const saveBtn = document.querySelector(".save-asosacion");
+const buttonsContainer = document.querySelector(".asosacioni-buttons");
 
 let currentAsosacion;
 let currentAsosacionText = '"Përgjithshëm"';
@@ -127,9 +145,6 @@ const subjects = {
   pergjithshem: pergjithshem,
   web: web,
 };
-
-str = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
-console.log(str);
 
 //--------------------------------------------------
 
@@ -252,25 +267,6 @@ function setActiveButton(button) {
   button.classList.add("active");
 }
 
-// function buttonAddEventListener(button) {
-//   button.addEventListener("click", () => {
-//     setActiveButton(button);
-//     resetAsosacioni();
-//     createTable();
-//     const subject = button.getAttribute("data-name");
-
-//     if (subjects.hasOwnProperty(subject)) {
-//       currentAsosacionText = `"${
-//         subject.charAt(0).toUpperCase() + subject.slice(1)
-//       }"`;
-//       addCellEventListeners(subjects[subject]); // Get the corresponding object
-//       currentAsosacion = subjects[subject]; // Assign the corresponding object
-//     } else {
-//       alert("Ky asosacion nuk ekziston! ");
-//     }
-//   });
-// }
-
 function setAsosacioni(button) {
   setActiveButton(button);
   resetAsosacioni();
@@ -308,8 +304,10 @@ function fetchAsosaciones() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       try {
         var responseData = JSON.parse(xhr.responseText);
-        updateSubjects(responseData);
         var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        console.log("First time: " + str1);
+        updateSubjects(responseData);
+        str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
         console.log("Second time: " + str1);
       } catch (e) {
         console.error("Failed to parse JSON response:", e);
@@ -330,20 +328,81 @@ function updateSubjects(asosaciones) {
 }
 
 function updateAsosacioniButtons() {
-  const buttonsContainer = document.querySelector(".asosacioni-buttons");
-  buttonsContainer.innerHTML = "";
+  // Clear existing dynamic buttons
+  const dropdownContent = document.querySelector(".dropdown-content");
+  dropdownContent.innerHTML = "";
 
+  let count = 0;
   for (let title in subjects) {
     if (subjects.hasOwnProperty(title)) {
-      let newBtn = document.createElement("button");
-      newBtn.className = "asosacioni-button";
-      newBtn.setAttribute("data-name", title);
-      newBtn.textContent = title;
-      buttonsContainer.append(newBtn);
+      count++;
 
-      newBtn.addEventListener("click", () => setAsosacioni(newBtn));
+      if (count <= 3) {
+        // Skip the first three subjects as they are default
+        continue;
+      }
+      console.log("Inside change button!");
+      // Create a new button for additional asosaciones
+      let newDropdownBtn = document.createElement("button");
+      newDropdownBtn.className = "asosacioni-button dropdown-item";
+      newDropdownBtn.setAttribute("data-name", title);
+      newDropdownBtn.textContent = title;
+      dropdownContent.append(newDropdownBtn);
+
+      // Add click event to dynamically change the special button text and trigger the setAsosacioni function
+      newDropdownBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const specialButton = document.querySelector(".special-button");
+        specialButton.textContent = title;
+        setAsosacioni(newDropdownBtn);
+        dropdownContent.style.display = "block";
+      });
     }
   }
+
+  // Show/hide dropdown on special button hover
+  const specialButton = document.querySelector(".special-button");
+  // const dropdownContent = document.querySelector(".dropdown-content");
+
+  // Function to show the dropdown content
+  function showDropdown() {
+    dropdownContent.style.display = "block";
+  }
+
+  // Function to hide the dropdown content
+  function hideDropdown() {
+    dropdownContent.style.display = "none";
+  }
+
+  // Event listener for mouseenter on the special button
+  specialButton.addEventListener("mouseenter", () => {
+    showDropdown();
+  });
+
+  // Event listener for mouseleave on the special button
+  specialButton.addEventListener("mouseleave", () => {
+    // Check if the mouse has entered the dropdown content
+    setTimeout(() => {
+      if (!dropdownContent.matches(":hover")) {
+        hideDropdown();
+      }
+    }, 100); // Small delay to allow moving to the dropdown content
+  });
+
+  // Event listener for mouseenter on the dropdown content
+  dropdownContent.addEventListener("mouseenter", () => {
+    showDropdown();
+  });
+
+  // Event listener for mouseleave on the dropdown content
+  dropdownContent.addEventListener("mouseleave", () => {
+    // Check if the mouse has entered the special button
+    setTimeout(() => {
+      if (!specialButton.matches(":hover")) {
+        hideDropdown();
+      }
+    }, 100); // Small delay to allow moving to the special button
+  });
 }
 
 function handleSave() {
@@ -398,16 +457,13 @@ function handleSave() {
   newBtn.textContent = title;
   // Adds event listener to button
 
-  document.querySelector(".asosacioni-buttons").append(newBtn);
+  buttonsContainer.append(newBtn);
 
   newBtn.addEventListener("click", () => setAsosacioni(newBtn));
   setAsosacioni(newBtn);
 }
 
 resetBtn.addEventListener("click", () => {
-  console.log("Fetching asosaciones");
-  fetchAsosaciones();
-  console.log("Asosaciones fetched");
   // resetAsosacioni();
   // createTable();
   // addCellEventListeners(currentAsosacion);
