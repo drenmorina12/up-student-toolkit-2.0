@@ -1,3 +1,7 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//   console.log("Page loaded");
+//   fetchAsosaciones();
+// });
 const asosacioni = document.querySelector("#asosacioni-table");
 const asosacioniButtons = document.querySelectorAll(".asosacioni-button");
 const resetBtn = document.querySelector(".reset-button");
@@ -123,6 +127,10 @@ const subjects = {
   pergjithshem: pergjithshem,
   web: web,
 };
+
+str = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+console.log(str);
+
 //--------------------------------------------------
 
 function createTable() {
@@ -293,6 +301,51 @@ function sendAsosacioni(asosacioni) {
   xhr.send(JSON.stringify({ asosacioni: asosacioni }));
 }
 
+function fetchAsosaciones() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/up-student-toolkit-2.0/getAsosacione.php");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      try {
+        var responseData = JSON.parse(xhr.responseText);
+        updateSubjects(responseData);
+        var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        console.log("Second time: " + str1);
+      } catch (e) {
+        console.error("Failed to parse JSON response:", e);
+      }
+    }
+  };
+  xhr.send();
+}
+
+function updateSubjects(asosaciones) {
+  for (let title in asosaciones) {
+    if (asosaciones.hasOwnProperty(title)) {
+      subjects[title] = asosaciones[title];
+    }
+  }
+
+  updateAsosacioniButtons();
+}
+
+function updateAsosacioniButtons() {
+  const buttonsContainer = document.querySelector(".asosacioni-buttons");
+  buttonsContainer.innerHTML = "";
+
+  for (let title in subjects) {
+    if (subjects.hasOwnProperty(title)) {
+      let newBtn = document.createElement("button");
+      newBtn.className = "asosacioni-button";
+      newBtn.setAttribute("data-name", title);
+      newBtn.textContent = title;
+      buttonsContainer.append(newBtn);
+
+      newBtn.addEventListener("click", () => setAsosacioni(newBtn));
+    }
+  }
+}
+
 function handleSave() {
   // Get values from create asosacioni table
   let a1 = document.querySelector("#A1").value;
@@ -327,7 +380,7 @@ function handleSave() {
 
   // Save all values on a temp object
   let tempAsosacion = {
-    A: [a1, a2, a3, a4, zgjidhjaA, zgjidhjaPerfundimtare],
+    A: [a1, a2, a3, a4, zgjidhjaA, zgjidhjaPerfundimtare, title],
     B: [b1, b2, b3, b4, zgjidhjaB],
     C: [c1, c2, c3, c4, zgjidhjaC],
     D: [d1, d2, d3, d4, zgjidhjaD],
@@ -335,7 +388,7 @@ function handleSave() {
 
   sendAsosacioni(tempAsosacion);
 
-  // Add tebmp object to subjects object
+  // Add temp object to subjects object
   subjects[title] = tempAsosacion;
 
   // Create new button
@@ -352,9 +405,12 @@ function handleSave() {
 }
 
 resetBtn.addEventListener("click", () => {
-  resetAsosacioni();
-  createTable();
-  addCellEventListeners(currentAsosacion);
+  console.log("Fetching asosaciones");
+  fetchAsosaciones();
+  console.log("Asosaciones fetched");
+  // resetAsosacioni();
+  // createTable();
+  // addCellEventListeners(currentAsosacion);
 });
 
 createBtn.addEventListener("click", () => {

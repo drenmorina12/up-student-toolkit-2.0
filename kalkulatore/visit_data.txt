@@ -1,9 +1,9 @@
 {
-    "argetim": 10,
+    "argetim": 2,
     "kalkulatore": 1
 }
   <?php
   function getInfoSavedDateTime() {
-      return "2024-05-27 03:54:12";
+      return "2024-05-27 15:17:58";
   }
   ?>
