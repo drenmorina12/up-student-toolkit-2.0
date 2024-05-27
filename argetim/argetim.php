@@ -1,5 +1,6 @@
 <?php
   session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +97,7 @@
             <div class="asosacioni-table-container">
               <div id="asosacioni-table"></div>
             </div>
+            <button class="save-asosacion">Save</button>
           </div>
         </div>
 

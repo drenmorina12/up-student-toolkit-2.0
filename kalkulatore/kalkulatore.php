@@ -287,11 +287,46 @@
             $teDhenat = "x1: " .parent::getx1() ."    y1: " .parent::gety1() ."    x2: " .parent::getx2() ."    y2: " .parent::gety2() ."    xl: " .parent::getxl() ."    yl: " .parent::getyl();
             $zgjidhjet = "    x = " .parent::zgjidhjaX() ."    y: " .parent::zgjidhjaY();
 
-            $teksti = "Te dhenat:   " .$teDhenat .".         Zgjidhjet:  " .$zgjidhjet ." .       Koha: " .$this->mesazhiKohes ."\n";
+            
 
+
+            function errorHandler($errno, $errstr, $errfile, $errline) {
+              throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+          }
+          set_error_handler("errorHandler");
+          try {
+            $teksti = "Te dhenat:   " .$teDhenat .".         Zgjidhjet:  " .$zgjidhjet ." .       Koha: " .$this->mesazhiKohes ."\n";
             $file = fopen("detyrat.txt", "a") or die("Gabim gjate leximit te te dhenave !");
-            fwrite($file, $teksti);
+
+            
+            if ($file === false) {
+                throw new Exception("Gabim gjate leximit te te dhenave !");
+            }
+        
+            // Attempt to write to the file
+            if (fwrite($file, $teksti) === false) {
+                throw new Exception("Deshtoi shkrimi ne file !");
+            }
+        
             // echo "Te dhenat u ruajten me sukses !";
+            fclose($file);
+
+            unset($teksti);
+        } catch (ErrorException $e) {
+            // Handle PHP errors converted to exceptions
+            echo "PHP Error: " . $e->getMessage();
+        } catch (Exception $e) {
+            // Handle other exceptions
+            echo "Exception: " . $e->getMessage();
+        } finally {
+            // Restore default error handler
+            restore_error_handler();
+        }
+
+            // include 'detyrat.txt'; // Require file.php
+
+            unset($teDhenat, $zgjidhjet);
+           
           }
          }
     ?>
