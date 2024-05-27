@@ -20,15 +20,17 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             header("Location: ballina.php");
             exit();  
         } else {
-            echo "Invalid email or password.";
+            $_SESSION['error'] = "Email ose fjalëkalim i pavlefshëm";
         }
     } else {
-        echo "Invalid email or password.";
+        $_SESSION['error'] = "Email ose fjalëkalim i pavlefshëm";
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    echo "Email and Password must be provided.";
+    $_SESSION['error'] = "Shënoni emailin dhe fjalëkalimin";
 }
+header("Location: index.php");
+exit();
 ?>

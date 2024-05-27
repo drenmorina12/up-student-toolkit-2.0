@@ -2,6 +2,15 @@
     session_start();
     include("db.php");
     
+    $login_error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
+    unset($_SESSION['error']);
+
+    $signup_error = isset($_SESSION['signup_error']) ? $_SESSION['signup_error'] : '';
+    unset($_SESSION['signup_error']);
+
+    $form_data = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : ['first-name' => '', 'last-name' => '', 'email' => ''];
+    unset($_SESSION['form_data']);
+
   $sql_tblUser = "  CREATE TABLE IF NOT EXISTS tblUser (
     userId INT AUTO_INCREMENT PRIMARY KEY,
     emri VARCHAR(50) NOT NULL,
@@ -182,6 +191,10 @@ mysqli_close($conn);
               </div>
 
               <div class="actual-form">
+              <?php if ($login_error): ?>
+              <p style="color: red;"><?php echo htmlspecialchars($login_error); ?></p>
+              <?php endif; ?>
+
                 <div class="input-wrap">
                   <input
                     type="text"
@@ -230,6 +243,9 @@ mysqli_close($conn);
               </div>
 
               <div class="actual-form">
+              <?php if ($signup_error): ?>
+              <p  style="color: red;"><?php echo htmlspecialchars($signup_error); ?></p>
+              <?php endif; ?>
                 <div class="input-wrap">
                   <input
                     type="text"
@@ -325,7 +341,9 @@ mysqli_close($conn);
         </div>
       </div>
     </main>
-
+    <script>
+    
+    </script>
 
     <script src="sign-up/sign-up.js"></script>
   </body>
