@@ -39,7 +39,8 @@
           <form action="logout.php" method="POST">
             <button type="submit" id="log-out" name="clear-cookies">Clear Cookies</button>
             <button type="sumbit" id="log-out" name="log-out">Log Out</button><br>
-            <button type="sumbit" id="log-out" name="delete-account" style="margin-top: 10px">Fshij llogarinë</button>
+            <button type="sumbit" id="log-out" name="delete-account" style="margin-top: 5px; width:170px">Fshij llogarinë</button>
+            <button type="sumbit" id="log-out" name="update-password" style="margin-top: 5px; width:170px">Ndrysho fjalëkalimin</button>
           </form>
         </div>
 

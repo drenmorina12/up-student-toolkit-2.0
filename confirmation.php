@@ -33,23 +33,25 @@ session_start();
                     </div>
 
                     <div class="actual-form">
-                        <h4 >
+                        <h4>
                             <?php
                             if (isset($_SESSION['message'])) {
-                                echo htmlspecialchars($_SESSION['message']);
-                                unset($_SESSION['message']);
+                                $message = htmlspecialchars($_SESSION['message']);
+                                echo $message;
                             }
                             ?>
                         </h4>
-                        <?php if (isset($_SESSION['message'])){
-                            if(htmlspecialchars($_SESSION['message'])!='Llogaria juaj është fshirë!' || htmlspecialchars($_SESSION['message'])!='Fjalëkalimi u përditësua.'){ ?>
-                        <a href="<?php
-                                if (isset($_SESSION['go-back'])) {
-                                    echo htmlspecialchars($_SESSION['go-back']);
-                                    unset($_SESSION['go-back']);
-                                }
-                            ?>" class="toggle">Kthehu mbrapa</a><br>
-                        <?php }}?>
+                        <?php
+                        // Check if the message is neither "Llogaria juaj është fshirë!" nor "Fjalëkalimi u përditësua."
+                        if (isset($message) && $message !== 'Llogaria juaj është fshirë!' && $message !== 'Fjalëkalimi u përditësua.') {
+                            if (isset($_SESSION['go-back'])) { ?>
+                                <a href="<?php echo htmlspecialchars($_SESSION['go-back']); ?>" class="toggle">Kthehu mbrapa</a><br>
+                            <?php }
+                        }
+                        // Unset the session variables after use
+                        unset($_SESSION['message']);
+                        unset($_SESSION['go-back']);
+                        ?>
                         <a href="index.php" class="toggle">Kthehu në fillim</a>
                     </div>
                 </form>
