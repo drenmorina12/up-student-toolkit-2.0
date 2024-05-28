@@ -360,48 +360,40 @@ function updateAsosacioniButtons() {
     }
   }
 
-  // Show/hide dropdown on special button hover
-  const specialButton = document.querySelector(".special-button");
-  // const dropdownContent = document.querySelector(".dropdown-content");
+  // Code that show the dropdown buttons on hover
 
-  // Function to show the dropdown content
+  const specialButton = document.querySelector(".special-button");
+
   function showDropdown() {
     dropdownContent.style.display = "block";
   }
 
-  // Function to hide the dropdown content
   function hideDropdown() {
     dropdownContent.style.display = "none";
   }
 
-  // Event listener for mouseenter on the special button
   specialButton.addEventListener("mouseenter", () => {
     showDropdown();
   });
 
-  // Event listener for mouseleave on the special button
   specialButton.addEventListener("mouseleave", () => {
-    // Check if the mouse has entered the dropdown content
     setTimeout(() => {
       if (!dropdownContent.matches(":hover")) {
         hideDropdown();
       }
-    }, 100); // Small delay to allow moving to the dropdown content
+    }, 100);
   });
 
-  // Event listener for mouseenter on the dropdown content
   dropdownContent.addEventListener("mouseenter", () => {
     showDropdown();
   });
 
-  // Event listener for mouseleave on the dropdown content
   dropdownContent.addEventListener("mouseleave", () => {
-    // Check if the mouse has entered the special button
     setTimeout(() => {
       if (!specialButton.matches(":hover")) {
         hideDropdown();
       }
-    }, 100); // Small delay to allow moving to the special button
+    }, 100);
   });
 }
 
@@ -464,9 +456,9 @@ function handleSave() {
 }
 
 resetBtn.addEventListener("click", () => {
-  // resetAsosacioni();
-  // createTable();
-  // addCellEventListeners(currentAsosacion);
+  resetAsosacioni();
+  createTable();
+  addCellEventListeners(currentAsosacion);
 });
 
 createBtn.addEventListener("click", () => {
