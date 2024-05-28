@@ -56,15 +56,6 @@
               <span>Kuizi</span>
             </a>
           </li>
-          <li>
-            <a
-              href="javascript:void(0);"
-              onclick="scrollToSection('kuiziDinamik')"
-            >
-              <span>Kuizi Dinamik</span>
-            </a>
-          </li>
-          <li>
             <a
               href="javascript:void(0);"
               onclick="scrollToSection('tic-tac-toe')"
