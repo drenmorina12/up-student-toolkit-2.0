@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -43,13 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Dërgo email-in
         $mail->send();
-        echo "<script>
-        alert('Email-i u dërgua me sukses.');
-        document.location.href = 'rreth-nesh.php';
-        </script> ";
+        $_SESSION['info-message'] = "dërgimi të emailit";
+        $_SESSION['message'] = "emaili u dërgua!";
+        $_SESSION['go-back'] = "./rreth-nesh/rreth-nesh.php";
+       /* echo "<script>
+        document.location.href = '../confirmation.php';
+        </script> ";*/
     } catch (Exception $e) {
-        echo "Email-i nuk mund të dërgohej. Gabim: {$mail->ErrorInfo}";
+        $_SESSION['info-message'] = "Gabim: {$mail->ErrorInfo}";
+        $_SESSION['message'] = "";
+        //echo "Email-i nuk mund të dërgohej. Gabim: {$mail->ErrorInfo}";
     }
+    header("Location:../confirmation.php");
+    exit;
 } else {
     echo "Nuk keni aksesuar këtë faqe si duhet.";
 }

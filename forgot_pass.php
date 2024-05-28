@@ -1,51 +1,10 @@
 <?php
 session_start();
-include("db.php"); 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['recover-password'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirm-password'];
-
-    $_SESSION['info-message'] = "përditësimit të fjalëkalimit";
-    $_SESSION['go-back'] = "forgot_pass.php";
-
-    if ($password !== $confirmPassword) {
-        $_SESSION['message'] = "Passwords do not match.";
-        header("Location: confirmation.php");
-        exit();
-    }
-
-    // kontollimi i ekzsitences se emailit
-    $stmt = $conn->prepare("SELECT userId FROM tblUser WHERE emaili = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        
-        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-
-        // perditesimi i passwordit ne databaze
-        $stmt->close();
-        $stmt = $conn->prepare("UPDATE tblUser SET passwordHash = ? WHERE emaili = ?");
-        $stmt->bind_param("ss", $passwordHash, $email);
-
-        if ($stmt->execute()) {
-            $_SESSION['message'] = "Fjalëkalimi u përditësua.";
-        } else {
-            $_SESSION['message'] = "Dështim për të përditësuar fjalëkalimin.";
-        }
-    } else {
-        $_SESSION['message'] = "Nuk u gjet asnjë llogari me këtë adresë emaili: $email";
-    }
-
-
-    $stmt->close();
-    $conn->close();
-
+if (isset($_POST['send-fp'])) {
+    $_SESSION['info-message'] = "dërgimi të emailit";
+    $_SESSION['go-back'] = "index.php";
     header("Location: confirmation.php");
-    exit();
 }
 ?>
 
@@ -63,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['recover-password'])) {
         <div class="box">
             <div class="inner-box">
                 <div class="forms-wrap">
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" autocomplete="off" class="sign-in-form">
+                    <form action="./rreth-nesh/sendemail.php" method="POST" autocomplete="off" class="sign-in-form">
                         <div class="logo">
                             <img src="./images/logo1.png" alt="easyclass">
                             <h4>UP Student Toolkit</h4>
@@ -76,40 +35,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['recover-password'])) {
 
                         <div class="actual-form">
                             <div class="input-wrap">
+                            <p>To:</p> <input type="text" name="email" required readonly value="uptoolkit@gmail.com">
+                            </div>
+                            <div class="input-wrap">
                                 <input type="email" id="email" minlength="4" class="input-field" autocomplete="off" required name="email">
                                 <label for="email">Email</label>
                             </div>
                             <div class="input-wrap">
-                                <input type="password" minlength="4" class="input-field" autocomplete="off" required id="pass" name="password"/>
-                                <label>Fjalëkalimi i ri</label>
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" required id="pass" name="subject"/>
+                                <label>Titulli i emailit</label>
                             </div>                
                             <div class="input-wrap">
-                                <input type="password" minlength="4" class="input-field" autocomplete="off" required id="conpass" onkeyup='checkpass();' name="confirm-password"/>
-                                <label>Konfirmo fjalëkalimin e ri</label>
-                                <br>
-                                <div class="input-wrap" style="margin-top: 3px; margin-bottom: 0">
-                                    <label id="msg"></label>
-                                </div>
-                                <br>
-                                <input type="submit" name="recover-password" value="Përditëso" class="sign-btn">
+                                <input type="text"  class="input-field" autocomplete="off" required id="conpass" name="message"/>
+                                <label>Mesazhi</label>
+                                <br><br>
+                                <input type="submit" name="send-fp" value="Dërgo" class="sign-btn">
                             </div>
+                            <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $email = $_POST['email'];
+                        $message = $_POST['message'];
+                        $email_regex = "/^\S+@\S+\.\S+$/";
+
+                        $errors = array();
+
+                        if (!preg_match($email_regex, $email)) {
+                            $errors['email'] = "Email-i nuk është në formatin e duhur";
+                        }
+                        if (count($errors) > 0) {
+                            print_r($errors);
+                        } else {
+                            echo "Ju faleminderit, mesazhi u dergua me sukses :)";
+                        }
+                    }
+                ?>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </main>
-    <script>
-        var checkpass = function() {
-            if(document.getElementById('pass').value == document.getElementById('conpass').value) {
-                document.getElementById('msg').innerHTML='Fjalëkalimet përputhen!';
-                document.getElementById('msg').style.color='green';
-            } else {
-                document.getElementById('msg').innerHTML='Fjalëkalimet nuk përputhen!';
-                document.getElementById('msg').style.color='red';
-            }
-        }
-    </script>
     <script src="sign-up/sign-up.js"></script>
 </body>
 </html>

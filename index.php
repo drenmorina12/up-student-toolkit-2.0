@@ -29,20 +29,6 @@
     echo "Error: " . mysqli_error($conn);
   }
 
-  $sql_tblAdmin = "CREATE TABLE IF NOT EXISTS up_studenttoolkit.tblAdmin (
-    adminId INT AUTO_INCREMENT PRIMARY KEY,
-    emri VARCHAR(50) NOT NULL,
-    mbiemri VARCHAR(50) NOT NULL,
-    emaili VARCHAR(50) NOT NULL UNIQUE,
-    passwordHash VARCHAR(300) NOT NULL
-  ) ENGINE = InnoDB;";
-
-if (mysqli_query($conn, $sql_tblAdmin)) {
-  //echo "Tabela u krijua me sukses";
- } else {
-   echo "Error: " . mysqli_error($conn);
- }
-
   /*
   $firstName = 'niko';
   $lastName = 'vertis';
@@ -185,10 +171,11 @@ mysqli_close($conn);
                 </div>
 
                 <input type="submit" name="log-in" value="Kyçu" class="sign-btn" />
-
-                <p class="text">
-                  <a href="./forgot_pass.php">Keni harruar fjalëkalimin?</a>
-                </p>
+                 <p class="text">
+                  Keni harruar fjalëkalimin? <br>
+                  Na kontaktoni në 
+                 <a href="./forgot_pass.php">uptoolkit@gmail.com.</a>
+                  </p>
               </div>
             </form>
 

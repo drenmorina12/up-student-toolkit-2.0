@@ -99,7 +99,7 @@
                             <span>Message</span>
                         </div>
                         <div class="button-send">
-                            <input type="submit" name="send" value="Send">
+                            <input type="submit" name="send-rr" value="Send">
                         </div>
                     </div>
                 <?php
