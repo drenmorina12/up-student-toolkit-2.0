@@ -29,7 +29,8 @@
 #asosacioni,
 #kuizi,
 #tic-tac-toe,
-#memory-game {
+#memory-game,
+#kuiziDinamik {
   border: 10px double var(--secondary-color);
   flex: 1;
   padding: 20px;

@@ -84,8 +84,11 @@
                         <h2>Na Kontaktoni!</h2>
                         <div class="formBox">
                         <div class="inputBox w50">
+                        <p>To:</p> <input type="text" name="email" required readonly value="uptoolkit@gmail.com">
+                        </div>
+                        <div class="inputBox w50">
                             <input type="text" name="email" required>
-                            <span>Email</span>
+                            <span>From:</span>
                         </div>
                         <div class="inputBox w50">
                             <input type="text" name="subject" required>
@@ -95,7 +98,7 @@
                             <textarea name="message" required></textarea>
                             <span>Message</span>
                         </div>
-                        <div class="inputBox w100">
+                        <div class="button-send">
                             <input type="submit" name="send" value="Send">
                         </div>
                     </div>

@@ -18,4 +18,9 @@
     header("Location: ballina.php");
 
   }
+
+  if (isset($_POST["delete-account"])) {
+    header("Location: delete_account.php");
+    exit;
+  }
 ?>

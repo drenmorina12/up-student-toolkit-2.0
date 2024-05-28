@@ -12,6 +12,8 @@
     <title>Up Student Toolkit</title>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="argetim.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;600&display=swap"
       rel="stylesheet"
@@ -24,6 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script defer src="asosacioni.js"></script>
     <script defer src="tic-tac-toe.js"></script>
+    <script defer src="kuiziDinamik.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -51,6 +54,14 @@
           <li class="sidebar-active">
             <a href="javascript:void(0);" onclick="scrollToSection('kuizi')">
               <span>Kuizi</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('kuiziDinamik')"
+            >
+              <span>Kuizi Dinamik</span>
             </a>
           </li>
           <li>
@@ -148,6 +159,7 @@
             Your browser does not support the audio element.
           </audio>
         </div>
+
 
         <!-- Tic Tac Toe -->
         <div id="tic-tac-toe">

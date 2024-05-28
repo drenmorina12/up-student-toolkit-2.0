@@ -6,11 +6,21 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 
-//Shfaqen error-at
+// Shfaqen error-at
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-if (isset($_POST["send"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
+    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+
+    // Kontrollo nëse emaili është valid
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Emaili nuk është valid.";
+        exit;
+    }
+
     $mail = new PHPMailer(true);
 
     try {
@@ -22,17 +32,14 @@ if (isset($_POST["send"])) {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
-        $mail->SMTPDebug = 2;
-        $mail->Debugoutput = 'html';
-
-        $mail->setFrom($_POST["email"], $_POST["email"]);
+        $mail->setFrom($email, $email);
         $mail->addAddress('uptoolkit@gmail.com');
-        $mail->addReplyTo($_POST["email"], $_POST["email"]);
+        $mail->addReplyTo($email, $email);
 
         // Përmbajtja e email-it
         $mail->isHTML(true);
-        $mail->Subject = $_POST["subject"];
-        $mail->Body    = $_POST["message"];
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
 
         // Dërgo email-in
         $mail->send();
@@ -43,5 +50,7 @@ if (isset($_POST["send"])) {
     } catch (Exception $e) {
         echo "Email-i nuk mund të dërgohej. Gabim: {$mail->ErrorInfo}";
     }
+} else {
+    echo "Nuk keni aksesuar këtë faqe si duhet.";
 }
 ?>

@@ -1,12 +1,10 @@
 {
-    "argetim": 54,
-    "kalkulatore": 3,
-    "literatura": 1,
-    "ballina": 6,
-    "rreth-nesh": 3
+    "ballina": 2,
+    "argetim": 20,
+    "rreth-nesh": 4
 }
   <?php
   function getInfoSavedDateTime() {
-      return "2024-05-27 20:41:27";
+      return "2024-05-26 16:27:26";
   }
   ?>
