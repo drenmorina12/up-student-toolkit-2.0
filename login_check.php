@@ -20,10 +20,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             header("Location: ballina.php");
             exit();  
         } else {
-            $_SESSION['error'] = "Email ose fjalëkalim i pavlefshëm";
+            $_SESSION['error'] = "Kredenciale të gabuara!";
         }
     } else {
-        $_SESSION['error'] = "Email ose fjalëkalim i pavlefshëm";
+        $_SESSION['error'] = "Kredenciale të gabuara!";
     }
 
     $stmt->close();

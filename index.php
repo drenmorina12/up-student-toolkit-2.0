@@ -5,12 +5,6 @@
     $login_error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
     unset($_SESSION['error']);
 
-    $signup_error = isset($_SESSION['signup_error']) ? $_SESSION['signup_error'] : '';
-    unset($_SESSION['signup_error']);
-
-    $form_data = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : ['first-name' => '', 'last-name' => '', 'email' => ''];
-    unset($_SESSION['form_data']);
-
   $sql_tblUser = "  CREATE TABLE IF NOT EXISTS tblUser (
     userId INT AUTO_INCREMENT PRIMARY KEY,
     emri VARCHAR(50) NOT NULL,
@@ -185,7 +179,7 @@ mysqli_close($conn);
               </div>
 
               <div class="heading">
-                <h2>Mirësevini</h2>
+                <h2>Mirë se vini!</h2>
                 <h6>Nuk keni llogari?</h6>
                 <a href="#" class="toggle">KRIJO KËTU</a>
               </div>
@@ -243,9 +237,6 @@ mysqli_close($conn);
               </div>
 
               <div class="actual-form">
-              <?php if ($signup_error): ?>
-              <p  style="color: red;"><?php echo htmlspecialchars($signup_error); ?></p>
-              <?php endif; ?>
                 <div class="input-wrap">
                   <input
                     type="text"
@@ -288,11 +279,11 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
+                    id="pass"
                     name="password"
                   />
                   <label>Fjalëkalimi</label>
-                </div>
-
+                </div>                
                 <div class="input-wrap">
                   <input
                     type="password"
@@ -300,11 +291,13 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
+                    id="conpass"
+                    onkeyup='checkpass();'
                     name="confirm-password"
                   />
                   <label>Konfirmo fjalëkalimin</label>
                 </div>
-
+                <div class="input-wrap" style="margin-top: 0; margin-bottom: 0"><label id="msg"></label></div>
                 <input type="submit" name="sign-up" value="Krijo" class="sign-btn" />
 
                 <p class="text">
@@ -317,9 +310,9 @@ mysqli_close($conn);
 
           <div class="carousel">
             <div class="images-wrapper">
-              <img src="./images/TEKNIKU.jpg" class="image img-1 show" alt="" />
+              <img src="./images/1.png" class="image img-1 show" alt="" />
               <img src="./images/FIEK-FOTO.JPG" class="image img-2" alt="" />
-              <img src="./images/FIEK-FOTO.JPG" class="image img-3" alt="" />
+              <img src="./images/bibloteka.jpg" class="image img-3" alt="" />
             </div>
 
             <div class="text-slider">
@@ -327,7 +320,7 @@ mysqli_close($conn);
                 <div class="text-group">
                   <h2>Ndihmë akademike</h2>
                   <h2>Argëtim dhe mësim</h2>
-                  <h2>Konektim me të gjithë</h2>
+                  <h2>Qasje për të gjithë</h2>
                 </div>
               </div>
 
@@ -342,13 +335,21 @@ mysqli_close($conn);
       </div>
     </main>
     <script>
+      var checkpass = function(){
+        if(document.getElementById('pass').value ==
+        document.getElementById('conpass').value)
+        {
+          document.getElementById('msg').innerHTML='Fjalëkalimet përputhen!';
+          document.getElementById('msg').style.color='green';
+        }else{
+          document.getElementById('msg').innerHTML='Fjalëkalimet nuk përputhen!';
+          document.getElementById('msg').style.color='red';
+        }
+      }
     
     </script>
 
     <script src="sign-up/sign-up.js"></script>
   </body>
 </html>
-<?php
 
-
-?>
