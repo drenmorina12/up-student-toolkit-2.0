@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   console.log("LOADED");
   fetchAsosaciones();
 });
@@ -182,6 +181,7 @@ function updateCellContent(e, wordList) {
 function createEditableTable() {
   const titulli = document.createElement("input");
   titulli.type = "text";
+  titulli.required = true;
   titulli.className = "input-cell";
   titulli.setAttribute("id", "title");
   titulli.placeholder = "Titulli";
@@ -195,6 +195,7 @@ function createEditableTable() {
       cell.className = "cell";
       const input = document.createElement("input");
       input.type = "text";
+      input.required = true;
       input.className = "input-cell";
       input.setAttribute("data-column", column);
       input.placeholder = `${column}${i + 1}`;
@@ -219,6 +220,7 @@ function createEditableTable() {
   cell.setAttribute("id", "final-cell");
   const input = document.createElement("input");
   input.type = "text";
+  input.required = true;
   input.className = "input-cell";
   input.placeholder = "ZGJIDHJA PËRFUNDIMTARE";
   input.setAttribute("id", "zgjidhja-perfundimtare");
