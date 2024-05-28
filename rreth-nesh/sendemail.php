@@ -11,6 +11,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $to = 'uptoolkit@gmail.com';
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
     $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
@@ -20,6 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Emaili nuk është valid.";
         exit;
     }
+
+
+    $headers = "From: " .$email . "\r\n";
+    $headers .= "Reply-To: " . $email . "\r\n";
+    $headers .= "Content-Type: text/html; charset=ITF-8\r\n";
+
+    $to = 'uptoolkit@gmail.com';
+
 
     $mail = new PHPMailer(true);
 
@@ -33,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port       = 587;
 
         $mail->setFrom($email, $email);
-        $mail->addAddress('uptoolkit@gmail.com');
+        $mail->addAddress($to);
         $mail->addReplyTo($email, $email);
 
         // Përmbajtja e email-it
@@ -49,6 +58,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </script> ";
     } catch (Exception $e) {
         echo "Email-i nuk mund të dërgohej. Gabim: {$mail->ErrorInfo}";
+    }
+
+    //Funksioni mail()
+    if (mail($to, $subject, $message, $headers)) {
+        echo "<script>
+        alert('Email-i u dërgua me sukses (me funksionin mail()).');
+        document.location.href = 'rreth-nesh.php';
+        </script> ";
+    } else {
+        echo "Email-i nuk mund të dërgohej (me funksionin mail()).";
     }
 } else {
     echo "Nuk keni aksesuar këtë faqe si duhet.";
