@@ -124,7 +124,7 @@ function validateEmail($email) {
   return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-if (isset($_POST["kyquni"])) {
+if (isset($_POST["sign-up"])) {
   $first_name = sanitizeInput($_POST["first-name"]);
   $last_name = sanitizeInput($_POST["last-name"]);
   $email = sanitizeInput($_POST["email"]);
@@ -311,11 +311,11 @@ mysqli_close($conn);
           <div class="carousel">
             <div class="images-wrapper">
               <img src="./images/1.png" class="image img-1 show" alt="" />
-              <img src="./images/FIEK-FOTO.JPG" class="image img-2" alt="" />
-              <img src="./images/bibloteka.jpg" class="image img-3" alt="" />
+             <!-- <img src="./images/FIEK-FOTO.JPG" class="image img-2" alt="" />
+              <img src="./images/bibloteka.jpg" class="image img-3" alt="" />-->
             </div>
 
-            <div class="text-slider">
+            <!--<div class="text-slider">
               <div class="text-wrap">
                 <div class="text-group">
                   <h2>Ndihmë akademike</h2>
@@ -329,7 +329,7 @@ mysqli_close($conn);
                 <span data-value="2"></span>
                 <span data-value="3"></span>
               </div>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
