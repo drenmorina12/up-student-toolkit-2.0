@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("LOADED");
+  fetchAsosaciones();
+});
+
 const asosacioni = document.querySelector("#asosacioni-table");
 const asosacioniButtons = document.querySelectorAll(".asosacioni-button");
 const resetBtn = document.querySelector(".reset-button");
@@ -6,6 +11,7 @@ const asosacioniHeaderText = document.querySelector(
 );
 const createBtn = document.querySelector(".create-asosacion");
 const saveBtn = document.querySelector(".save-asosacion");
+const buttonsContainer = document.querySelector(".asosacioni-buttons");
 
 let currentAsosacion;
 let currentAsosacionText = '"Përgjithshëm"';
@@ -123,6 +129,7 @@ const subjects = {
   pergjithshem: pergjithshem,
   web: web,
 };
+
 //--------------------------------------------------
 
 function createTable() {
@@ -174,6 +181,7 @@ function updateCellContent(e, wordList) {
 function createEditableTable() {
   const titulli = document.createElement("input");
   titulli.type = "text";
+  titulli.required = true;
   titulli.className = "input-cell";
   titulli.setAttribute("id", "title");
   titulli.placeholder = "Titulli";
@@ -187,6 +195,7 @@ function createEditableTable() {
       cell.className = "cell";
       const input = document.createElement("input");
       input.type = "text";
+      input.required = true;
       input.className = "input-cell";
       input.setAttribute("data-column", column);
       input.placeholder = `${column}${i + 1}`;
@@ -211,6 +220,7 @@ function createEditableTable() {
   cell.setAttribute("id", "final-cell");
   const input = document.createElement("input");
   input.type = "text";
+  input.required = true;
   input.className = "input-cell";
   input.placeholder = "ZGJIDHJA PËRFUNDIMTARE";
   input.setAttribute("id", "zgjidhja-perfundimtare");
@@ -244,25 +254,6 @@ function setActiveButton(button) {
   button.classList.add("active");
 }
 
-// function buttonAddEventListener(button) {
-//   button.addEventListener("click", () => {
-//     setActiveButton(button);
-//     resetAsosacioni();
-//     createTable();
-//     const subject = button.getAttribute("data-name");
-
-//     if (subjects.hasOwnProperty(subject)) {
-//       currentAsosacionText = `"${
-//         subject.charAt(0).toUpperCase() + subject.slice(1)
-//       }"`;
-//       addCellEventListeners(subjects[subject]); // Get the corresponding object
-//       currentAsosacion = subjects[subject]; // Assign the corresponding object
-//     } else {
-//       alert("Ky asosacion nuk ekziston! ");
-//     }
-//   });
-// }
-
 function setAsosacioni(button) {
   setActiveButton(button);
   resetAsosacioni();
@@ -278,6 +269,119 @@ function setAsosacioni(button) {
   } else {
     alert("Ky asosacion nuk ekziston! ");
   }
+}
+
+function sendAsosacioni(asosacioni) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/up-student-toolkit-2.0/asosacioni.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log(xhr.responseText);
+    }
+  };
+
+  xhr.send(JSON.stringify({ asosacioni: asosacioni }));
+}
+
+function fetchAsosaciones() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/up-student-toolkit-2.0/getAsosacione.php");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      try {
+        var responseData = JSON.parse(xhr.responseText);
+        var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        console.log("First time: " + str1);
+        updateSubjects(responseData);
+        str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        console.log("Second time: " + str1);
+      } catch (e) {
+        console.error("Failed to parse JSON response:", e);
+      }
+    }
+  };
+  xhr.send();
+}
+
+function updateSubjects(asosaciones) {
+  for (let title in asosaciones) {
+    if (asosaciones.hasOwnProperty(title)) {
+      subjects[title] = asosaciones[title];
+    }
+  }
+
+  updateAsosacioniButtons();
+}
+
+function updateAsosacioniButtons() {
+  // Clear existing dynamic buttons
+  const dropdownContent = document.querySelector(".dropdown-buttons");
+  dropdownContent.innerHTML = "";
+
+  let count = 0;
+  for (let title in subjects) {
+    if (subjects.hasOwnProperty(title)) {
+      count++;
+
+      if (count <= 3) {
+        // Skip the first three subjects as they are default
+        continue;
+      }
+      console.log("Inside change button!");
+      // Create a new button for additional asosaciones
+      let newDropdownBtn = document.createElement("button");
+      newDropdownBtn.className = "asosacioni-button dropdown-item";
+      newDropdownBtn.setAttribute("data-name", title);
+      newDropdownBtn.textContent = title;
+      dropdownContent.append(newDropdownBtn);
+
+      // Add click event to dynamically change the special button text and trigger the setAsosacioni function
+      newDropdownBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const specialButton = document.querySelector(".special-button");
+        specialButton.textContent = title;
+        setAsosacioni(newDropdownBtn);
+        dropdownContent.style.display = "block";
+      });
+    }
+  }
+
+  // Code that show the dropdown buttons on hover
+
+  const specialButton = document.querySelector(".special-button");
+
+  function showDropdown() {
+    dropdownContent.style.display = "block";
+  }
+
+  function hideDropdown() {
+    dropdownContent.style.display = "none";
+  }
+
+  specialButton.addEventListener("mouseenter", () => {
+    showDropdown();
+  });
+
+  specialButton.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      if (!dropdownContent.matches(":hover")) {
+        hideDropdown();
+      }
+    }, 100);
+  });
+
+  dropdownContent.addEventListener("mouseenter", () => {
+    showDropdown();
+  });
+
+  dropdownContent.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      if (!specialButton.matches(":hover")) {
+        hideDropdown();
+      }
+    }, 100);
+  });
 }
 
 function handleSave() {
@@ -314,13 +418,15 @@ function handleSave() {
 
   // Save all values on a temp object
   let tempAsosacion = {
-    A: [a1, a2, a3, a4, zgjidhjaA, zgjidhjaPerfundimtare],
+    A: [a1, a2, a3, a4, zgjidhjaA, zgjidhjaPerfundimtare, title],
     B: [b1, b2, b3, b4, zgjidhjaB],
     C: [c1, c2, c3, c4, zgjidhjaC],
     D: [d1, d2, d3, d4, zgjidhjaD],
   };
 
-  // Add tebmp object to subjects object
+  sendAsosacioni(tempAsosacion);
+
+  // Add temp object to subjects object
   subjects[title] = tempAsosacion;
 
   // Create new button
@@ -330,7 +436,7 @@ function handleSave() {
   newBtn.textContent = title;
   // Adds event listener to button
 
-  document.querySelector(".asosacioni-buttons").append(newBtn);
+  buttonsContainer.append(newBtn);
 
   newBtn.addEventListener("click", () => setAsosacioni(newBtn));
   setAsosacioni(newBtn);

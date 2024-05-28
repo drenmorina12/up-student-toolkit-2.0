@@ -12,6 +12,7 @@
     <title>Up Student Toolkit</title>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="argetim.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;600&display=swap"
       rel="stylesheet"
@@ -54,15 +55,6 @@
               <span>Kuizi</span>
             </a>
           </li>
-          <li>
-            <a
-              href="javascript:void(0);"
-              onclick="scrollToSection('kuiziDinamik')"
-            >
-              <span>Kuizi Dinamik</span>
-            </a>
-          </li>
-          <li>
             <a
               href="javascript:void(0);"
               onclick="scrollToSection('tic-tac-toe')"
@@ -93,12 +85,19 @@
                 Përgjithshëm
               </button>
               <button class="asosacioni-button" data-name="web">Web</button>
-              <button class="asosacioni-button" data-name="fizika">
-                Fizikë
-              </button>
-              <button class="asosacioni-button" data-name="matematika">
-                Matematikë
-              </button>
+              <button class="asosacioni-button" data-name="fizika">Fizikë</button>
+
+              <div class="special-button-container">
+                <button
+                  class="asosacioni-button special-button"
+                  data-name="special"
+                >
+                  More
+                </button>
+                <div class="dropdown-buttons" style="display: none">
+                  <!-- Dynamically populated buttons will go here -->
+                </div>
+              </div>
 
               <button class="reset-button">Fshij</button>
               <button class="create-asosacion">Create</button>
@@ -151,15 +150,6 @@
           </audio>
         </div>
 
-        <!-- Kuizi Dinamik -->
-        <div id="kuiziDinamik">
-          <div id="leftSide">
-          <button class="kuiziDinamikButonat" >KRIJO KUIZ</button>
-          </div>
-          <div id="rightSide">
-          <button class="kuiziDinamikButonat">LUAJ KUIZ</button>
-          </div>
-        </div>
 
         <!-- Tic Tac Toe -->
         <div id="tic-tac-toe">

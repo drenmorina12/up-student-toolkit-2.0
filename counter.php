@@ -1,5 +1,7 @@
 <?php
 
+/*
+
 function getInfoSavedDateTime() {
   return date('Y-m-d H:i:s');
 }
@@ -60,4 +62,6 @@ if(!isset($_SESSION["visit_counts"])){
   // Shto try catch
     echo "Error: visit_counts session array doesn't exist.";
 }
+
+*/
 ?>

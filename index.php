@@ -5,11 +5,6 @@
     $login_error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
     unset($_SESSION['error']);
 
-    $signup_error = isset($_SESSION['signup_error']) ? $_SESSION['signup_error'] : '';
-    unset($_SESSION['signup_error']);
-
-    $form_data = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : ['first-name' => '', 'last-name' => '', 'email' => ''];
-    unset($_SESSION['form_data']);
 
   $sql_tblUser = "  CREATE TABLE IF NOT EXISTS tblUser (
     userId INT AUTO_INCREMENT PRIMARY KEY,
@@ -34,24 +29,16 @@
     echo "Error: " . mysqli_error($conn);
   }
 
-  $sql_tblAdmin = "CREATE TABLE IF NOT EXISTS up_studenttoolkit.tblAdmin (
-    adminId INT AUTO_INCREMENT PRIMARY KEY,
-    emri VARCHAR(50) NOT NULL,
-    mbiemri VARCHAR(50) NOT NULL,
-    emaili VARCHAR(50) NOT NULL UNIQUE,
-    passwordHash VARCHAR(300) NOT NULL
-  ) ENGINE = InnoDB;";
-
-if (mysqli_query($conn, $sql_tblAdmin)) {
-  //echo "Tabela u krijua me sukses";
- } else {
-   echo "Error: " . mysqli_error($conn);
- }
-
-
   /*
+  $firstName = 'niko';
+  $lastName = 'vertis';
+  $email = 'niko@gmail.com';
+  $password = 'pass123';
+
+  $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+
   $sql_shto = "INSERT INTO tblUser (emri, mbiemri, emaili, passwordHash) 
-  VALUES ('niko', 'vertis', 'niko@gmail.com', 'pass123')";
+  VALUES ('$firstName', '$lastName', '$email', '$passwordHash')";
 
   if (mysqli_query($conn, $sql_shto)) {
   //echo "u shtua";
@@ -60,10 +47,10 @@ if (mysqli_query($conn, $sql_tblAdmin)) {
   }
   */
 /*
-  $sql_perditeso = "UPDATE tblUser SET emri = 'nikolo' WHERE id = 8";
+  $sql_perditeso = "UPDATE tblUser SET emri = 'nikolo' WHERE id = 1";
 
   if (mysqli_query($conn, $sql_perditeso)) {
-      echo "u perditesua";
+      //echo "u perditesua";
   } else {
       echo "Error updating record: " . mysqli_error($conn);
   }
@@ -72,51 +59,14 @@ if (mysqli_query($conn, $sql_tblAdmin)) {
   /*
   $sql_fshij = "DELETE FROM tblUser WHERE id = 8";
 
-if (mysqli_query($conn, $sql_fshij)) {
-    echo "u fshi";
-} else {
-    echo "Error deleting record: " . mysqli_error($conn);
-}
-*/
+  if (mysqli_query($conn, $sql_fshij)) {
+      //echo "u fshi";
+  } else {
+      echo "Error deleting record: " . mysqli_error($conn);
+  }
+  */
 
-/*
-  function insertUser($emri, $mbiemri, $emaili, $passwordi, $conn) {
 
-    $sql = "INSERT INTO tblUser (emri, mbiemri, emaili, passwordHash) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $hashedPassword = password_hash($passwordi, PASSWORD_DEFAULT);
-    $stmt->bind_param("ssss", $emri, $mbiemri, $emaili, $hashedPassword);
-    $stmt->execute();
-    $stmt->close();
-
-}
-
-// Update function
-function updateUser($id, $emri, $mbiemri, $emaili, $passwordi, $conn) {
-
-    $sql = "UPDATE tblUser SET emri = ?, mbiemri = ?, emaili = ?, passwordHash = ? WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $hashedPassword = password_hash($passwordi, PASSWORD_DEFAULT);
-    $stmt->bind_param("ssssi", $emri, $mbiemri, $emaili, $hashedPassword, $id);
-    $stmt->execute();
-    $stmt->close();
-}
-
-// Delete function
-function deleteUser($conn, $id) {
-
-    $sql = "DELETE FROM tblUser WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $stmt->close();
-
-}
-    insertUser('John', 'Doe', 'john.doe@example.com', 'password123', $conn);
-   // updateUser(2, 'John', 'Doe', 'john.doe@example.com', 'newpassword123', $conn);
-    //deleteUser(2);
-*/
- 
   // Function to sanitize input
 function sanitizeInput($data) {
   $data = trim($data); 
@@ -130,7 +80,7 @@ function validateEmail($email) {
   return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-if (isset($_POST["kyquni"])) {
+if (isset($_POST["sign-up"])) {
   $first_name = sanitizeInput($_POST["first-name"]);
   $last_name = sanitizeInput($_POST["last-name"]);
   $email = sanitizeInput($_POST["email"]);
@@ -185,7 +135,7 @@ mysqli_close($conn);
               </div>
 
               <div class="heading">
-                <h2>Mirësevini</h2>
+                <h2>Mirë se vini!</h2>
                 <h6>Nuk keni llogari?</h6>
                 <a href="#" class="toggle">KRIJO KËTU</a>
               </div>
@@ -221,16 +171,15 @@ mysqli_close($conn);
                 </div>
 
                 <input type="submit" name="log-in" value="Kyçu" class="sign-btn" />
-
-                <p class="text">
+                 <p class="text">
                   Keni harruar fjalëkalimin? <br>
                   Na kontaktoni në 
-                  <a href="#">uptoolkit@gmail.com.</a>
-                </p>
+                 <a href="./forgot_pass.php">uptoolkit@gmail.com.</a>
+                  </p>
               </div>
             </form>
 
-            <form action="signup.php" method="POST" autocomplete="off" class="sign-up-form">
+            <form id="sign-up" action="signup.php" method="POST" autocomplete="off" class="sign-up-form">
               <div class="logo">
                 <img src="./images/logo1.png" alt="easyclass" />
                 <h4>UP Student Toolkit</h4>
@@ -243,9 +192,6 @@ mysqli_close($conn);
               </div>
 
               <div class="actual-form">
-              <?php if ($signup_error): ?>
-              <p  style="color: red;"><?php echo htmlspecialchars($signup_error); ?></p>
-              <?php endif; ?>
                 <div class="input-wrap">
                   <input
                     type="text"
@@ -288,11 +234,11 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
+                    id="pass"
                     name="password"
                   />
                   <label>Fjalëkalimi</label>
-                </div>
-
+                </div>                
                 <div class="input-wrap">
                   <input
                     type="password"
@@ -300,55 +246,42 @@ mysqli_close($conn);
                     class="input-field"
                     autocomplete="off"
                     required
+                    id="conpass"
+                    onkeyup='checkpass();'
                     name="confirm-password"
                   />
                   <label>Konfirmo fjalëkalimin</label>
                 </div>
-
+                <div class="input-wrap" style="margin-top: 0; margin-bottom: 0"><label id="msg"></label></div>
                 <input type="submit" name="sign-up" value="Krijo" class="sign-btn" />
-
-                <p class="text">
-                  Duke klikuar butonin ju pajtoheni me
-                  <a href="#">Kushtet dhe Shërbimet tona.</a> 
-                </p>
               </div>
             </form>
           </div>
 
           <div class="carousel">
             <div class="images-wrapper">
-              <img src="./images/TEKNIKU.jpg" class="image img-1 show" alt="" />
-              <img src="./images/FIEK-FOTO.JPG" class="image img-2" alt="" />
-              <img src="./images/FIEK-FOTO.JPG" class="image img-3" alt="" />
-            </div>
-
-            <div class="text-slider">
-              <div class="text-wrap">
-                <div class="text-group">
-                  <h2>Ndihmë akademike</h2>
-                  <h2>Argëtim dhe mësim</h2>
-                  <h2>Konektim me të gjithë</h2>
-                </div>
-              </div>
-
-              <div class="bullets">
-                <span class="active" data-value="1"></span>
-                <span data-value="2"></span>
-                <span data-value="3"></span>
-              </div>
+              <img src="./images/1.png" class="image img-1 show" alt="" />
             </div>
           </div>
         </div>
       </div>
     </main>
     <script>
+      var checkpass = function(){
+        if(document.getElementById('pass').value ==
+        document.getElementById('conpass').value)
+        {
+          document.getElementById('msg').innerHTML='Fjalëkalimet përputhen!';
+          document.getElementById('msg').style.color='green';
+        }else{
+          document.getElementById('msg').innerHTML='Fjalëkalimet nuk përputhen!';
+          document.getElementById('msg').style.color='red';
+        }
+      }
     
     </script>
 
     <script src="sign-up/sign-up.js"></script>
   </body>
 </html>
-<?php
 
-
-?>
