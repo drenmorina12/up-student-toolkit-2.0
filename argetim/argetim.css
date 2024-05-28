@@ -163,7 +163,7 @@ input[type="text"].input-cell::placeholder {
   display: block;
 }
 
-.dropdown-content {
+.dropdown-buttons {
   display: block;
   position: absolute;
   background-color: #f9f9f9;
@@ -177,7 +177,7 @@ input[type="text"].input-cell::placeholder {
   overflow-y: auto;
 }
 
-.dropdown-content .asosacioni-button {
+.dropdown-buttons .asosacioni-button {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
@@ -187,14 +187,14 @@ input[type="text"].input-cell::placeholder {
   border-radius: 10px;
 }
 
-.dropdown-content .asosacioni-button:hover {
+.dropdown-buttons .asosacioni-button:hover {
   opacity: 0.7;
   cursor: pointer;
 }
 
 /* Show the dropdown content on hover */
-.special-button-container:hover .dropdown-content,
-.special-button-container .dropdown-content:hover {
+.special-button-container:hover .dropdown-buttons,
+.special-button-container .dropdown-buttons:hover {
   display: block;
 }
 

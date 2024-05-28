@@ -1,19 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // const specialButtonContainer = document.querySelector(
-  //   ".special-button-container"
-  // );
-  // const dropdownContent = document.querySelector(".dropdown-content");
-
-  // specialButtonContainer.addEventListener("mouseenter", () => {
-  //   dropdownContent.style.display = "block";
-  // });
-
-  // specialButtonContainer.addEventListener("mouseleave", () => {
-  //   // Use a timeout to delay hiding the dropdown, allowing for smoother transitions
-  //   setTimeout(() => {
-  //     dropdownContent.style.display = "none";
-  //   }, 10000); // Adjust the delay as needed
-  // });
 
   console.log("LOADED");
   fetchAsosaciones();
@@ -329,7 +314,7 @@ function updateSubjects(asosaciones) {
 
 function updateAsosacioniButtons() {
   // Clear existing dynamic buttons
-  const dropdownContent = document.querySelector(".dropdown-content");
+  const dropdownContent = document.querySelector(".dropdown-buttons");
   dropdownContent.innerHTML = "";
 
   let count = 0;

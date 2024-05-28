@@ -94,7 +94,7 @@
                 >
                   More
                 </button>
-                <div class="dropdown-buttons" style="display: none">
+                <div class="dropdown-buttons" style="display: block">
                   <!-- Dynamically populated buttons will go here -->
                 </div>
               </div>
