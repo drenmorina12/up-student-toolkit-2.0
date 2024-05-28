@@ -8,7 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['recover-password'])) {
     $confirmPassword = $_POST['confirm-password'];
 
     $_SESSION['info-message'] = "përditësimit të fjalëkalimit";
-    
+    $_SESSION['go-back'] = "forgot_pass.php";
+
     if ($password !== $confirmPassword) {
         $_SESSION['message'] = "Passwords do not match.";
         header("Location: confirmation.php");

@@ -41,7 +41,15 @@ session_start();
                             }
                             ?>
                         </h4>
-                        <!--<a href="./forgot_pass.php" class="toggle">Kthehu mbrapa</a><br>-->
+                        <?php if (isset($_SESSION['message'])){
+                            if(htmlspecialchars($_SESSION['message'])!='Llogaria juaj është fshirë!' || htmlspecialchars($_SESSION['message'])!='Fjalëkalimi u përditësua.'){ ?>
+                        <a href="<?php
+                                if (isset($_SESSION['go-back'])) {
+                                    echo htmlspecialchars($_SESSION['go-back']);
+                                    unset($_SESSION['go-back']);
+                                }
+                            ?>" class="toggle">Kthehu mbrapa</a><br>
+                        <?php }}?>
                         <a href="index.php" class="toggle">Kthehu në fillim</a>
                     </div>
                 </form>

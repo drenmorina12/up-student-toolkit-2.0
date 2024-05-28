@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-account'])) {
     $password = $_POST['password'];
 
     $_SESSION['info-message'] = "fshirjes së llogarisë";
+    $_SESSION['go-back'] = "delete_account.php";
     // kontollimi i ekzsitences se emailit
     $stmt = $conn->prepare("SELECT userId, passwordHash FROM tblUser WHERE emaili = ?");
     $stmt->bind_param("s", $email);
@@ -71,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-account'])) {
 
                         <div class="heading">
                             <h2>Fshij llogarinë</h2>
-                            <a href="./index.php" class="toggle">Kthehu mbrapa</a> <!--me u kthy ku o kan-->
+                            <a href="./index.php" class="toggle">Krijo llogari</a>
                         </div>
 
                         <div class="actual-form">
