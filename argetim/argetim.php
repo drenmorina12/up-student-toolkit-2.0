@@ -153,10 +153,6 @@
           </audio>
         </div>
 
-        <!-- Kuizi Dinamik -->
-        <div id="kuiziDinamik">
-        
-        </div>
 
         <!-- Tic Tac Toe -->
         <div id="tic-tac-toe">
