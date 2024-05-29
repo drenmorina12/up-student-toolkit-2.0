@@ -23,4 +23,9 @@
     header("Location: delete_account.php");
     exit;
   }
+  
+  if (isset($_POST["update-password"])) {
+    header("Location: update_password.php");
+    exit;
+  }
 ?>

@@ -153,6 +153,51 @@ input[type="text"].input-cell {
 input[type="text"].input-cell::placeholder {
   opacity: 0.7;
 }
+.special-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.special-button {
+  /* Ensure the button size is well-defined */
+  display: block;
+}
+
+.dropdown-buttons {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  max-height: 400px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 100%;
+  margin-top: -2px;
+  top: 72px;
+  overflow-y: auto;
+}
+
+.dropdown-buttons .asosacioni-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 10px 30px;
+  margin: 10px 20px;
+  min-width: 150px;
+  border-radius: 10px;
+}
+
+.dropdown-buttons .asosacioni-button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* Show the dropdown content on hover */
+.special-button-container:hover .dropdown-buttons,
+.special-button-container .dropdown-buttons:hover {
+  display: block;
+}
+
 /* Asosacioni end */
 
 /* Kuizi start*/
