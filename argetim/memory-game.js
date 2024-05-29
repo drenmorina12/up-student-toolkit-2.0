@@ -104,8 +104,8 @@ function checkMatch() {
     cardsWon.push(cardsChosen[0]);
     showNotification(`Keni gjetur gjuhën programuese: ${cardsChosen[1]}`);
   } else {
-    cards.eq(optionOneId).attr("src", "../images/memory-game/blank-1.png");
-    cards.eq(optionTwoId).attr("src", "../images/memory-game/blank-1.png");
+    cards.eq(optionOneId).attr("src", "../images/memory-game/grey.jpg");
+    cards.eq(optionTwoId).attr("src", "../images/memory-game/grey.jpg");
   }
   $resultDisplay.text(cardsWon.length);
 
