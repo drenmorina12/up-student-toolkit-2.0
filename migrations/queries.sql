@@ -1,40 +1,56 @@
-CREATE TABLE IF NOT EXISTS tblUser (
+    CREATE TABLE IF NOT EXISTS tblUser (
     userId INT AUTO_INCREMENT PRIMARY KEY,
     emri VARCHAR(50) NOT NULL,
     mbiemri VARCHAR(50) NOT NULL,
     emaili VARCHAR(50) NOT NULL UNIQUE,
     passwordHash VARCHAR(300) NOT NULL
-  ) ENGINE = InnoDB;
+) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `up_studenttoolkit`.`tblasociacioni` (
-    `aId` INT AUTO_INCREMENT PRIMARY KEY , 
-    `userId` INT NOT NULL , 
-    `titulli` VARCHAR(50) NOT NULL , 
-    `A1` VARCHAR(50) NOT NULL , 
-    `A2` VARCHAR(50) NOT NULL , 
-    `A3` VARCHAR(50) NOT NULL , 
-    `Afinal` VARCHAR(50) NOT NULL , 
-    `B1` VARCHAR(50) NOT NULL , 
-    `B2` VARCHAR(50) NOT NULL , 
-    `B3` VARCHAR(50) NOT NULL , 
-    `B4` VARCHAR(50) NOT NULL , 
-    `Bfinal` VARCHAR(50) NOT NULL , 
-    `C1` VARCHAR(50) NOT NULL , 
-    `C2` VARCHAR(50) NOT NULL , 
-    `C3` VARCHAR(50) NOT NULL , 
-    `C4` VARCHAR(50) NOT NULL , 
-    `Cfinal` VARCHAR(50) NOT NULL , 
-    `D1` VARCHAR(50) NOT NULL , 
-    `D2` VARCHAR(50) NOT NULL , 
-    `D3` VARCHAR(50) NOT NULL , 
-    `D4` VARCHAR(50) NOT NULL , 
-    `Dfinal` VARCHAR(50) NOT NULL , 
-    `final` VARCHAR(50) NOT NULL, FOREIGN KEY (userId) REFERENCES tblUser(userId)) ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS tblAsociacioni (
+    aId INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    titulli VARCHAR(50) NOT NULL,
+    A1 VARCHAR(50) NOT NULL,
+    A2 VARCHAR(50) NOT NULL,
+    A3 VARCHAR(50) NOT NULL,
+    A4 VARCHAR(50) NOT NULL,
+    Afinal VARCHAR(50) NOT NULL,
+    B1 VARCHAR(50) NOT NULL,
+    B2 VARCHAR(50) NOT NULL,
+    B3 VARCHAR(50) NOT NULL,
+    B4 VARCHAR(50) NOT NULL,
+    Bfinal VARCHAR(50) NOT NULL,
+    C1 VARCHAR(50) NOT NULL,
+    C2 VARCHAR(50) NOT NULL,
+    C3 VARCHAR(50) NOT NULL,
+    C4 VARCHAR(50) NOT NULL,
+    Cfinal VARCHAR(50) NOT NULL,
+    D1 VARCHAR(50) NOT NULL,
+    D2 VARCHAR(50) NOT NULL,
+    D3 VARCHAR(50) NOT NULL,
+    D4 VARCHAR(50) NOT NULL,
+    Dfinal VARCHAR(50) NOT NULL,
+    final VARCHAR(50) NOT NULL,
+    FOREIGN KEY (userId) REFERENCES tblUser(userId) ON DELETE CASCADE
+) ENGINE = InnoDB;
+
+-- Updated tables - 29/5
+
+SELECT CONSTRAINT_NAME
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE TABLE_NAME = 'tblAsociacioni' AND COLUMN_NAME = 'userId';
+
+ALTER TABLE tblAsociacioni DROP FOREIGN KEY `tblasociacioni_ibfk_1`;
+
+ALTER TABLE tblAsociacioni
+ADD CONSTRAINT fk_userId
+FOREIGN KEY (userId) REFERENCES tblUser(userId)
+ON DELETE CASCADE;
+
+-- Ekzekutimi manual i alterave - 29/5
 
 
 
-
--- MOS E EKZEKUTONI:
 
 -- START TRANSACTION;
 
@@ -50,12 +66,21 @@ CREATE TABLE IF NOT EXISTS `up_studenttoolkit`.`tblasociacioni` (
 --   `id` int(11) NOT NULL,
 --   `pyetja` text NOT NULL
 -- );
+-- CREATE TABLE `pyetjet` (
+--   `id` int(11) NOT NULL,
+--   `pyetja` text NOT NULL
+-- );
 
 
 -- -- SHTIMI I PRIMARY-KEY:
 -- ALTER TABLE `opsionet`
 --   ADD PRIMARY KEY (`id`);
+-- -- SHTIMI I PRIMARY-KEY:
+-- ALTER TABLE `opsionet`
+--   ADD PRIMARY KEY (`id`);
 
+-- ALTER TABLE `pyetjet`
+--   ADD PRIMARY KEY (`id`);
 -- ALTER TABLE `pyetjet`
 --   ADD PRIMARY KEY (`id`);
 
@@ -63,7 +88,13 @@ CREATE TABLE IF NOT EXISTS `up_studenttoolkit`.`tblasociacioni` (
 -- -- SHTIMI I AUTO-INCREMENT:
 -- ALTER TABLE `opsionet`
 --   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+-- -- SHTIMI I AUTO-INCREMENT:
+-- ALTER TABLE `opsionet`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
+-- ALTER TABLE `pyetjet`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+-- COMMIT; 
 -- ALTER TABLE `pyetjet`
 --   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 -- COMMIT; 
