@@ -14,9 +14,9 @@ ini_set('display_errors', 1);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $to = 'uptoolkit@gmail.com';
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
-    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email']);
+    $subject = filter_var($_POST['subject']);
+    $message = filter_var($_POST['message']);
 
     // Kontrollo nëse emaili është valid
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
