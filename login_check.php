@@ -6,14 +6,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT emri, mbiemri, emaili, passwordHash FROM tblUser WHERE emaili = ?");
+    $stmt = $conn->prepare("SELECT userId, emri, mbiemri, emaili, passwordHash FROM tblUser WHERE emaili = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $stmt->bind_result($first_name, $last_name, $email, $stored_password);
+    $stmt->bind_result($user_id, $first_name, $last_name, $email, $stored_password);
 
     if ($stmt->fetch()) {
 
         if (password_verify($password, $stored_password)) {
+            $_SESSION['user-id'] = $user_id;
             $_SESSION['first-name'] = $first_name;
             $_SESSION['last-name'] = $last_name;
             $_SESSION['email'] = $email;

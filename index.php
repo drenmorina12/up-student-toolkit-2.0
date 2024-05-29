@@ -29,6 +29,16 @@
     echo "Error: " . mysqli_error($conn);
   }
 
+
+  $sql_tblPhotosLiteratura = " CREATE TABLE IF NOT EXISTS `up_studenttoolkit`.`photos` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY , `image` VARCHAR(50) NOT NULL);";
+
+  if (mysqli_query($conn,  $sql_tblPhotosLiteratura)) {
+   //echo "Tabela u krijua me sukses";
+  } else {
+    echo "Error: " . mysqli_error($conn);
+  }
+
   /*
   $firstName = 'niko';
   $lastName = 'vertis';
@@ -67,49 +77,62 @@
   */
 
 
-  // Function to sanitize input
-function sanitizeInput($data) {
-  $data = trim($data); 
-  $data = stripslashes($data); 
-  $data = htmlspecialchars($data);
-  return $data;
-}
+//   // Function to sanitize input
+// function sanitizeInput($data) {
+//   $data = trim($data); 
+//   $data = stripslashes($data); 
+//   $data = htmlspecialchars($data);
+//   return $data;
+// }
 
-// Function to validate email format
-function validateEmail($email) {
-  return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
+// // Function to validate email format
+// function validateEmail($email) {
 
-if (isset($_POST["sign-up"])) {
-  $first_name = sanitizeInput($_POST["first-name"]);
-  $last_name = sanitizeInput($_POST["last-name"]);
-  $email = sanitizeInput($_POST["email"]);
-  $password = $_POST["password"]; 
-  $confirm_password = $_POST["confirm-password"]; 
+//   if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+//     return false;
+//   }
 
-  if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password) && !empty($confirm_password)){
-      if (validateEmail($email)) {
-        if (strlen($password) > 8 && $password == $confirm_password){
-          $_SESSION["first-name"] = $first_name;
-          $_SESSION["last-name"] = $last_name;
-          $_SESSION["email"] = $email;
+//   $regex = '/^[^@]+@[^@]+\.[^@]+$/';
 
-          $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+//   return preg_match($regex, $email) === 1;
 
-          header("Location: ballina.php");
-          exit;
-        } else {
-          echo "Invalid passwords.";
-        }
-          
-      } else {
-          echo "Invalid email format.";
-      }
-  } else {
-      // Missing required fields
-      echo "All fields are required.";
-  } 
-}
+// }
+
+// if (isset($_POST["sign-up"])) {
+//   $first_name = sanitizeInput($_POST["first-name"]);
+//   $last_name = sanitizeInput($_POST["last-name"]);
+//   $email = sanitizeInput($_POST["email"]);
+//   $password = $_POST["password"]; 
+//   $confirm_password = $_POST["confirm-password"]; 
+
+//   if (empty($first_name) && empty($last_name) && empty($email) && empty($password) && empty($confirm_password)){
+//     echo "All fields are required.";
+//     exit;
+
+//   }
+
+//   if (!validateEmail($email)) {
+//     echo "Invalid email format.";
+//     exit;
+//   }
+
+//   if (strlen($password) > 8 && $password !== $confirm_password){
+//     echo "Invalid passwords.";
+//     exit;
+//   }
+
+//   $_SESSION["first-name"] = $first_name;
+//   $_SESSION["last-name"] = $last_name;
+//   $_SESSION["email"] = $email;
+
+//   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+//   header("Location: ballina.php");
+//   exit;
+
+// }
+     
+  
 
 mysqli_close($conn);
 ?>
@@ -193,6 +216,8 @@ mysqli_close($conn);
               </div>
 
               <div class="actual-form">
+                <div id="signup-error" style="color: red;"></div>
+
                 <div class="input-wrap">
                   <input
                     type="text"
@@ -231,7 +256,7 @@ mysqli_close($conn);
                 <div class="input-wrap">
                   <input
                     type="password"
-                    minlength="4"
+                    minlength="8"
                     class="input-field"
                     autocomplete="off"
                     required
@@ -243,7 +268,7 @@ mysqli_close($conn);
                 <div class="input-wrap">
                   <input
                     type="password"
-                    minlength="4"
+                    minlength="8"
                     class="input-field"
                     autocomplete="off"
                     required
@@ -279,6 +304,30 @@ mysqli_close($conn);
           document.getElementById('msg').style.color='red';
         }
       }
+
+//       document.querySelector("#sign-up").addEventListener('submit', (event) => {
+//     event.preventDefault();
+
+//     var form = event.target;
+//     var formData = new FormData(form); // Corrected variable name from fromData to formData
+
+//     fetch(form.action, {
+//         method: 'POST',
+//         body: formData // Corrected variable name from fromData to formData
+//     })
+//     .then(response => response.text())
+//     .then(result => {
+//         console.log('Result:', result); // Debugging log
+//         if (result.trim() === "Success") {
+//             window.location.href = "ballina.php";
+//         } else {
+//             document.querySelector("#signup-error").textContent = result;
+//         }
+//     })
+//     .catch(error => {
+//         console.error("Error: ", error);
+//     });
+// });
     
     </script>
 
