@@ -1,7 +1,10 @@
 <?php
+
+  session_start();
+
   include('db.php');
 
-  $userId = 1;
+  $userId = $_SESSION["user-id"];
 
   $query = "SELECT titulli, A1, A2, A3, A4, Afinal, B1, B2, B3, B4, Bfinal, C1, C2, C3, C4, Cfinal, D1, D2, D3, D4, Dfinal, final FROM tblasociacioni WHERE userId = ?";
   $stmt = $conn->prepare($query);

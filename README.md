@@ -14,10 +14,9 @@ Mirë se vini në UP-Student-Toolkit! Ky web aplikacion është dizajnuar për t
 
 Struktura e projektit është e organizuar si më poshtë:
 
-- **/argëtim**: Përmban lojërat asosacionet dhe kuizin.
-- **/images**: Ndodhen imazhet e përdorura të projektit.
+- **/argëtim**: Përmban lojërat, asosacionet dhe kuizin.
 - **/info**: Pjesa që përmban burime informative rreth fakultetit.
-- **/kalkulatore**: Përmban vegla të ndryshme si zgjedhës të sistemeve me dy të panjohura, kalkulatorë, konvertues të njësive dhe tabelë vizatimi.
+- **/kalkulatore**: Përmban vegla të ndryshme si zgjidhës të sistemeve me dy të panjohura, kalkulatorë, konvertues të njësive dhe tabelë vizatimi.
 - **/literatura**: Ndodhen pjesë të literaturës së disa lëndeve.
 - **/migrations**: Ndodhen migrimet e bazës së të dhënave.
 - **/PHPmailer**: Funksionet për funksionalitetin e emailit.
@@ -48,7 +47,7 @@ Shpresojmë që ta gjeni UP-Student-Toolkit të dobishëm dhe tërheqës.
 - Dren Morina
 - Edon Gashi
 - Dituri Kodra
-- Endrit Kastrati
+- Blerta Lutolli
 
 
   <a href="#top">Shko në fillim ↑</a>
