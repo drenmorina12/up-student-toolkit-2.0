@@ -118,7 +118,7 @@ if(isset($_POST['delete'])){
               <ul id="listaEsidebar" style="width: 14%">
                 <li>
                   <a href="#divmatematika">
-                    <span>Matematikë</span>
+                    <span>Image Uploader</span>
                   </a>
                 </li>
                 <li>
@@ -136,10 +136,9 @@ if(isset($_POST['delete'])){
           </div>
           <div class="col-md" id="main-container">
             <div class="row" id="pershkrimi-literatura">
-              <h2 id="divmatematika">Matematikë 2</h2>
+              <h2 id="divmatematika">Ngarkimi i fotove në PHP me Mysql</h2>
               <p>
-                Këtu gjeni material nga Matematikë 2, të shpjeguar në slidet e
-                FIEK.
+                Këtu gjeni vendin ku mund të bëni ngarkoni fotot.
               </p>
             </div>
 
@@ -149,7 +148,7 @@ if(isset($_POST['delete'])){
 
   <div class="literaturaFoto">
 
-        <h2 align="center">Multiple Image Uploading in PHP with Mysql</h2>
+        <!-- <h2 align="center">Multiple Image Uploading in PHP with Mysql</h2> -->
         <?php
             if(isset($_GET['msg']) AND $_GET['msg'] == 'ins'){
                 echo '<h4 align = center> Image Uploaded Successfully. </h4>';
@@ -159,7 +158,7 @@ if(isset($_POST['delete'])){
       
         <div class="formdesign">
             <form class="chooseFileDiv" action="literatura.php" method="post" enctype="multipart/form-data">
-                <p>Please select image</p><br><br>
+                <p style="color: grey">Zgjedhni foto</p><br><br>
                 <div class="rreshti">
                 <input class = "chooseFile" type="file" name="image[]" multiple><br><br>
                 <input class="chooseFile" type="submit" name="submit" value="Upload">

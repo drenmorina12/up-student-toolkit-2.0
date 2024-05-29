@@ -66,12 +66,21 @@ ON DELETE CASCADE;
 --   `id` int(11) NOT NULL,
 --   `pyetja` text NOT NULL
 -- );
+-- CREATE TABLE `pyetjet` (
+--   `id` int(11) NOT NULL,
+--   `pyetja` text NOT NULL
+-- );
 
 
 -- -- SHTIMI I PRIMARY-KEY:
 -- ALTER TABLE `opsionet`
 --   ADD PRIMARY KEY (`id`);
+-- -- SHTIMI I PRIMARY-KEY:
+-- ALTER TABLE `opsionet`
+--   ADD PRIMARY KEY (`id`);
 
+-- ALTER TABLE `pyetjet`
+--   ADD PRIMARY KEY (`id`);
 -- ALTER TABLE `pyetjet`
 --   ADD PRIMARY KEY (`id`);
 
@@ -79,7 +88,13 @@ ON DELETE CASCADE;
 -- -- SHTIMI I AUTO-INCREMENT:
 -- ALTER TABLE `opsionet`
 --   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+-- -- SHTIMI I AUTO-INCREMENT:
+-- ALTER TABLE `opsionet`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
+-- ALTER TABLE `pyetjet`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+-- COMMIT; 
 -- ALTER TABLE `pyetjet`
 --   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 -- COMMIT; 
