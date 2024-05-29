@@ -20,7 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Kontrollo nëse emaili është valid
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Emaili nuk është valid.";
+        $_SESSION['info-message'] = "validimit i emailit";
+        $_SESSION['message'] = "Emaili nuk është valid.";
+        $_SESSION['go-back'] = "./rreth-nesh/rreth-nesh.php";
+        echo "<script>document.location.href = '../confirmation.php';</script>";
         exit;
     }
 
@@ -28,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers = "From: " .$email . "\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
     $headers .= "Content-Type: text/html; charset=ITF-8\r\n";
-
-    $to = 'uptoolkit@gmail.com';
 
 
     $mail = new PHPMailer(true);
@@ -54,26 +55,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Dërgo email-in
         $mail->send();
-        $_SESSION['info-message'] = "dërgimi të emailit";
-        $_SESSION['message'] = "emaili u dërgua!";
+        $_SESSION['info-message'] = "Dërgimi të email-it";
+        $_SESSION['message'] = "Email-i u dërgua!";
         $_SESSION['go-back'] = "./rreth-nesh/rreth-nesh.php";
-       /* echo "<script>
+       echo "<script>
         document.location.href = '../confirmation.php';
-        </script> ";*/
+        </script> ";
     } catch (Exception $e) {
         $_SESSION['info-message'] = "Gabim: {$mail->ErrorInfo}";
         $_SESSION['message'] = "";
         //echo "Email-i nuk mund të dërgohej. Gabim: {$mail->ErrorInfo}";
-    }
-
-    //Funksioni mail()
-    if (mail($to, $subject, $message, $headers)) {
-        echo "<script>
-        alert('Email-i u dërgua me sukses (me funksionin mail()).');
-        document.location.href = 'rreth-nesh.php';
-        </script> ";
-    } else {
-        echo "Email-i nuk mund të dërgohej (me funksionin mail()).";
     }
 } else {
     echo "Nuk keni aksesuar këtë faqe si duhet.";
