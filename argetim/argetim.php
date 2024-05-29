@@ -100,12 +100,15 @@
               </div>
 
               <button class="reset-button">Fshij</button>
-              <button class="create-asosacion">Create</button>
+              <div class="create-save-container">
+                <button class="create-asosacion">Create</button>
+                <button class="save-asosacion">Save</button>
+              </div>
             </div>
             <div class="asosacioni-table-container">
               <div id="asosacioni-table"></div>
             </div>
-            <button class="save-asosacion">Save</button>
+            <!-- <button class="save-asosacion">Save</button> -->
           </div>
         </div>
 

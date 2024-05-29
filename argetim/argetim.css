@@ -83,6 +83,19 @@
   border-radius: 10px;
 }
 
+.create-save-container {
+  position: relative;
+  margin-left: 15px;
+}
+
+.save-asosacion {
+  position: absolute;
+  /* top: 200px; */
+  left: 0;
+  top: 60px;
+  display: none;
+}
+
 #asosacioni .active {
   background-color: var(--primary-color);
   color: var(--secondary-color);

@@ -470,6 +470,8 @@ function handleSave() {
   addCellEventListeners(tempAsosacion);
   currentAsosacionText = title;
   asosacioniHeaderText.textContent = currentAsosacionText;
+
+  saveBtn.style.display = "none";
 }
 
 resetBtn.addEventListener("click", () => {
@@ -479,6 +481,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 createBtn.addEventListener("click", () => {
+  saveBtn.style.display = "block";
   resetAsosacioni();
   createEditableTable();
 });
