@@ -94,10 +94,10 @@
         <div id="permbajtjaKalkulatori">
           <div class="pershkrimi2">
             <h2>Sistemet e ekuacioneve</h2>
-            <p>
+            <!-- <p>
               Kjo faqe përmban një program që gjenë zgjidhjet e sistemeve të
               ekuacioneve lineare me dy të panjohura !
-            </p>
+            </p> -->
           </div>
           <div class="permbajtja3">
             <div class="vlerat">
@@ -335,9 +335,9 @@
         <div id="permbajtjaKonvertori">
           <div class="pershkrimi2">
             <h2>Konvertuesi i njësive</h2>
-            <p>
+            <!-- <p>
               Kjo faqe përmban një konvertues të njësive të gjatësisë dhe peshës
-            </p>
+            </p> -->
           </div>
           <div class="permbajtja2">
             <div class="vlera2t">
