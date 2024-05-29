@@ -70,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['recover-password'])) {
                         </div>
 
                         <div class="heading">
-                            <h2>Rimerr fjalëkalimin</h2>
-                            <a href="./index.php" class="toggle">Kthehu mbrapa</a>
+                            <h2>Ndrysho fjalëkalimin</h2>
+                            
                         </div>
 
                         <div class="actual-form">
