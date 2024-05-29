@@ -2,18 +2,49 @@
 session_start();
 include("db.php");
 
+function sanitizeInput($data) {
+    $data = trim($data); 
+    $data = stripslashes($data); 
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+function validateEmail($email) {
+
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      return false;
+    }
+  
+    $regex = '/^[^@]+@[^@]+\.[^@]+$/';
+  
+    return preg_match($regex, $email) === 1;
+  
+  }
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sign-up'])) {
-    $emri = $_POST['first-name'];
-    $mbiemri =$_POST['last-name'];
-    $emaili = $_POST['email'];
-    $passwordi =$_POST['password'];
-    $confirm_password =$_POST['confirm-password'];
+    $emri = sanitizeInput($_POST['first-name']);
+    $mbiemri = sanitizeInput($_POST['last-name']);
+    $emaili = sanitizeInput($_POST['email']);
+    $passwordi = $_POST['password'];
+    $confirm_password = $_POST['confirm-password'];
 
 
-    if ($passwordi !== $confirm_password) {
+    if (empty($emri) && empty($mbiemri) && empty($emaili) && empty($passwordi) && empty($confirm_password)){
+        echo "All fields are required.";
+        exit;
+      }
+    
+    if (!validateEmail($emaili)) {
+        echo "Invalid email format.";
+        exit;
+    }
+
+
+    if (strlen($passwordi) < 8 && $passwordi !== $confirm_password) {
         $_SESSION['signup_error'] = 'Fjalëkalimi dhe konfirmimi i fjalëkalimit nuk përputhen';
-        header("Location: index.php");
-        exit();
+        // header("Location: index.php");
+        exit;
     }
 
 

@@ -1,5 +1,7 @@
 <?php
   
+  session_start();
+
   include('db.php');
 
   $data = file_get_contents('php://input');
@@ -7,7 +9,7 @@
 
   $asosacioni = $decoded_data['asosacioni'];
 
-  $userId = 1;
+  $userId = $_SESSION["user-id"];
 
   
   // Access individual elements

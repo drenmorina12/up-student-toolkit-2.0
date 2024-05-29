@@ -12,6 +12,8 @@ const asosacioniHeaderText = document.querySelector(
 const createBtn = document.querySelector(".create-asosacion");
 const saveBtn = document.querySelector(".save-asosacion");
 const buttonsContainer = document.querySelector(".asosacioni-buttons");
+const dropdownContent = document.querySelector(".dropdown-buttons");
+const specialButton = document.querySelector(".special-button");
 
 let currentAsosacion;
 let currentAsosacionText = '"Përgjithshëm"';
@@ -61,28 +63,28 @@ const fizika = {
   D: ["Ukraina", "Katastrofa", "Rrezatimi", "I Pa banuar", fizikaSolutions.D],
 };
 
-const matematikaSolution = {
-  A: "HEXADECIMAL",
-  B: "INT",
-  C: "VITI",
-  D: "IMAGJINARË",
-};
+// const matematikaSolution = {
+//   A: "HEXADECIMAL",
+//   B: "INT",
+//   C: "VITI",
+//   D: "IMAGJINARË",
+// };
 
-const finalResultMatematika = "Numrat";
+// const finalResultMatematika = "Numrat";
 
-const matematika = {
-  A: [
-    "Sistem",
-    "16",
-    "Shkronja",
-    "0-F",
-    matematikaSolution.A,
-    finalResultMatematika,
-  ],
-  B: ["4-byte", "Shifra", "Programim", "Deklarim", matematikaSolution.B],
-  C: ["I brishtë", "Akademik", "Qytet", "I Ri", matematikaSolution.C],
-  D: ["Ëndërra", "Jo reale", "Dëshira", "Truri", matematikaSolution.D],
-};
+// const matematika = {
+//   A: [
+//     "Sistem",
+//     "16",
+//     "Shkronja",
+//     "0-F",
+//     matematikaSolution.A,
+//     finalResultMatematika,
+//   ],
+//   B: ["4-byte", "Shifra", "Programim", "Deklarim", matematikaSolution.B],
+//   C: ["I brishtë", "Akademik", "Qytet", "I Ri", matematikaSolution.C],
+//   D: ["Ëndërra", "Jo reale", "Dëshira", "Truri", matematikaSolution.D],
+// };
 
 const pergjithshemSolution = {
   A: "GJURI",
@@ -124,7 +126,7 @@ const web = {
 };
 
 const subjects = {
-  matematika: matematika,
+  // matematika: matematika,
   fizika: fizika,
   pergjithshem: pergjithshem,
   web: web,
@@ -272,6 +274,7 @@ function setAsosacioni(button) {
 }
 
 function sendAsosacioni(asosacioni) {
+  console.table(asosacioni);
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/up-student-toolkit-2.0/asosacioni.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -291,11 +294,11 @@ function fetchAsosaciones() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       try {
         var responseData = JSON.parse(xhr.responseText);
-        var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
-        console.log("First time: " + str1);
+        // var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        // console.log("First time: " + str1);
         updateSubjects(responseData);
-        str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
-        console.log("Second time: " + str1);
+        // str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        // console.log("Second time: " + str1);
       } catch (e) {
         console.error("Failed to parse JSON response:", e);
       }
@@ -314,9 +317,55 @@ function updateSubjects(asosaciones) {
   updateAsosacioniButtons();
 }
 
+function createButton(title) {
+  // Create a new button for additional asosaciones
+  // console.log("Asosacioni: " + title);
+  let newDropdownBtn = document.createElement("button");
+  newDropdownBtn.className = "asosacioni-button dropdown-item";
+  newDropdownBtn.setAttribute("data-name", title);
+  newDropdownBtn.textContent = title;
+  dropdownContent.append(newDropdownBtn);
+
+  // Add click event to dynamically change the special button text and trigger the setAsosacioni function
+  newDropdownBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    specialButton.setAttribute("data-name", title);
+    setSpecialButtonEventListener(title);
+    // specialButton.textContent = title;
+    // specialButton.addEventListener("click", () => {
+    // event.stopPropagation();
+    // setAsosacioni(newDropdownBtn);
+    // });
+    console.log("Called by dropdown-button: " + newDropdownBtn);
+
+    setAsosacioni(newDropdownBtn);
+    dropdownContent.style.display = "block";
+  });
+}
+
+function setSpecialButtonEventListener(title) {
+  specialButton.textContent = title;
+  // const newDropdownBtn = document.querySelector(`button[data-name="${title}"]`);
+
+  const specialButtonClickListener = () => {
+    console.log("Called by special-button: " + newDropdownBtn);
+    const sepcialButtonDataName = specialButton.getAttribute("data-name");
+    const correspondingButton = document.querySelector(
+      `button[data-name="${specialButtonDataName}"]`
+    );
+    if (correspondingButton) {
+      setAsosacioni(correspondingButton);
+    }
+    // setAsosacioni(newDropdownBtn);
+  };
+
+  // Remove any previous event listeners to prevent multiple bindings
+  specialButton.removeEventListener("click", specialButtonClickListener);
+  specialButton.addEventListener("click", specialButtonClickListener);
+}
+
 function updateAsosacioniButtons() {
   // Clear existing dynamic buttons
-  const dropdownContent = document.querySelector(".dropdown-buttons");
   dropdownContent.innerHTML = "";
 
   let count = 0;
@@ -328,28 +377,12 @@ function updateAsosacioniButtons() {
         // Skip the first three subjects as they are default
         continue;
       }
-      console.log("Inside change button!");
-      // Create a new button for additional asosaciones
-      let newDropdownBtn = document.createElement("button");
-      newDropdownBtn.className = "asosacioni-button dropdown-item";
-      newDropdownBtn.setAttribute("data-name", title);
-      newDropdownBtn.textContent = title;
-      dropdownContent.append(newDropdownBtn);
 
-      // Add click event to dynamically change the special button text and trigger the setAsosacioni function
-      newDropdownBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const specialButton = document.querySelector(".special-button");
-        specialButton.textContent = title;
-        setAsosacioni(newDropdownBtn);
-        dropdownContent.style.display = "block";
-      });
+      createButton(title);
     }
   }
 
   // Code that show the dropdown buttons on hover
-
-  const specialButton = document.querySelector(".special-button");
 
   function showDropdown() {
     dropdownContent.style.display = "block";
@@ -429,17 +462,14 @@ function handleSave() {
   // Add temp object to subjects object
   subjects[title] = tempAsosacion;
 
-  // Create new button
-  let newBtn = document.createElement("button");
-  newBtn.className = "asosacioni-button";
-  newBtn.setAttribute("data-name", title);
-  newBtn.textContent = title;
-  // Adds event listener to button
+  // createButton(subjects[title]);
 
-  buttonsContainer.append(newBtn);
-
-  newBtn.addEventListener("click", () => setAsosacioni(newBtn));
-  setAsosacioni(newBtn);
+  updateAsosacioniButtons();
+  resetAsosacioni();
+  createTable();
+  addCellEventListeners(tempAsosacion);
+  currentAsosacionText = title;
+  asosacioniHeaderText.textContent = currentAsosacionText;
 }
 
 resetBtn.addEventListener("click", () => {
