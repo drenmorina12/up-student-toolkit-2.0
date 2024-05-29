@@ -272,6 +272,7 @@ function setAsosacioni(button) {
 }
 
 function sendAsosacioni(asosacioni) {
+  console.table(asosacioni);
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/up-student-toolkit-2.0/asosacioni.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
