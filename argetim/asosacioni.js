@@ -61,28 +61,28 @@ const fizika = {
   D: ["Ukraina", "Katastrofa", "Rrezatimi", "I Pa banuar", fizikaSolutions.D],
 };
 
-const matematikaSolution = {
-  A: "HEXADECIMAL",
-  B: "INT",
-  C: "VITI",
-  D: "IMAGJINARË",
-};
+// const matematikaSolution = {
+//   A: "HEXADECIMAL",
+//   B: "INT",
+//   C: "VITI",
+//   D: "IMAGJINARË",
+// };
 
-const finalResultMatematika = "Numrat";
+// const finalResultMatematika = "Numrat";
 
-const matematika = {
-  A: [
-    "Sistem",
-    "16",
-    "Shkronja",
-    "0-F",
-    matematikaSolution.A,
-    finalResultMatematika,
-  ],
-  B: ["4-byte", "Shifra", "Programim", "Deklarim", matematikaSolution.B],
-  C: ["I brishtë", "Akademik", "Qytet", "I Ri", matematikaSolution.C],
-  D: ["Ëndërra", "Jo reale", "Dëshira", "Truri", matematikaSolution.D],
-};
+// const matematika = {
+//   A: [
+//     "Sistem",
+//     "16",
+//     "Shkronja",
+//     "0-F",
+//     matematikaSolution.A,
+//     finalResultMatematika,
+//   ],
+//   B: ["4-byte", "Shifra", "Programim", "Deklarim", matematikaSolution.B],
+//   C: ["I brishtë", "Akademik", "Qytet", "I Ri", matematikaSolution.C],
+//   D: ["Ëndërra", "Jo reale", "Dëshira", "Truri", matematikaSolution.D],
+// };
 
 const pergjithshemSolution = {
   A: "GJURI",
@@ -124,7 +124,7 @@ const web = {
 };
 
 const subjects = {
-  matematika: matematika,
+  // matematika: matematika,
   fizika: fizika,
   pergjithshem: pergjithshem,
   web: web,
@@ -292,11 +292,11 @@ function fetchAsosaciones() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       try {
         var responseData = JSON.parse(xhr.responseText);
-        var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
-        console.log("First time: " + str1);
+        // var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        // console.log("First time: " + str1);
         updateSubjects(responseData);
-        str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
-        console.log("Second time: " + str1);
+        // str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
+        // console.log("Second time: " + str1);
       } catch (e) {
         console.error("Failed to parse JSON response:", e);
       }
@@ -326,11 +326,13 @@ function updateAsosacioniButtons() {
       count++;
 
       if (count <= 3) {
+        console.log("Asosacionet brenda: " + title);
         // Skip the first three subjects as they are default
         continue;
       }
-      console.log("Inside change button!");
+
       // Create a new button for additional asosaciones
+      console.log("Asosacioni: " + title);
       let newDropdownBtn = document.createElement("button");
       newDropdownBtn.className = "asosacioni-button dropdown-item";
       newDropdownBtn.setAttribute("data-name", title);
