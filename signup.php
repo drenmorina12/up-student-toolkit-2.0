@@ -57,9 +57,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sign-up'])) {
     try{
         $stmt->execute();
 
+        $new_user_id = $conn->insert_id;
+
         $_SESSION['first-name'] = $emri;
         $_SESSION['last-name'] = $mbiemri;
         $_SESSION['email'] = $emaili;
+        $_SESSION['user-id'] = $new_user_id;
+        
 
         $_SESSION['signup_error'] = '';
         header("Location:ballina.php");
