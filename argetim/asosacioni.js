@@ -294,11 +294,7 @@ function fetchAsosaciones() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       try {
         var responseData = JSON.parse(xhr.responseText);
-        // var str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
-        // console.log("First time: " + str1);
         updateSubjects(responseData);
-        // str1 = JSON.stringify(subjects, null, 4); // (Optional) beautiful indented output.
-        // console.log("Second time: " + str1);
       } catch (e) {
         console.error("Failed to parse JSON response:", e);
       }

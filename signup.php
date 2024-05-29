@@ -3,11 +3,11 @@ session_start();
 include("db.php");
 
 function sanitizeInput($data) {
-    $data = trim($data); 
-    $data = stripslashes($data); 
-    $data = htmlspecialchars($data);
-    return $data;
-  }
+  $data = trim($data); 
+  $data = stripslashes($data); 
+  $data = htmlspecialchars($data);
+  return filter_var($data, FILTER_SANITIZE_STRING);
+}
 
 function validateEmail($email) {
 
