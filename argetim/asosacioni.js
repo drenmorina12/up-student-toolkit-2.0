@@ -319,7 +319,7 @@ function updateSubjects(asosaciones) {
 
 function createButton(title) {
   // Create a new button for additional asosaciones
-  console.log("Asosacioni: " + title);
+  // console.log("Asosacioni: " + title);
   let newDropdownBtn = document.createElement("button");
   newDropdownBtn.className = "asosacioni-button dropdown-item";
   newDropdownBtn.setAttribute("data-name", title);
@@ -329,11 +329,39 @@ function createButton(title) {
   // Add click event to dynamically change the special button text and trigger the setAsosacioni function
   newDropdownBtn.addEventListener("click", (event) => {
     event.stopPropagation();
+    specialButton.setAttribute("data-name", title);
+    setSpecialButtonEventListener(title);
+    // specialButton.textContent = title;
+    // specialButton.addEventListener("click", () => {
+    // event.stopPropagation();
+    // setAsosacioni(newDropdownBtn);
+    // });
+    console.log("Called by dropdown-button: " + newDropdownBtn);
 
-    specialButton.textContent = title;
     setAsosacioni(newDropdownBtn);
     dropdownContent.style.display = "block";
   });
+}
+
+function setSpecialButtonEventListener(title) {
+  specialButton.textContent = title;
+  // const newDropdownBtn = document.querySelector(`button[data-name="${title}"]`);
+
+  const specialButtonClickListener = () => {
+    console.log("Called by special-button: " + newDropdownBtn);
+    const sepcialButtonDataName = specialButton.getAttribute("data-name");
+    const correspondingButton = document.querySelector(
+      `button[data-name="${specialButtonDataName}"]`
+    );
+    if (correspondingButton) {
+      setAsosacioni(correspondingButton);
+    }
+    // setAsosacioni(newDropdownBtn);
+  };
+
+  // Remove any previous event listeners to prevent multiple bindings
+  specialButton.removeEventListener("click", specialButtonClickListener);
+  specialButton.addEventListener("click", specialButtonClickListener);
 }
 
 function updateAsosacioniButtons() {
@@ -346,7 +374,6 @@ function updateAsosacioniButtons() {
       count++;
 
       if (count <= 3) {
-        console.log("Asosacionet brenda: " + title);
         // Skip the first three subjects as they are default
         continue;
       }
@@ -443,7 +470,6 @@ function handleSave() {
   addCellEventListeners(tempAsosacion);
   currentAsosacionText = title;
   asosacioniHeaderText.textContent = currentAsosacionText;
-
 }
 
 resetBtn.addEventListener("click", () => {
