@@ -13,15 +13,25 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $to = 'uptoolkit@gmail.com';
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
     $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
 
     // Kontrollo nëse emaili është valid
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Emaili nuk është valid.";
+        $_SESSION['info-message'] = "validimit i emailit";
+        $_SESSION['message'] = "Emaili nuk është valid.";
+        $_SESSION['go-back'] = "./rreth-nesh/rreth-nesh.php";
+        echo "<script>document.location.href = '../confirmation.php';</script>";
         exit;
     }
+
+
+    $headers = "From: " .$email . "\r\n";
+    $headers .= "Reply-To: " . $email . "\r\n";
+    $headers .= "Content-Type: text/html; charset=ITF-8\r\n";
+
 
     $mail = new PHPMailer(true);
 
@@ -35,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port       = 587;
 
         $mail->setFrom($email, $email);
-        $mail->addAddress('uptoolkit@gmail.com');
+        $mail->addAddress($to);
         $mail->addReplyTo($email, $email);
 
         // Përmbajtja e email-it
@@ -45,19 +55,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Dërgo email-in
         $mail->send();
-        $_SESSION['info-message'] = "dërgimi të emailit";
-        $_SESSION['message'] = "emaili u dërgua!";
+        $_SESSION['info-message'] = "Dërgimi të email-it";
+        $_SESSION['message'] = "Email-i u dërgua!";
         $_SESSION['go-back'] = "./rreth-nesh/rreth-nesh.php";
-       /* echo "<script>
+       echo "<script>
         document.location.href = '../confirmation.php';
-        </script> ";*/
+        </script> ";
     } catch (Exception $e) {
         $_SESSION['info-message'] = "Gabim: {$mail->ErrorInfo}";
         $_SESSION['message'] = "";
         //echo "Email-i nuk mund të dërgohej. Gabim: {$mail->ErrorInfo}";
     }
-    header("Location:../confirmation.php");
-    exit;
 } else {
     echo "Nuk keni aksesuar këtë faqe si duhet.";
 }

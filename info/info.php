@@ -557,8 +557,20 @@
     <hr class="vija-horizontale"><br>
 
     <!-- LOKACIONI - MAP : -->
+    <div class="weather-container">
+    <h2>Kërko qytetin që dëshironi të shifni motin aktual:</h2>
+    <div>
+      <label for="cityInput">Jep qytetin:</label>
+      <input type="text" id="cityInput" placeholder="...">
+      <button onclick="fetchWeather()" id="btnWeather">SHIKO KOHEN</button>
+    </div>
+    <div id="weather-info">
+    </div>
+  </div><br>
+
     <h1 id="lokacioni-headeri">Lokacioni </h1>
     <div id="map" style="width:100%; height:400px;"></div><br>
+    
 </main>
 
     <!-- FOOTER : -->
@@ -653,6 +665,30 @@
     }
   }
 </script>
+
+<script>
+    const apiKey = '84450e40fc6d8579a5dab8619ea6d3b9';
+
+    function fetchWeather() {
+      const city = document.getElementById('cityInput').value;
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const weatherInfo = `
+            <p><strong>Qyteti :</strong> ${data.name}</p>
+            <p><strong>Temperatura :</strong> ${data.main.temp} &deg;C</p>
+            <p><strong>Koha (ANG) :</strong> ${data.weather[0].description}</p>
+          `;
+          document.getElementById('weather-info').innerHTML = weatherInfo;
+        })
+        .catch(error => {
+          console.error('Error në të dhëna:', error);
+          document.getElementById('weather-info').innerHTML = '<p>Dështim në të dhëna.</p>';
+        });
+    }
+  </script>
 
   <!-- Lokacioni - Harta : -->
   <script>

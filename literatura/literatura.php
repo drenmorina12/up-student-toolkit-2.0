@@ -1,6 +1,64 @@
 <?php
   session_start();
 ?>
+<!--DB CONNECT-->
+<?php
+
+// // Database configuration
+// $dbHost     = "localhost";
+// $dbUsername = "root";
+// $dbPassword = "";
+// $dbName     = "dbphoto";
+
+// // Create database connection
+// $conn = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
+
+include("../db.php");
+
+// Check connection
+if(!$conn){
+    echo 'Connection failed !';
+}
+
+if(isset($_POST['submit'])){
+    $imageCount = count($_FILES['image']['name']);
+    for($i = 0 ; $i < $imageCount ; $i++){
+        $imageName = $_FILES['image']['name'][$i];
+        $imageTempName = $_FILES['image']['tmp_name'][$i];
+        $targetPath = "./upload/".$imageName;
+        if(move_uploaded_file($imageTempName, $targetPath)){
+            $sql = "INSERT INTO photos (image) VALUES ('$imageName')";
+            $result = mysqli_query($conn, $sql);
+        }//if move close
+    }
+        if($result){
+            header('location:literatura.php?msg=ins');
+        }
+}
+
+?>
+
+<?php
+if(isset($_POST['delete'])){
+    // $sql = "DELETE * FROM photos WHERE";
+    // $result = mysqli_query($conn, $sql);
+
+        $inputValue = $_POST['deleteField']; // The value from the text box
+        
+        // Prepare the statement with a placeholder
+        $stmt = $conn->prepare("DELETE FROM photos WHERE image = ?");
+        
+        // Bind the parameter to the placeholder
+        $stmt->bind_param("s", $inputValue); // "s" denotes the type (string)
+        
+        // Execute the statement
+        $stmt->execute();
+        
+        // Close the statement
+        $stmt->close();
+    
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,39 +143,62 @@
               </p>
             </div>
 
-            <div class="container-literatura">
-              <div class="slider-wrapper">
-                <button
-                  id="prev-slide"
-                  class="slide-button material-symbols-rounded"
-                >
-                  chevron_left
-                </button>
-                <ul class="lista-figurave">
-                  <img class="image-item" src="imag1.jpg" alt="img-2" />
-                  <img class="image-item" src="image2.jpg" alt="img-3" />
-                  <img class="image-item" src="image3.jpg" alt="img-4" />
-                  <img class="image-item" src="image4.jpg" alt="img-5" />
-                  <img class="image-item" src="image5.jpg" alt="img-6" />
-                  <img class="image-item" src="image6.jpg" alt="img-7" />
-                  <img class="image-item" src="image7.jpg" alt="img-8" />
-                  <img class="image-item" src="image8.jpg" alt="img-9" />
-                  <img class="image-item" src="image9.jpg" alt="img-10" />
-                  <img class="image-item" src="image10.jpg" alt="img-11" />
-                </ul>
-                <button
-                  id="slide-ardhshem"
-                  class="slide-button material-symbols-rounded"
-                >
-                  chevron_right
-                </button>
-              </div>
-              <div class="slider-scrollbar">
-                <div class="scrollbar-track">
-                  <div class="scrollbar-thumb"></div>
+            <!-- <div class="container-literatura"> -->
+              
+
+
+  <div class="literaturaFoto">
+
+        <h2 align="center">Multiple Image Uploading in PHP with Mysql</h2>
+        <?php
+            if(isset($_GET['msg']) AND $_GET['msg'] == 'ins'){
+                echo '<h4 align = center> Image Uploaded Successfully. </h4>';
+            }
+        ?>
+        
+      
+        <div class="formdesign">
+            <form class="chooseFileDiv" action="literatura.php" method="post" enctype="multipart/form-data">
+                <p>Please select image</p><br><br>
+                <div class="rreshti">
+                <input class = "chooseFile" type="file" name="image[]" multiple><br><br>
+                <input class="chooseFile" type="submit" name="submit" value="Upload">
                 </div>
-              </div>
+                <div class="rreshti">
+                <input class="chooseFile" type="text" name="deleteField">
+                <input class="chooseFile"type="submit" name="delete" value="Delete">
+                </div>
+            </form><br>
             </div>
+            <div class="scroll-bg">
+            <div class="scroll-div">
+        <div class="scroll-object">
+            <?php
+                $sql = "SELECT * FROM photos";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    while($fetch = mysqli_fetch_assoc($result)){
+                        ?>
+                        <img src = "upload/<?php echo $fetch['image']; ?>" width = 850 height = 490 >
+                        <?php
+                    }
+                }
+            ?>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+        
+
+
+            <!-- </div> -->
 
             <div id="video-container">
               <div class="row" id="pershkrimi-literatura">

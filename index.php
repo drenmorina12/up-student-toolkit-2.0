@@ -29,6 +29,16 @@
     echo "Error: " . mysqli_error($conn);
   }
 
+
+  $sql_tblPhotosLiteratura = " CREATE TABLE IF NOT EXISTS `up_studenttoolkit`.`photos` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY , `image` VARCHAR(50) NOT NULL);";
+
+  if (mysqli_query($conn,  $sql_tblPhotosLiteratura)) {
+   //echo "Tabela u krijua me sukses";
+  } else {
+    echo "Error: " . mysqli_error($conn);
+  }
+
   /*
   $firstName = 'niko';
   $lastName = 'vertis';
