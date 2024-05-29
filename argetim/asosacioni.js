@@ -12,6 +12,8 @@ const asosacioniHeaderText = document.querySelector(
 const createBtn = document.querySelector(".create-asosacion");
 const saveBtn = document.querySelector(".save-asosacion");
 const buttonsContainer = document.querySelector(".asosacioni-buttons");
+const dropdownContent = document.querySelector(".dropdown-buttons");
+const specialButton = document.querySelector(".special-button");
 
 let currentAsosacion;
 let currentAsosacionText = '"Përgjithshëm"';
@@ -315,9 +317,27 @@ function updateSubjects(asosaciones) {
   updateAsosacioniButtons();
 }
 
+function createButton(title) {
+  // Create a new button for additional asosaciones
+  console.log("Asosacioni: " + title);
+  let newDropdownBtn = document.createElement("button");
+  newDropdownBtn.className = "asosacioni-button dropdown-item";
+  newDropdownBtn.setAttribute("data-name", title);
+  newDropdownBtn.textContent = title;
+  dropdownContent.append(newDropdownBtn);
+
+  // Add click event to dynamically change the special button text and trigger the setAsosacioni function
+  newDropdownBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    specialButton.textContent = title;
+    setAsosacioni(newDropdownBtn);
+    dropdownContent.style.display = "block";
+  });
+}
+
 function updateAsosacioniButtons() {
   // Clear existing dynamic buttons
-  const dropdownContent = document.querySelector(".dropdown-buttons");
   dropdownContent.innerHTML = "";
 
   let count = 0;
@@ -331,28 +351,11 @@ function updateAsosacioniButtons() {
         continue;
       }
 
-      // Create a new button for additional asosaciones
-      console.log("Asosacioni: " + title);
-      let newDropdownBtn = document.createElement("button");
-      newDropdownBtn.className = "asosacioni-button dropdown-item";
-      newDropdownBtn.setAttribute("data-name", title);
-      newDropdownBtn.textContent = title;
-      dropdownContent.append(newDropdownBtn);
-
-      // Add click event to dynamically change the special button text and trigger the setAsosacioni function
-      newDropdownBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const specialButton = document.querySelector(".special-button");
-        specialButton.textContent = title;
-        setAsosacioni(newDropdownBtn);
-        dropdownContent.style.display = "block";
-      });
+      createButton(title);
     }
   }
 
   // Code that show the dropdown buttons on hover
-
-  const specialButton = document.querySelector(".special-button");
 
   function showDropdown() {
     dropdownContent.style.display = "block";
@@ -432,17 +435,15 @@ function handleSave() {
   // Add temp object to subjects object
   subjects[title] = tempAsosacion;
 
-  // Create new button
-  let newBtn = document.createElement("button");
-  newBtn.className = "asosacioni-button";
-  newBtn.setAttribute("data-name", title);
-  newBtn.textContent = title;
-  // Adds event listener to button
+  // createButton(subjects[title]);
 
-  buttonsContainer.append(newBtn);
+  updateAsosacioniButtons();
+  resetAsosacioni();
+  createTable();
+  addCellEventListeners(tempAsosacion);
+  currentAsosacionText = title;
+  asosacioniHeaderText.textContent = currentAsosacionText;
 
-  newBtn.addEventListener("click", () => setAsosacioni(newBtn));
-  setAsosacioni(newBtn);
 }
 
 resetBtn.addEventListener("click", () => {
